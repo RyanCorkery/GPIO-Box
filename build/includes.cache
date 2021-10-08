@@ -1,0 +1,82 @@
+[
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "F:\\Arduino\\hardware\\arduino\\avr\\cores\\arduino"
+  },
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "F:\\Arduino\\hardware\\arduino\\avr\\variants\\mega"
+  },
+  {
+    "Sourcefile": "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\build\\sketch\\IO_Bench_Simulator.ino.cpp",
+    "Include": "SPI.h",
+    "Includepath": "F:\\Arduino\\hardware\\arduino\\avr\\libraries\\SPI\\src"
+  },
+  {
+    "Sourcefile": "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\build\\sketch\\IO_Bench_Simulator.ino.cpp",
+    "Include": "SD.h",
+    "Includepath": "F:\\Arduino\\libraries\\SD\\src"
+  },
+  {
+    "Sourcefile": "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\build\\sketch\\IO_Bench_Simulator.ino.cpp",
+    "Include": "Wire.h",
+    "Includepath": "F:\\Arduino\\hardware\\arduino\\avr\\libraries\\Wire\\src"
+  },
+  {
+    "Sourcefile": "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\build\\sketch\\IO_Bench_Simulator.ino.cpp",
+    "Include": "LiquidCrystal_I2C.h",
+    "Includepath": "C:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\Arduino\\libraries\\LiquidCrystal_I2C-1.1.2"
+  },
+  {
+    "Sourcefile": "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\build\\sketch\\IO_Bench_Simulator.ino.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "F:\\Arduino\\hardware\\arduino\\avr\\libraries\\SPI\\src\\SPI.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "F:\\Arduino\\libraries\\SD\\src\\File.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "F:\\Arduino\\libraries\\SD\\src\\SD.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "F:\\Arduino\\libraries\\SD\\src\\utility\\Sd2Card.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "F:\\Arduino\\libraries\\SD\\src\\utility\\SdFile.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "F:\\Arduino\\libraries\\SD\\src\\utility\\SdVolume.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "F:\\Arduino\\hardware\\arduino\\avr\\libraries\\Wire\\src\\Wire.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "F:\\Arduino\\hardware\\arduino\\avr\\libraries\\Wire\\src\\utility\\twi.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\Arduino\\libraries\\LiquidCrystal_I2C-1.1.2\\LiquidCrystal_I2C.cpp",
+    "Include": "",
+    "Includepath": null
+  }
+]
