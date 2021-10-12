@@ -45,12 +45,13 @@ const int menu_right = 28;
 const int b4 = 29;
 const int menu_run = 30;
 const int manual_swtiches_enable = 31;                      // Controls power to manual switches via MOSFET
-const int adam6017_power = 32;                             // Power kill switch to ADAM modules
+const int adam6017_power = 32;                              // Power kill switch to ADAM modules
 const int b5 = 33;
 const int adam6050_power = 34;
 const int b6 = 35;
 const int latency_led = 36;
 const int b7 = 37;
+const int adam_do_0 = 38;                                   // Input to read when ADAM DO triggers relay 
 const int b8 = 39;
 // ethernet pin 50
 // ethernet pin 51
@@ -66,8 +67,7 @@ const int s6_in = A13;
 const int s7_in = A14;
 const int s8_in = A15;
 
-
-int input_pins[] = { menu_left, menu_up, menu_down, menu_right, menu_run };           // Inputs are menu buttons and start/stop program button
+int input_pins[] = { menu_left, menu_up, menu_down, menu_right, menu_run, adam_do_0 };                                                       // Inputs are menu buttons and start/stop program button, ADAM module digital outputs
 
 int output_pins[] = {b1, b2, b3, b4, b5, b6, b7, b8, s1_out, s2_out, s3_out, s4_out, s5_out, s6_out, s7_out, s8_out, a1_out, a2_out};       // Outputs are brake and speed signals and analog
 int pots[] = {s1_in, s2_in, s3_in, s4_in, s5_in, s6_in, s7_in, s8_in, a1_in, a2_in};                                                        // Speed signal measurement potentiometers
@@ -79,7 +79,7 @@ bool program_run = false;                                                       
 int program_number = 0;                                                               // Current program number
 unsigned long program_speed = 1000;                                                   // 1000 placeholder. Program will have this value
 bool program_loop = false;
-
+bool latency_run = false;                                                             // Run latency test
 
 // SD card program data variables
 char data_step_0[38];                                                                 // Initailize variables
@@ -185,6 +185,11 @@ void loop() {
   else if (mode == 1) manual_mode();
   else if (mode == 2) latency_manual();
   else if (mode == 3) latency_automatic();
+
+  // if Serial.available() , read data as save program
+  if (Serial.available()){
+    debugln("serial data available");
+  }
 }
 
 void lcd_update_running() {                                                       // LCD menu for normal running operation
@@ -219,10 +224,16 @@ void lcd_update_running() {                                                     
   case 2:
     lcd.clear();
     lcd.print("Mode: LATENCY MANUAL");
+    lcd.setCursor(0,1);
+    lcd.print("ADAM 6050 DO 0");
+    latency_running_state();                                          // Update LCD display 
     break;
   case 3:
     lcd.clear();
     lcd.print("Mode: LATENCY AUTO");
+    lcd.setCursor(0,1);
+    lcd.print("ADAM 6050 DO 0");
+    latency_running_state();                                          // Update LCD display 
     break;
   }
 }
@@ -276,7 +287,7 @@ void lcd_update_mode_selection(int index) {                         // LCD mode 
     lcd.print("*");
   }
   lcd.setCursor(0, 3);
-  lcd.print("LATENCT AUTO");
+  lcd.print("LATENCY AUTO");
   if (index == 3) {
     lcd.setCursor(19, 3);
     lcd.print("*");
@@ -320,6 +331,7 @@ void menu() {                                       // UI button pressed, execut
   // 0 - wake UI
   // 1 - Choose mode, choose program, change program speed
   // 2 - settings for elements in layer 1
+  // 3 - Select/enter
   // Start/stop program
 
   static int index_layer = 0;                                           // Menu layer: Enter menu [0], Mode, Program Number, Program Speed [1], Setting [2], Select/Enter (reset UI) [3]
@@ -329,22 +341,27 @@ void menu() {                                       // UI button pressed, execut
   static int mode_selection = 0;                                        // Program mode = 0, manual mode = 1, latency test manual = 2, latency test automatic = 3
   static int program_number_selection = program_number;                 // Selection is the menu memory version of actual variable
   static int program_speed_selection = program_speed;
-  static unsigned long btn_pressed = 0;                                 // Track how long the button is held down to change speed. Click change by one, hold change quickly
+  static unsigned long btn_pressed = 0;                                 // Track how long the button is held down to change speed. Click change by one, hold to change quickly
   static unsigned long btn_hold_threshold = 100;                        // Time needed to activate button held down for quick variable change
   bool btn_hold_flag = false;                                           // Check if btn was held down or clicked
   int btn_hold_count = 0;                                               // Count how many cycles the btn has been held down for
 
-  if (digitalRead(menu_run)) {                                         // Program Start/Stop button pressed
+  if (digitalRead(menu_run)) {                                          // Program Start/Stop button pressed
   switch(mode){
     case 0:
-    Serial.println("Start / Stop Program");
-    program_run = !program_run;                                         // Toggle start stop program
-    if (!program_run) output_reset();                                   // Start stop button only affects Progam Mode
-    break;
+      Serial.println("Start / Stop Program");
+      program_run = !program_run;                                       // Toggle start stop program
+      if (!program_run) output_reset();                                   
+      break;
+    case 2:
+      latency_run = true;                                               // Start manual latency test
+      break;
+    case 3:
+      latency_run = !latency_run;                                       // Start/stop automatic latency test
+      latency_running_state();                                          // Update LCD display 
+      break;
+    }
   }
-    
-  }
-
   else {                                                                // Menu button pressed
     switch (index_layer) {
     case 0:                                                             // Layer 0 = Enter menu
@@ -706,12 +723,77 @@ void program_mode() {                                               // Loop thro
 }
 
 void latency_manual() {
-  if (digitalRead(menu_run) == HIGH) digitalWrite(latency_led, HIGH);
-  else digitalWrite(latency_led, LOW);
+  if (latency_run){                                             // Start test button was pressed
+    latency_test();                                             // Run test one time
+
+    latency_run = false;                                        // Reset flag
+
+    latency_running_state();                                    // Update LCD display with "paused"
+  }
 }
 
 void latency_automatic() {
+  static unsigned long offset = random(0, 5000);                // 0 - 5 second delay
+  static unsigned long previous_time = millis();
 
+  if (latency_run){                                             // Start test button pressed
+    if (millis() - previous_time > 5000 + offset){              // Run test every 5 seconds + random offset time
+      latency_test();                                           // Run test
+
+      offset = random(0, 5000);                                 // New random offset
+      previous_time = millis();                                 // Record time
+    }
+  }
+}
+
+void latency_test(){
+  unsigned long start_time;
+  unsigned long latency_time;
+  unsigned long timeout = 1000;                                // 60 000ms = 1 min
+  bool no_response = false;
+
+  latency_running_state();
+
+  start_time = millis();                                        // Test start time
+
+  digitalWrite(latency_led, HIGH);                              // Turn on LED
+
+  while (millis() - start_time < timeout && digitalRead(adam_do_0) == HIGH){}    // Wait for PTI software to trigger ADAM6050 module or for test to timeout
+
+  latency_time = millis() - start_time;                         // Record test finish time
+
+  if (millis() - start_time >= timeout) no_response = true;
+
+  digitalWrite(latency_led, LOW);                               // Turn off LED
+
+  if (no_response) latency_no_response();                       // LCD display no response
+  else latency_result(latency_time);                            // LCD show latency time
+}
+
+void latency_running_state(){
+  if (latency_run){
+    lcd.setCursor(0,3);
+    lcd.print("RUNNING");
+  }
+  else{
+    lcd.setCursor(0,3);
+    lcd.print("PAUSED ");
+  }
+}
+
+void latency_no_response(){
+  lcd.setCursor(0,2);
+  lcd.print("                    ");
+  lcd.setCursor(0,2);
+  lcd.print("NO RESPONSE");
+}
+
+void latency_result(long time){
+  lcd.setCursor(0,2);
+  lcd.print("Latency:            ");
+  lcd.setCursor(9,2);
+  lcd.print(time);
+  lcd.print("ms");
 }
 
 void output_reset() {                                           // Turn off all MOSFET swtiches from program mode, and set speed signals to zero
