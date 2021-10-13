@@ -178,6 +178,12 @@ void setup() {
   // SD_write();         // ***** TESTING ***** //
   SD_read(0);
 
+  SD_write_html();
+  SD_read_html();
+
+  // SD_write_css();
+  // SD_read_css();
+
   lcd_update_running(); // Update LCD
 
   for (int i = 0; i < sizeof(output_pins)/sizeof(output_pins[0]); i++) { // Set all digital outputs
@@ -203,7 +209,7 @@ void loop() {
 
   // if Serial.available() , read data as save program
   if (Serial.available()){
-    Serial.print("serial data available");
+    Serial.println("serial data available");
   }
 }
 
@@ -821,6 +827,114 @@ void output_reset() { // Turn off all MOSFET swtiches from program mode, and set
   digitalWrite(manual_swtiches_enable, 0x0); // Disable manual switches
 }
 
+void SD_write_css(){
+  SD.remove("css.txt");
+
+  my_file = SD.open("css.txt", (O_READ | O_WRITE | O_CREAT | O_APPEND));
+
+  if (my_file){
+    my_file.print("h1 {");
+    my_file.print('\n');
+    my_file.print("text-align: center;");
+    my_file.print('\n');
+    my_file.print("}");
+    my_file.print('\n');
+    my_file.print("p {");
+    my_file.print('\n');
+    my_file.print("color: red;");
+    my_file.print('\n');
+    my_file.print("}");
+
+    my_file.close();
+  }
+  else Serial.println("failed to save css");
+}
+
+void SD_read_css(){
+  my_file = SD.open("css.txt");
+
+  if (my_file){
+    char val;
+    while (my_file.available()){
+      val = my_file.read();
+      Serial.print(val);
+    }
+
+    my_file.close();
+  }
+  else Serial.println("css failed to open");
+}
+
+void SD_write_html(){
+  SD.remove("html.txt");
+
+  my_file = SD.open("html.txt", (O_READ | O_WRITE | O_CREAT | O_APPEND));
+
+  if (my_file){
+    my_file.print("<html>");
+    my_file.print('\n');
+    my_file.print("<head>");
+    my_file.print('\n');
+    my_file.print("<style>");
+    my_file.print('\n');
+    my_file.print("h1 {");
+    my_file.print('\n');
+    my_file.print("text-align: center;");
+    my_file.print('\n');
+    my_file.print("}");
+    my_file.print('\n');
+    my_file.print("p {");
+    my_file.print('\n');
+    my_file.print("color: red;");
+    my_file.print('\n');
+    my_file.print("}");
+    my_file.print("</style>");
+    my_file.print("<meta http-equiv='Content-Language' content='nl'>");
+    my_file.print('\n');
+    my_file.print("<meta http-equiv='Content-Type' content='text/html; charset=windows-1252'>");
+    my_file.print('\n');
+    my_file.print("<title>GPIO Box REV 2</title>");
+    my_file.print('\n');
+    my_file.print("</head>");
+    my_file.print('\n');
+    my_file.print("<body>");
+    my_file.print('\n');
+    my_file.print("<h1>GPIO Box REV 2</h1>");
+    my_file.print('\n');
+    my_file.print("<div id='arduino_data'>");
+    my_file.print('\n');
+    my_file.print("<div>01</div>");
+    my_file.print('\n');
+    my_file.print("<div>1234</div>");
+    my_file.print('\n');
+    my_file.print("<div id='div2'>10000000000000000000000000000000000000</div>");
+    my_file.print('\n');
+    my_file.print("</div>");
+    my_file.print('\n');
+    my_file.print("</body>");
+    my_file.print('\n');
+    my_file.print("</html>");
+
+    my_file.close();
+  }
+  else Serial.println("failed to save html");
+}
+
+void SD_read_html(){
+  my_file = SD.open("html.txt");
+
+  if (my_file){
+    char val;
+    while (my_file.available()){
+      val = my_file.read();
+      Serial.print(val);
+    }
+
+    my_file.close();
+  }
+  else Serial.println("html failed to open");
+}
+
 void SD_write() { // Write data to SD card
   // Check if program exists
   // Reset char* data[] elements to '\0'? Need to reset each element
@@ -828,7 +942,7 @@ void SD_write() { // Write data to SD card
   // read data and save each line as element in char* data[]
   // calculate nubmber of steps in program -> data_steps
   // Determine program speed -> program_speed
-  SD.remove("00.txt"); // Remove file. Maybe just overwrite contents?
+  SD.remove("00.txt"); // Remove file
 
   my_file = SD.open("00.txt", (O_READ | O_WRITE | O_CREAT | O_APPEND)); // Create program 0
 
@@ -842,7 +956,7 @@ void SD_write() { // Write data to SD card
 
     my_file.print('\n');
 
-    my_file.print("10000000255000000000000000000000000000"); // Program data. 4 steps
+    my_file.print("10000000255000000000000000000000000000"); // Program data
     my_file.print('\n');
     my_file.print("01000000000255000000000000000000000000");
     my_file.print('\n');
@@ -870,9 +984,11 @@ void SD_write() { // Write data to SD card
     my_file.print('\n');
 
     my_file.close();
+
+    Serial.print("program saved to SD");
   }
   else {
-    Serial.println("file didn't open");
+    Serial.println("Failed to save program to SD");
   }
 }
 
