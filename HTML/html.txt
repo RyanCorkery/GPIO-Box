@@ -1,0 +1,67 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="nl">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>GPIO Box REV 2</title>
+<style>
+h1 {
+    text-align: center;
+}
+</style>
+</head>
+
+
+<body>
+
+<h1>GPIO Box REV 2</h1>
+
+<p>Program # </p>
+
+Brake 1 <input type="checkbox"><br>
+Brake 2 <input type="checkbox"><br>
+Brake 3 <input type="checkbox"><br>
+
+<button onclick="save_data()">Save data</button> 
+
+<div id="arduino_data">
+    <div id="new_data">0</div>
+    <div>01</div>
+    <div>1234</div>
+    <div id="div2">00000000000000000000000000000000000000</div>
+    <div>00000000000000000000000000000000000000</div>
+    <div>00000000000000000000000000000000000000</div>
+    <div>00000000000000000000000000000000000000</div>
+</div>
+
+
+
+
+
+<script>
+    function save_data(){
+        var checkboxes = document.getElementsByTagName('input');
+        var value;
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].type === 'checkbox') {
+                if (checkboxes[i].checked){
+                    value = checkboxes[i].value;    
+                    var original = document.getElementById("div2").innerHTML;
+                    var new_string = replaceChar(original, '1', i);
+                    document.getElementById("div2").innerHTML = new_string;
+                }   
+            }
+        }
+        document.getElementById("new_data").innerHTML = "1";
+    }
+
+    function replaceChar(origString, replaceChar, index) {
+        let firstPart = origString.substr(0, index);
+        let lastPart = origString.substr(index + 1);
+        
+        let newString = firstPart + replaceChar + lastPart;
+        return newString;
+    }
+</script>
+</body>
+</html>
