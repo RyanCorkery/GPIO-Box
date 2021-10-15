@@ -178,12 +178,6 @@ void setup() {
   // SD_write();         // ***** TESTING ***** //
   SD_read(0);
 
-  SD_write_html();
-  SD_read_html();
-
-  // SD_write_css();
-  // SD_read_css();
-
   lcd_update_running(); // Update LCD
 
   for (int i = 0; i < sizeof(output_pins)/sizeof(output_pins[0]); i++) { // Set all digital outputs
@@ -825,114 +819,6 @@ void output_reset() { // Turn off all MOSFET swtiches from program mode, and set
     analogWrite(output_pins[n + 8], 0); // Turn off speed signals
   }
   digitalWrite(manual_swtiches_enable, 0x0); // Disable manual switches
-}
-
-void SD_write_css(){
-  SD.remove("css.txt");
-
-  my_file = SD.open("css.txt", (O_READ | O_WRITE | O_CREAT | O_APPEND));
-
-  if (my_file){
-    my_file.print("h1 {");
-    my_file.print('\n');
-    my_file.print("text-align: center;");
-    my_file.print('\n');
-    my_file.print("}");
-    my_file.print('\n');
-    my_file.print("p {");
-    my_file.print('\n');
-    my_file.print("color: red;");
-    my_file.print('\n');
-    my_file.print("}");
-
-    my_file.close();
-  }
-  else Serial.println("failed to save css");
-}
-
-void SD_read_css(){
-  my_file = SD.open("css.txt");
-
-  if (my_file){
-    char val;
-    while (my_file.available()){
-      val = my_file.read();
-      Serial.print(val);
-    }
-
-    my_file.close();
-  }
-  else Serial.println("css failed to open");
-}
-
-void SD_write_html(){
-  SD.remove("html.txt");
-
-  my_file = SD.open("html.txt", (O_READ | O_WRITE | O_CREAT | O_APPEND));
-
-  if (my_file){
-    my_file.print("<html>");
-    my_file.print('\n');
-    my_file.print("<head>");
-    my_file.print('\n');
-    my_file.print("<style>");
-    my_file.print('\n');
-    my_file.print("h1 {");
-    my_file.print('\n');
-    my_file.print("text-align: center;");
-    my_file.print('\n');
-    my_file.print("}");
-    my_file.print('\n');
-    my_file.print("p {");
-    my_file.print('\n');
-    my_file.print("color: red;");
-    my_file.print('\n');
-    my_file.print("}");
-    my_file.print("</style>");
-    my_file.print("<meta http-equiv='Content-Language' content='nl'>");
-    my_file.print('\n');
-    my_file.print("<meta http-equiv='Content-Type' content='text/html; charset=windows-1252'>");
-    my_file.print('\n');
-    my_file.print("<title>GPIO Box REV 2</title>");
-    my_file.print('\n');
-    my_file.print("</head>");
-    my_file.print('\n');
-    my_file.print("<body>");
-    my_file.print('\n');
-    my_file.print("<h1>GPIO Box REV 2</h1>");
-    my_file.print('\n');
-    my_file.print("<div id='arduino_data'>");
-    my_file.print('\n');
-    my_file.print("<div>01</div>");
-    my_file.print('\n');
-    my_file.print("<div>1234</div>");
-    my_file.print('\n');
-    my_file.print("<div id='div2'>10000000000000000000000000000000000000</div>");
-    my_file.print('\n');
-    my_file.print("</div>");
-    my_file.print('\n');
-    my_file.print("</body>");
-    my_file.print('\n');
-    my_file.print("</html>");
-
-    my_file.close();
-  }
-  else Serial.println("failed to save html");
-}
-
-void SD_read_html(){
-  my_file = SD.open("html.txt");
-
-  if (my_file){
-    char val;
-    while (my_file.available()){
-      val = my_file.read();
-      Serial.print(val);
-    }
-
-    my_file.close();
-  }
-  else Serial.println("html failed to open");
 }
 
 void SD_write() { // Write data to SD card

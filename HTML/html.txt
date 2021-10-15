@@ -16,23 +16,31 @@ h1 {
 
 <h1>GPIO Box REV 2</h1>
 
-<p>Program # </p>
+Program Number: <input><br><br>
 
-Brake 1 <input type="checkbox"><br>
+<!-- Brake 1 <input type="checkbox"><br>
 Brake 2 <input type="checkbox"><br>
-Brake 3 <input type="checkbox"><br>
+Brake 3 <input type="checkbox"><br> -->
 
-<button onclick="save_data()">Save data</button> 
+<!-- <button onclick="save_data()">Save Program</button>  -->
 
-<div id="arduino_data">
+<!-- <div id="arduino_data">
     <div id="new_data">0</div>
     <div>01</div>
     <div>1234</div>
-    <div id="div2">00000000000000000000000000000000000000</div>
+    <div id="div2">60000000000000000000000000000000000000</div>
     <div>00000000000000000000000000000000000000</div>
     <div>00000000000000000000000000000000000000</div>
     <div>00000000000000000000000000000000000000</div>
-</div>
+</div> -->
+
+<form method="post" action="/" name="pins">
+    Brake 1 <input type="checkbox" name="B1"><br>
+    Brake 2 <input type="checkbox" name="B2"><br>
+    Brake 3 <input type="checkbox" name="B3"><br>
+    <input type="text" name="step_1" value="00000000000000000000000000000000000000"><br>
+    <input type="submit" value="Save program" onclick="save_data()">
+</form>
 
 
 
@@ -46,13 +54,13 @@ Brake 3 <input type="checkbox"><br>
             if (checkboxes[i].type === 'checkbox') {
                 if (checkboxes[i].checked){
                     value = checkboxes[i].value;    
-                    var original = document.getElementById("div2").innerHTML;
+                    var original = document.getElementById("step_1").innerHTML;
                     var new_string = replaceChar(original, '1', i);
-                    document.getElementById("div2").innerHTML = new_string;
+                    document.getElementById("step_1").innerHTML = new_string;
                 }   
             }
         }
-        document.getElementById("new_data").innerHTML = "1";
+        // document.getElementById("new_data").innerHTML = "1";
     }
 
     function replaceChar(origString, replaceChar, index) {
