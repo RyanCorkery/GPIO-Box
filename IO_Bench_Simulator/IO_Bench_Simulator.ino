@@ -7,6 +7,7 @@
 #include <SD.h>
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h> 
+#include <Ethernet.h>
 
 // Debug
 #define DEBUG 1
@@ -116,6 +117,11 @@ LiquidCrystal_I2C lcd(0x3F, 20, 4);                                             
 
 File my_file;
 
+String readString;                                                                  // Ethernet variables
+byte mac[] = {0xA8, 0x61, 0x0A, 0xAE, 0x83, 0xB1};                                  // Must be unique for each GPIO box Arduino
+IPAddress ip(192, 168, 0, 116);                                                     // Must be unique for each GPIO box Arduino
+EthernetServer server(80);                                                          // (port 80 is default for HTTP):
+
 void setup() {
   Serial.begin(9600);
   delay(500);                                                                       // Wait for serial to begin. while(!Serial) not working...
@@ -176,6 +182,15 @@ void setup() {
   output_reset();                                                                 // Ensure outputs are disabled
 
   attachInterrupt(digitalPinToInterrupt(menu_interrupt), menu_pressed, RISING);   // Menu buttons external interrupt
+
+  Ethernet.begin(mac, ip);                                                        // start the Ethernet connection and the server:
+  if (Ethernet.hardwareStatus() == EthernetNoHardware) {                          // Check for Ethernet hardware present
+    debugln("Ethernet shield was not found.  Sorry, can't run without hardware");
+    while (1){}
+  }
+  server.begin();                                                                 // start Arduino server
+  debug("server is at ");
+  debugln(Ethernet.localIP());
 }
 
 void loop() {

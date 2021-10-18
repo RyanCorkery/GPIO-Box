@@ -1,11 +1,10 @@
 <html>
-
 <head>
 <meta http-equiv="Content-Language" content="nl">
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
 <title>GPIO Box REV 2</title>
 <style>
-h1 {
+h1 { 
     text-align: center;
 }
 .grid-container{
@@ -13,12 +12,13 @@ h1 {
     display: grid;
     justify-content: start;
     grid-gap: 10px;
-    /* padding: 10px; */
-    grid-auto-flow: column;
+    /* grid-auto-flow: column; */
     grid-template-columns: auto;
 }
-.grid-container > div > div > input{
-    justify-self: left;
+.grid-container > div{
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: left;
 }
 .labels > div{
     padding: 5px;
@@ -28,12 +28,23 @@ h1 {
 .step > div{
     padding: 5px;
     height: 20px;
+    width: 50px;
 }
 .step > div > input{
     width: 35px;
 }
 #form_data{
     width: 500px;;
+}
+.hidden{
+    visibility: hidden;
+}
+.program{
+    margin: 5px;
+}
+#program_ui{
+    margin-left: 10px;
+    width: 30px;
 }
 </style>
 </head>
@@ -43,78 +54,93 @@ h1 {
 
 <h1>GPIO Box REV 2</h1>
 
-Program Number: <input id="program"><br><br>
-
-<input type="button" value="Add Step" onclick="add_step()">
-<input type="button" value="Remove Step" onclick="remove_step()"><br>
-
-<div id="step_data" class="grid-container">
-    <div class="Labels">
-        <div>Break 1</div>
-        <div>Break 2</div>
-        <div>Break 3</div>
-        <div>Break 4</div>
-        <div>Break 5</div>
-        <div>Break 6</div>
-        <div>Break 7</div>
-        <div>Break 8</div>
-        <div>Speed 1</div>
-        <div>Speed 2</div>
-        <div>Speed 3</div>
-        <div>Speed 4</div>
-        <div>Speed 5</div>
-        <div>Speed 6</div>
-        <div>Speed 7</div>
-        <div>Speed 8</div>
-    </div>
-    <div id="step_0" class="step">
-        <div><input type="checkbox"></div>
-        <div><input type="checkbox"></div>
-        <div><input type="checkbox"></div>
-        <div><input type="checkbox"></div>
-        <div><input type="checkbox"></div>
-        <div><input type="checkbox"></div>
-        <div><input type="checkbox"></div>
-        <div><input type="checkbox"></div>
-        <div><input type="text" value="0"></div>
-        <div><input type="text" value="0"></div>
-        <div><input type="text" value="0"></div>
-        <div><input type="text" value="0"></div>
-        <div><input type="text" value="0"></div>
-        <div><input type="text" value="0"></div>
-        <div><input type="text" value="0"></div>
-        <div><input type="text" value="0"></div>
+<div class="grid-container">
+    <div class="program">Program Number: <input id="program_ui" onchange="update_program_number()"></div>
+    <div id="step_inputs">
+        <div class="Labels">
+            <div>Break 1</div>
+            <div>Break 2</div>
+            <div>Break 3</div>
+            <div>Break 4</div>
+            <div>Break 5</div>
+            <div>Break 6</div>
+            <div>Break 7</div>
+            <div>Break 8</div>
+            <div>Speed 1</div>
+            <div>Speed 2</div>
+            <div>Speed 3</div>
+            <div>Speed 4</div>
+            <div>Speed 5</div>
+            <div>Speed 6</div>
+            <div>Speed 7</div>
+            <div>Speed 8</div>
+            <div>Analog 1</div>
+            <div>Analog 2</div>
+        </div>
+        <div id="step_0" class="step">
+            <div><input type="checkbox"></div>
+            <div><input type="checkbox"></div>
+            <div><input type="checkbox"></div>
+            <div><input type="checkbox"></div>
+            <div><input type="checkbox"></div>
+            <div><input type="checkbox"></div>
+            <div><input type="checkbox"></div>
+            <div><input type="checkbox"></div>
+            <div><input type="text" value="0"></div>
+            <div><input type="text" value="0"></div>
+            <div><input type="text" value="0"></div>
+            <div><input type="text" value="0"></div>
+            <div><input type="text" value="0"></div>
+            <div><input type="text" value="0"></div>
+            <div><input type="text" value="0"></div>
+            <div><input type="text" value="0"></div>
+            <div><input type="text" value="0"></div>
+            <div><input type="text" value="0"></div>
+        </div>
     </div>
 </div>
 
+<input type="button" value="Add Step" onclick="add_step()">
+<input type="button" value="Remove Step" onclick="remove_step()"><br><br>
 
 <form id="my_form" method="post" action="/" name="pins" onsubmit="save_data()">
-    <input type="submit" value="Save program">
-    <input id="form_data" type="text" name="step_0_data" value="00000000000000000000000000000000000000">
+    <input type="submit" value="Save program"><br><br>
+    <input type="text" id="program" class="hidden" name="program">
+    <input id="form_data" type="text" name="step_0_data" value="00000000000000000000000000000000000000" class="hidden">
 </form>
-
-
-
-<input type="button" value="Test Save" onclick="save_data()">
 
 <script>
     function save_data(){
-        var number_of_steps = document.getElementById("step_data").children.length - 1;                               // Count number of steps in program
-        document.getElementById("program").value = number_of_steps;                             // ******* TESTING
+        var number_of_steps = document.getElementById("step_inputs").children.length - 1;                           // Count number of steps in program
 
-        var checkboxes = document.getElementsByTagName('input');
-        var value;
+        var inputs = document.getElementById("step_inputs");                                                        // Count number of checkboxes in HTML page (break / speed / analog inputs)
+        inputs = inputs.getElementsByTagName("input");
+        var value;                                                                                                  // Store the checkbox/speed signal value
+
         for (var x = 0; x < number_of_steps; x++){                                                                  // Loop through steps
-            for (var i = x*8; i < checkboxes.length; i++) {                                                         // Loop through checkboxes in each step
-                if (checkboxes[i].type === 'checkbox') {
-                    if (checkboxes[i].checked){
-                        value = checkboxes[i].value;    
-                        var original = document.getElementById("my_form").children[x+1].value;
-                        var new_string = replaceChar(original, '1', i);
-                        document.getElementById("my_form").children[x+1].value = new_string;
+            var original = document.getElementById("my_form").children[x+1].value;                                  // id = form_data, value="00000000000000000000000000000000000000"
+
+            for (var i = 0; i < 8; i++) {                                                                           // Loop through break checkboxes in each step
+                if (inputs[i+x*18].type === 'checkbox') {
+                    if (inputs[i+x*18].checked){                                                                    // If checked = true, update from step data
+                        value = inputs[i+x*18].value;    
+                        original = replaceChar(original, '1', i);
+                        document.getElementById("my_form").children[x+1].value = original;
                     }   
                 }
             }
+            for (var i = 0; i < 10; i++) {                                                                          // Loop through speed and analog text boxes in each step
+                if (inputs[i+x*18+8].type === 'text') {
+                    value = inputs[i+x*18+8].value;                                                                 // Save text box value
+                    
+                    for (var n = 2; n>=0; n--){                                                                     // Check each digit of value (0 - 255)
+                        if (value[n]){                                                                              // If digit exists, update step data string
+                            original = replaceChar(original, value[n], i*3+8+n);
+                        }
+                    }
+                }
+            }
+            document.getElementById("my_form").children[x+1].value = original;
         }
     }
 
@@ -127,26 +153,48 @@ Program Number: <input id="program"><br><br>
     }
 
     function add_step(){
-        var original = document.getElementById("step_0");
-        var clone = original.cloneNode(true);
-        clone.id = "";
-        original.parentNode.appendChild(clone);
+        var count = document.getElementById("step_inputs").children.length;                                         // Check the number of steps in the HTML page
 
-        var original_data = document.getElementById("form_data");
-        var clone_data = original_data.cloneNode(true);
-        clone.id = "";
-        original_data.parentNode.appendChild(clone_data);
-    }
+        if (count <= 20){                                                                                           // 20 = max steps allowed. Could change but will also have to change arduino code
+            var original = document.getElementById("step_0");                                                       // Clone step inputs from step_0
+            var clone = original.cloneNode(true);
+            clone.id = "";
+            original.parentNode.appendChild(clone);                                                                 // Appned cloned step to the end of step inputs div
 
-    function remove_step(){
-        var count = document.getElementById("step_data").children.length;
+            for (var i = 0; i < 8; i++){                                                                            // Reset break input signals
+                clone.children[i].children[0].checked = false;
+            }
+            for (var i = 0; i < 10; i++){                                                                           // Reset speed and analog signals
+                clone.children[i+8].children[0].value = "0";
+            }
 
-        if (count > 2){
-            let remove = document.getElementById("step_data");
-            remove.removeChild(remove.lastChild);
+            var original_data = document.getElementById("form_data");                                               // Clone form data from step_0
+            var clone_data = original_data.cloneNode(true);
+            clone.id = "";
+            clone_data.setAttribute("name","step_" + (count - 1) + "_data");
+
+            clone_data.value = "00000000000000000000000000000000000000";                                            // Reset data to zeros
+
+            original_data.parentNode.appendChild(clone_data);                                                       // Add cloned inputs to HTML page
         }
     }
 
+    function remove_step(){
+        var count = document.getElementById("step_inputs").children.length;                                         // CHeck the number of steps in the HTML page
+
+        if (count > 2){                                                                                             // Leave at least one step on HTML page
+            let input = document.getElementById("step_inputs");                                                     // Remove inputs
+            input.removeChild(input.lastChild);
+
+            let data = document.getElementById("my_form");                                                          // Remove step data
+            data.removeChild(data.lastChild);   
+        }
+    }
+
+    function update_program_number(){
+        var program_number = document.getElementById("program_ui").value;
+        document.getElementById("program").value = program_number;
+    }
 </script>
 </body>
 </html>

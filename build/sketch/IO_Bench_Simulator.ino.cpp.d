@@ -22,4 +22,10 @@ c:\Users\ryan\ corkery\OneDrive\ -\ Papertech\ Inc\Documents\_Projects\GPIO\ Box
  F:\Arduino\libraries\SD\src/utility/SdFatUtil.h \
  F:\Arduino\hardware\arduino\avr\libraries\Wire\src/Wire.h \
  F:\Arduino\hardware\arduino\avr\cores\arduino/Stream.h \
- C:\Users\ryan\ corkery\OneDrive\ -\ Papertech\ Inc\Documents\Arduino\libraries\LiquidCrystal_I2C-1.1.2/LiquidCrystal_I2C.h
+ C:\Users\ryan\ corkery\OneDrive\ -\ Papertech\ Inc\Documents\Arduino\libraries\LiquidCrystal_I2C-1.1.2/LiquidCrystal_I2C.h \
+ F:\Arduino\libraries\Ethernet\src/Ethernet.h \
+ F:\Arduino\hardware\arduino\avr\cores\arduino/Client.h \
+ F:\Arduino\hardware\arduino\avr\cores\arduino/IPAddress.h \
+ F:\Arduino\hardware\arduino\avr\cores\arduino/Server.h \
+ F:\Arduino\hardware\arduino\avr\cores\arduino/Udp.h \
+ F:\Arduino\hardware\arduino\avr\cores\arduino/IPAddress.h
