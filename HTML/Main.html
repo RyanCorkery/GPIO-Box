@@ -104,7 +104,7 @@ h1 {
 <input type="button" value="Remove Step" onclick="remove_step()"><br><br>
 
 <form id="my_form" method="post" action="/" name="pins" onsubmit="save_data()">
-    <input type="submit" value="Save program"><br><br>
+    <input type="submit" value="Save program">
     <input type="text" id="program" class="hidden" name="program">
     <input id="form_data" type="text" name="step_0_data" value="00000000000000000000000000000000000000" class="hidden">
 </form>
@@ -117,15 +117,13 @@ h1 {
         inputs = inputs.getElementsByTagName("input");
         var value;                                                                                                  // Store the checkbox/speed signal value
 
-        for (var x = 0; x < number_of_steps; x++){                                                                  // Loop through steps
-            var original = document.getElementById("my_form").children[x+1].value;                                  // id = form_data, value="00000000000000000000000000000000000000"
-
+        for (var x = 0; x < number_of_steps; x++){                                                                  // Loop through steps// var original = document.getElementById("my_form").children[x+2].value;                                   id = form_data, value="00000000000000000000000000000000000000"
+            var original = document.getElementById("form_data").value;                                              // id = form_data, value="00000000000000000000000000000000000000"
             for (var i = 0; i < 8; i++) {                                                                           // Loop through break checkboxes in each step
                 if (inputs[i+x*18].type === 'checkbox') {
                     if (inputs[i+x*18].checked){                                                                    // If checked = true, update from step data
                         value = inputs[i+x*18].value;    
                         original = replaceChar(original, '1', i);
-                        document.getElementById("my_form").children[x+1].value = original;
                     }   
                 }
             }
@@ -140,7 +138,7 @@ h1 {
                     }
                 }
             }
-            document.getElementById("my_form").children[x+1].value = original;
+            document.getElementById("my_form").children[x+2].value = original;
         }
     }
 

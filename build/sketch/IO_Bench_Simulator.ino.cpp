@@ -39,7 +39,7 @@ const int menu_interrupt = 18;                                // Interrupt is tr
 // pin 20 - LCD SDA
 // pin 21 - LCD SCL
 const int menu_down = 22;
-const int b1 = 23;                                           // Brake signal 1 out of Arduino
+const int b1 = 23;                                            // Brake signal 1 out of Arduino
 const int menu_up = 24;
 const int b2 = 25;
 const int menu_left = 26;
@@ -47,21 +47,21 @@ const int b3 = 27;
 const int menu_right = 28;
 const int b4 = 29;
 const int menu_run = 30;
-const int manual_swtiches_enable = 31;                      // Controls power to manual switches via MOSFET
-const int adam6017_power = 32;                              // Power kill switch to ADAM modules
+const int manual_swtiches_enable = 31;                        // Controls power to manual switches via MOSFET
+const int adam6017_power = 32;                                // Power kill switch to ADAM modules
 const int b5 = 33;
 const int adam6050_power = 34;
 const int b6 = 35;
 const int latency_led = 36;
 const int b7 = 37;
-const int adam_do_0 = 38;                                   // Input to read when ADAM DO triggers relay 
+const int adam_do_0 = 38;                                    // Input to read when ADAM DO triggers relay 
 const int b8 = 39;
 // ethernet pin 50
 // ethernet pin 51
 // ethernet pin 52
 const int a1_in = A4;
 const int a2_in = A5;
-const int s1_in = A8;                                     // Speed signal 1 in
+const int s1_in = A8;                                         // Speed signal 1 in
 const int s2_in = A9;
 const int s3_in = A10;
 const int s4_in = A11;
@@ -119,53 +119,66 @@ LiquidCrystal_I2C lcd(0x3F, 20, 4);                                             
 
 File my_file;
 
-#line 120 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+String readString;                                                                  // Ethernet variables
+byte mac[] = {0xA8, 0x61, 0x0A, 0xAE, 0x83, 0xB1};                                  // Must be unique for each GPIO box Arduino
+IPAddress ip(192, 168, 0, 116);                                                     // Must be unique for each GPIO box Arduino
+EthernetServer server(80);                                                          // (port 80 is default for HTTP):
+
+#line 125 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void setup();
-#line 182 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 195 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void loop();
-#line 196 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 206 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void lcd_update_running();
-#line 242 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 252 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void lcd_update_layer_1_selection(int index);
-#line 271 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 281 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void lcd_update_mode_selection(int index);
-#line 298 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 308 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void lcd_update_program_number(int program_num);
-#line 305 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 315 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void lcd_update_program_speed(int program_spd, bool refresh);
-#line 317 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 327 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void lcd_update_loop_mode();
-#line 330 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 340 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void menu();
-#line 634 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 644 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 int menu_read_button_pressed();
-#line 653 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 663 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void switch_mode();
-#line 671 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 681 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void manual_mode();
-#line 687 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 697 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void program_mode();
-#line 726 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
-void latency_manual();
 #line 736 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+void latency_manual();
+#line 746 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void latency_automatic();
-#line 750 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 760 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void latency_test();
-#line 774 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 784 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void latency_running_state();
-#line 785 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 795 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void latency_no_response();
-#line 792 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 802 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void latency_result(long time);
-#line 800 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
-void output_reset();
 #line 810 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+void output_reset();
+#line 820 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void SD_write();
-#line 867 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 877 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void SD_read(int program_num);
-#line 947 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 957 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void menu_pressed();
-#line 120 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 961 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+void ethernet();
+#line 1005 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+void update_html(EthernetClient client);
+#line 1020 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+void decode_ethernet(EthernetClient client);
+#line 1076 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+bool lcd_overwrite_program(String program);
+#line 125 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void setup() {
   Serial.begin(9600);
   delay(500);                                                                       // Wait for serial to begin. while(!Serial) not working...
@@ -210,7 +223,6 @@ void setup() {
     while (1);
   }
 
-  // SD_write();         // ***** TESTING ***** //
   SD_read(0);
 
   lcd_update_running();                                                           // Update LCD
@@ -226,6 +238,15 @@ void setup() {
   output_reset();                                                                 // Ensure outputs are disabled
 
   attachInterrupt(digitalPinToInterrupt(menu_interrupt), menu_pressed, RISING);   // Menu buttons external interrupt
+
+  Ethernet.begin(mac, ip);                                                        // start the Ethernet connection and the server:
+  if (Ethernet.hardwareStatus() == EthernetNoHardware) {                          // Check for Ethernet hardware present
+    debugln("Ethernet shield was not found.  Sorry, can't run without hardware");
+    while (1){}
+  }
+  server.begin();                                                                 // start Arduino server
+  debug("server is at ");
+  debugln(Ethernet.localIP());
 }
 
 void loop() {
@@ -236,10 +257,7 @@ void loop() {
   else if (mode == 2) latency_manual();
   else if (mode == 3) latency_automatic();
 
-  // if Serial.available() , read data as save program
-  if (Serial.available()){
-    debugln("serial data available");
-  }
+  ethernet();
 }
 
 void lcd_update_running() {                                                       // LCD menu for normal running operation
@@ -863,9 +881,9 @@ void SD_write() {                                               // Write data to
   // read data and save each line as element in char* data[]
   // calculate nubmber of steps in program -> data_steps
   // Determine program speed -> program_speed
-  SD.remove("00.txt");                                          // Remove file
+  SD.remove("01.txt");                                          // Remove file
 
-  my_file = SD.open("00.txt", FILE_WRITE);                      // Create program 0
+  my_file = SD.open("01.txt", FILE_WRITE);                      // Create program 0
 
   if (my_file) {
     my_file.print(0);                                           // Program #
@@ -963,11 +981,11 @@ void SD_read(int program_num) {                               // Read and proces
         debug("  ");
 
         if (SD_step == 0) {
-          program_number = atoi(program_num_char);                // Convert data to int
+          program_number = atoi(program_num_char);            // Convert data to int
           debugln(program_number);
         }
         else if (SD_step == 1) {
-          program_speed = atoi(program_spd_char);                 // Convert data to int
+          program_speed = atoi(program_spd_char);             // Convert data to int
           debugln(program_speed);
         }
         else {
@@ -990,10 +1008,179 @@ void SD_read(int program_num) {                               // Read and proces
     lcd.print("Program Not Found");
     delay(5000);
   }
-  lcd_update_running();                                 // Update LCD
+  lcd_update_running();                                         // Update LCD
 }
 
-void menu_pressed() {                                   // External interrupt triggered when any menu or start/stop button is pressed
+void menu_pressed() {                                           // External interrupt triggered when any menu or start/stop button is pressed
   menu_flag = true;
+}
+
+void ethernet(){
+  static bool do_once = true;
+
+  EthernetClient client = server.available();                   // listen for incoming clients
+  
+  if (client) {
+    debugln("new client");
+
+    boolean currentLineIsBlank = true;                          // an http request ends with a blank line
+    
+    if (client.connected()) {
+      while (client.available()) {
+        char c = client.read();
+        // Serial.write(c);
+        readString += c;                                        // Store incoming data from http client
+        
+        if (c == '\n' && currentLineIsBlank) {                  // if you've gotten to the end of the line (received a newline character) and the line is blank, the http request has ended, so you can send a reply
+          client.println("HTTP/1.1 200 OK");                    // send a standard http response header
+          client.println("Content-Type: text/html");
+  //          client.println("Connection: close");                    // the connection will be closed after completion of the response
+          client.println("Connection: keep-alive");
+          client.println();
+
+          // if (do_once){
+          //   update_html(client);
+          //   do_once = false;
+          // }
+        }
+        
+        else if (c == '\n') {
+          currentLineIsBlank = true;                            // you're starting a new line
+        } 
+        else if (c != '\r') {
+          currentLineIsBlank = false;                           // you've gotten a character on the current line
+        }
+      }
+    }
+
+    decode_ethernet(client);                                          // Decode the readString and save program 
+
+    readString = "";                                            // Reset readString
+  }
+}
+
+void update_html(EthernetClient client){
+  // update with whatever program is selected
+  my_file = SD.open("html.txt");                        // open html file
+  if (my_file){
+    Serial.println("HTML file opened");
+    while(my_file.available()){                         // Read html file
+      char val;
+      val = my_file.read();
+      client.print(val);                                // Write html content to browser
+    }
+    my_file.close();
+  }
+  else debugln("html failed to open");
+}
+
+void decode_ethernet(EthernetClient client){
+  bool save_flag;
+
+  String step_names[] = { "step_0_data", "step_1_data", "step_2_data", "step_3_data", "step_4_data", "step_5_data", "step_6_data", "step_7_data", "step_8_data", "step_9_data",
+        "step_10_data", "step_11_data", "step_12_data", "step_13_data", "step_14_data", "step_15_data", "step_16_data", "step_17_data", "step_18_data", "step_19_data" };
+
+  if (readString.indexOf("program=") > 0){                                    // Read the program number being uploaded from html page
+    int index = readString.indexOf("program=");
+    String val = readString.substring(index + 8, index + 8 + 2);              // 8 = length of "program=" string
+    if (val[0] != '&') {                                                      // Check if number was saved. & = no number in input box
+      if (val[1] == '&'){                                                     // Val < 10. ex 1 -> 1&
+        val[1] = val[0];                                                      // convert val 1& -> 01
+        val[0] = '0';
+      }
+      debug("Program # uploaded: ");  
+      debugln(val);  
+
+      char file_name[] = {val[0], val[1], '.', 't', 'x', 't'};                // File name with selected program number
+      my_file = SD.open(file_name);
+      if (my_file){                                                           // check if program # already exists on SD card
+        save_flag = lcd_overwrite_program(val);                                   // if exisits, overwrite yes/no?
+      }
+      else {
+        debugln("File does not exist");
+        save_flag = true;
+      }
+      
+      if (!save_flag){                                                        // no -> update html to show no save
+        debugln("Save file? No selected");
+      }
+    }
+    else {                                                                    // No number was in html input box
+      save_flag = false;                                                 
+      debugln("No program # selected");    
+    }                
+  }           
+
+  if (save_flag){                                                             // if continue flag, proceed with for loop below
+    for (int i = 0; i < 20; i++){                                             // Loop through all possible steps from html page
+      if (readString.indexOf(step_names[i]) > 0){                             // > 0 if data exists
+        int index = readString.indexOf(step_names[i]);
+        String val = readString.substring(index + 12, index + 12 + 38);       // 12 = length of "step_x_data=" string
+        // Save data to data_step_i variables
+        for (int x = 0; x < 30; x++){
+          data[i][x] = val[x];
+        }
+        debugln(data[i]);
+      }
+    }
+    // Save program to SD card
+    debugln("save file");
+  }
+
+  update_html(client);                                                        // Update html with current program settings
+}
+
+bool lcd_overwrite_program(String program){
+  static int menu_button_pressed;                                       // Variable to store the result of enum
+  bool selection = false;                                               // true once user makes selection, ie presses the right button
+  bool overwrite = false;                                               // true = overwrite
+
+  lcd.clear();
+  lcd.print("Program ");
+  lcd.print(program);
+  lcd.print(" exists");
+  lcd.setCursor(0,1);
+  lcd.print("Overwrite file?");
+  lcd.setCursor(0,2);
+  lcd.print("YES");
+  lcd.setCursor(0,3);
+  lcd.print("NO");
+  lcd.setCursor(19,3);
+  lcd.print("*");
+  
+  while (!selection){
+    if (menu_flag){                                                     // A button was pressed
+      menu_button_pressed = menu_read_button_pressed();                 // check which button was pressed
+      switch (menu_button_pressed){
+      case up:                                                          // YES selection
+        lcd.setCursor(19,2);
+        lcd.print("*");
+        lcd.setCursor(19,3);
+        lcd.print(" ");
+        overwrite = true;
+        break;
+      case down:                                                        // NO selection
+        lcd.setCursor(19,2);
+        lcd.print(" ");
+        lcd.setCursor(19,3);
+        lcd.print("*");
+        overwrite = false;
+        break;
+      case right:                                                       // Make selection
+        selection = true;
+        break;
+      // case left:                                                        
+      //   selection = true;
+      //   overwrite = false;
+      //   break;
+      }
+      menu_flag = false;
+    }
+  }
+
+  lcd_update_running();                                                 // Reset UI
+
+  if (overwrite) return true;
+  else return false;
 }
 

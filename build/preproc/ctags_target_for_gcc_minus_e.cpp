@@ -109,6 +109,11 @@ LiquidCrystal_I2C lcd(0x3F, 20, 4); // LCD address = 0x3F. 20x4 LCD
 
 File my_file;
 
+String readString; // Ethernet variables
+byte mac[] = {0xA8, 0x61, 0x0A, 0xAE, 0x83, 0xB1}; // Must be unique for each GPIO box Arduino
+IPAddress ip(192, 168, 0, 116); // Must be unique for each GPIO box Arduino
+EthernetServer server(80); // (port 80 is default for HTTP):
+
 void setup() {
   Serial.begin(9600);
   delay(500); // Wait for serial to begin. while(!Serial) not working...
@@ -158,7 +163,7 @@ void setup() {
   delay(2000);
 
   lcd.clear();  */
-# 147 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+# 152 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
                                                                                   // END LCD START UP DISPLAY
 
   digitalWrite(adam6017_power, 0x1); // Power on Adam moudules
@@ -176,7 +181,6 @@ void setup() {
     while (1);
   }
 
-  // SD_write();         // ***** TESTING ***** //
   SD_read(0);
 
   lcd_update_running(); // Update LCD
@@ -192,6 +196,15 @@ void setup() {
   output_reset(); // Ensure outputs are disabled
 
   attachInterrupt(((menu_interrupt) == 2 ? 0 : ((menu_interrupt) == 3 ? 1 : ((menu_interrupt) >= 18 && (menu_interrupt) <= 21 ? 23 - (menu_interrupt) : -1))), menu_pressed, 3); // Menu buttons external interrupt
+
+  Ethernet.begin(mac, ip); // start the Ethernet connection and the server:
+  if (Ethernet.hardwareStatus() == EthernetNoHardware) { // Check for Ethernet hardware present
+    Serial.println("Ethernet shield was not found.  Sorry, can't run without hardware");
+    while (1){}
+  }
+  server.begin(); // start Arduino server
+  Serial.print("server is at ");
+  Serial.println(Ethernet.localIP());
 }
 
 void loop() {
@@ -202,10 +215,7 @@ void loop() {
   else if (mode == 2) latency_manual();
   else if (mode == 3) latency_automatic();
 
-  // if Serial.available() , read data as save program
-  if (Serial.available()){
-    Serial.println("serial data available");
-  }
+  ethernet();
 }
 
 void lcd_update_running() { // LCD menu for normal running operation
@@ -829,9 +839,9 @@ void SD_write() { // Write data to SD card
   // read data and save each line as element in char* data[]
   // calculate nubmber of steps in program -> data_steps
   // Determine program speed -> program_speed
-  SD.remove("00.txt"); // Remove file
+  SD.remove("01.txt"); // Remove file
 
-  my_file = SD.open("00.txt", (O_READ | O_WRITE | O_CREAT | O_APPEND)); // Create program 0
+  my_file = SD.open("01.txt", (O_READ | O_WRITE | O_CREAT | O_APPEND)); // Create program 0
 
   if (my_file) {
     my_file.print(0); // Program #
@@ -961,4 +971,173 @@ void SD_read(int program_num) { // Read and process data. program_number = selct
 
 void menu_pressed() { // External interrupt triggered when any menu or start/stop button is pressed
   menu_flag = true;
+}
+
+void ethernet(){
+  static bool do_once = true;
+
+  EthernetClient client = server.available(); // listen for incoming clients
+
+  if (client) {
+    Serial.println("new client");
+
+    boolean currentLineIsBlank = true; // an http request ends with a blank line
+
+    if (client.connected()) {
+      while (client.available()) {
+        char c = client.read();
+        // Serial.write(c);
+        readString += c; // Store incoming data from http client
+
+        if (c == '\n' && currentLineIsBlank) { // if you've gotten to the end of the line (received a newline character) and the line is blank, the http request has ended, so you can send a reply
+          client.println("HTTP/1.1 200 OK"); // send a standard http response header
+          client.println("Content-Type: text/html");
+  //          client.println("Connection: close");                    // the connection will be closed after completion of the response
+          client.println("Connection: keep-alive");
+          client.println();
+
+          // if (do_once){
+          //   update_html(client);
+          //   do_once = false;
+          // }
+        }
+
+        else if (c == '\n') {
+          currentLineIsBlank = true; // you're starting a new line
+        }
+        else if (c != '\r') {
+          currentLineIsBlank = false; // you've gotten a character on the current line
+        }
+      }
+    }
+
+    decode_ethernet(client); // Decode the readString and save program 
+
+    readString = ""; // Reset readString
+  }
+}
+
+void update_html(EthernetClient client){
+  // update with whatever program is selected
+  my_file = SD.open("html.txt"); // open html file
+  if (my_file){
+    Serial.println("HTML file opened");
+    while(my_file.available()){ // Read html file
+      char val;
+      val = my_file.read();
+      client.print(val); // Write html content to browser
+    }
+    my_file.close();
+  }
+  else Serial.println("html failed to open");
+}
+
+void decode_ethernet(EthernetClient client){
+  bool save_flag;
+
+  String step_names[] = { "step_0_data", "step_1_data", "step_2_data", "step_3_data", "step_4_data", "step_5_data", "step_6_data", "step_7_data", "step_8_data", "step_9_data",
+        "step_10_data", "step_11_data", "step_12_data", "step_13_data", "step_14_data", "step_15_data", "step_16_data", "step_17_data", "step_18_data", "step_19_data" };
+
+  if (readString.indexOf("program=") > 0){ // Read the program number being uploaded from html page
+    int index = readString.indexOf("program=");
+    String val = readString.substring(index + 8, index + 8 + 2); // 8 = length of "program=" string
+    if (val[0] != '&') { // Check if number was saved. & = no number in input box
+      if (val[1] == '&'){ // Val < 10. ex 1 -> 1&
+        val[1] = val[0]; // convert val 1& -> 01
+        val[0] = '0';
+      }
+      Serial.print("Program # uploaded: ");
+      Serial.println(val);
+
+      char file_name[] = {val[0], val[1], '.', 't', 'x', 't'}; // File name with selected program number
+      my_file = SD.open(file_name);
+      if (my_file){ // check if program # already exists on SD card
+        save_flag = lcd_overwrite_program(val); // if exisits, overwrite yes/no?
+      }
+      else {
+        Serial.println("File does not exist");
+        save_flag = true;
+      }
+
+      if (!save_flag){ // no -> update html to show no save
+        Serial.println("Save file? No selected");
+      }
+    }
+    else { // No number was in html input box
+      save_flag = false;
+      Serial.println("No program # selected");
+    }
+  }
+
+  if (save_flag){ // if continue flag, proceed with for loop below
+    for (int i = 0; i < 20; i++){ // Loop through all possible steps from html page
+      if (readString.indexOf(step_names[i]) > 0){ // > 0 if data exists
+        int index = readString.indexOf(step_names[i]);
+        String val = readString.substring(index + 12, index + 12 + 38); // 12 = length of "step_x_data=" string
+        // Save data to data_step_i variables
+        for (int x = 0; x < 30; x++){
+          data[i][x] = val[x];
+        }
+        Serial.println(data[i]);
+      }
+    }
+    // Save program to SD card
+    Serial.println("save file");
+  }
+
+  update_html(client); // Update html with current program settings
+}
+
+bool lcd_overwrite_program(String program){
+  static int menu_button_pressed; // Variable to store the result of enum
+  bool selection = false; // true once user makes selection, ie presses the right button
+  bool overwrite = false; // true = overwrite
+
+  lcd.clear();
+  lcd.print("Program ");
+  lcd.print(program);
+  lcd.print(" exists");
+  lcd.setCursor(0,1);
+  lcd.print("Overwrite file?");
+  lcd.setCursor(0,2);
+  lcd.print("YES");
+  lcd.setCursor(0,3);
+  lcd.print("NO");
+  lcd.setCursor(19,3);
+  lcd.print("*");
+
+  while (!selection){
+    if (menu_flag){ // A button was pressed
+      menu_button_pressed = menu_read_button_pressed(); // check which button was pressed
+      switch (menu_button_pressed){
+      case up: // YES selection
+        lcd.setCursor(19,2);
+        lcd.print("*");
+        lcd.setCursor(19,3);
+        lcd.print(" ");
+        overwrite = true;
+        break;
+      case down: // NO selection
+        lcd.setCursor(19,2);
+        lcd.print(" ");
+        lcd.setCursor(19,3);
+        lcd.print("*");
+        overwrite = false;
+        break;
+      case right: // Make selection
+        selection = true;
+        break;
+      // case left:                                                        
+      //   selection = true;
+      //   overwrite = false;
+      //   break;
+      }
+      menu_flag = false;
+    }
+  }
+
+  lcd_update_running(); // Reset UI
+
+  if (overwrite) return true;
+  else return false;
 }
