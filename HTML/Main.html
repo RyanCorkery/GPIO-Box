@@ -37,7 +37,7 @@ h1 {
     width: 500px;;
 }
 .hidden{
-    visibility: hidden;
+    /* visibility: hidden; */
 }
 .program{
     margin: 5px;
@@ -45,6 +45,10 @@ h1 {
 #program_ui{
     margin-left: 10px;
     width: 30px;
+}
+#speed_ui{
+    margin-left: 22px;
+    width: 50px;
 }
 </style>
 </head>
@@ -56,6 +60,7 @@ h1 {
 
 <div class="grid-container">
     <div class="program">Program Number: <input id="program_ui" onchange="update_program_number()"></div>
+    <div class="program">Program Speed:  <input id="speed_ui" onchange="update_program_speed()"></div>
     <div id="step_inputs">
         <div class="Labels">
             <div>Break 1</div>
@@ -103,9 +108,12 @@ h1 {
 <input type="button" value="Add Step" onclick="add_step()">
 <input type="button" value="Remove Step" onclick="remove_step()"><br><br>
 
+<input type="button" onclick="save_data()">
+
 <form id="my_form" method="post" action="/" name="pins" onsubmit="save_data()">
     <input type="submit" value="Save program">
     <input type="text" id="program" class="hidden" name="program">
+    <input type="text" id="speed" class="hidden" name="speed">
     <input id="form_data" type="text" name="step_0_data" value="00000000000000000000000000000000000000" class="hidden">
 </form>
 
@@ -138,7 +146,7 @@ h1 {
                     }
                 }
             }
-            document.getElementById("my_form").children[x+2].value = original;
+            document.getElementById("my_form").children[x+3].value = original;
         }
     }
 
@@ -192,6 +200,11 @@ h1 {
     function update_program_number(){
         var program_number = document.getElementById("program_ui").value;
         document.getElementById("program").value = program_number;
+    }
+
+    function update_program_speed(){
+        var program_speed = document.getElementById("speed_ui").value;
+        document.getElementById("speed").value = program_speed;
     }
 </script>
 </body>

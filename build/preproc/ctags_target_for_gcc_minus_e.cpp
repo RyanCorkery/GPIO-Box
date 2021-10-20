@@ -833,52 +833,31 @@ void output_reset() { // Turn off all MOSFET swtiches from program mode, and set
 }
 
 void SD_write() { // Write data to SD card
-  // Check if program exists
-  // Reset char* data[] elements to '\0'? Need to reset each element
-  // Open .txt file 
-  // read data and save each line as element in char* data[]
-  // calculate nubmber of steps in program -> data_steps
-  // Determine program speed -> program_speed
-  SD.remove("01.txt"); // Remove file
+  char file_name[7] = { "xx.txt" }; // Defualt file name
+  String str;
+  str = String(program_number); // Convert program number to string
+  if (program_number < 10) file_name[1] = str[0]; // Update file name 
+  else {
+    file_name[0] = str[0];
+    file_name[1] = str[1];
+  }
 
-  my_file = SD.open("01.txt", (O_READ | O_WRITE | O_CREAT | O_APPEND)); // Create program 0
+  SD.remove(file_name); // Remove file
+
+  my_file = SD.open(file_name, (O_READ | O_WRITE | O_CREAT | O_APPEND)); // Create program 0
 
   if (my_file) {
-    my_file.print(0); // Program #
-    my_file.print(0);
-
+    my_file.print(file_name[0]); // Program #
+    my_file.print(file_name[1]);
     my_file.print('\n');
 
-    my_file.print("500"); // Program speed. Step time [ms]
-
+    my_file.print(program_speed); // Program speed. Step time [ms]
     my_file.print('\n');
 
-    my_file.print("10000000255000000000000000000000000000"); // Program data
-    my_file.print('\n');
-    my_file.print("01000000000255000000000000000000000000");
-    my_file.print('\n');
-    my_file.print("00100000000000255000000000000000000000");
-    my_file.print('\n');
-    my_file.print("00010000000000000255000000000000000000");
-    my_file.print('\n');
-    my_file.print("00001000000000000000255000000000000000");
-    my_file.print('\n');
-    my_file.print("00000100000000000000000255000000000000");
-    my_file.print('\n');
-    my_file.print("00000010000000000000000000255000000000");
-    my_file.print('\n');
-    my_file.print("00000001000000000000000000000255000000");
-    my_file.print('\n');
-    my_file.print("00000000000000000000000000000000000255");
-    my_file.print('\n');
-    my_file.print("00000000000000000000000000000000100000");
-    my_file.print('\n');
-    my_file.print("00000000000000000000000000000000150000");
-    my_file.print('\n');
-    my_file.print("00000000000000000000000000000000200000");
-    my_file.print('\n');
-    my_file.print("00000000000000000000000000000000250000");
-    my_file.print('\n');
+    for (int i = 0; i < data_steps; i++){ // Step data
+      my_file.print(data[i]);
+      my_file.print('\n');
+    }
 
     my_file.close();
 
@@ -1046,6 +1025,7 @@ void decode_ethernet(EthernetClient client){
         val[1] = val[0]; // convert val 1& -> 01
         val[0] = '0';
       }
+      program_number = val.toInt();
       Serial.print("Program # uploaded: ");
       Serial.println(val);
 
@@ -1070,19 +1050,22 @@ void decode_ethernet(EthernetClient client){
   }
 
   if (save_flag){ // if continue flag, proceed with for loop below
+  data_steps = 0; // Reset step count. New program will be loaded
     for (int i = 0; i < 20; i++){ // Loop through all possible steps from html page
       if (readString.indexOf(step_names[i]) > 0){ // > 0 if data exists
         int index = readString.indexOf(step_names[i]);
         String val = readString.substring(index + 12, index + 12 + 38); // 12 = length of "step_x_data=" string
-        // Save data to data_step_i variables
-        for (int x = 0; x < 30; x++){
+        for (int x = 0; x < 38; x++){ // Save data to data_step_i variables
           data[i][x] = val[x];
+          Serial.print(data[i][x]);
         }
-        Serial.println(data[i]);
+        Serial.println(" ");
+        data_steps++; // Increase step count
       }
     }
-    // Save program to SD card
-    Serial.println("save file");
+    Serial.println(program_number);
+    // SD_write();                                                               // Save program to SD card. SD_write()
+    // SD_read();                                                                // Read and load new program
   }
 
   update_html(client); // Update html with current program settings
@@ -1127,10 +1110,6 @@ bool lcd_overwrite_program(String program){
       case right: // Make selection
         selection = true;
         break;
-      // case left:                                                        
-      //   selection = true;
-      //   overwrite = false;
-      //   break;
       }
       menu_flag = false;
     }
