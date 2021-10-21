@@ -126,29 +126,29 @@ EthernetServer server(80);                                                      
 
 #line 125 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void setup();
-#line 195 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 198 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void loop();
-#line 206 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 209 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void lcd_update_running();
-#line 252 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 255 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void lcd_update_layer_1_selection(int index);
-#line 281 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 284 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void lcd_update_mode_selection(int index);
-#line 308 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 311 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void lcd_update_program_number(int program_num);
-#line 315 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 318 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void lcd_update_program_speed(int program_spd, bool refresh);
-#line 327 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 330 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void lcd_update_loop_mode();
-#line 340 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 343 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void menu();
-#line 644 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 647 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 int menu_read_button_pressed();
-#line 663 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 666 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void switch_mode();
-#line 681 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 684 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void manual_mode();
-#line 697 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 700 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void program_mode();
 #line 736 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void latency_manual();
@@ -166,17 +166,19 @@ void latency_result(long time);
 void output_reset();
 #line 820 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void SD_write();
-#line 856 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 866 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void SD_read(int program_num);
-#line 936 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
-void menu_pressed();
 #line 940 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+void menu_pressed();
+#line 944 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void ethernet();
-#line 984 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
-void update_html(EthernetClient client);
-#line 999 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 977 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+void update_html(EthernetClient client, int page);
+#line 1006 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+void list_files(File dir);
+#line 1017 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void decode_ethernet(EthernetClient client);
-#line 1059 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 1122 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 bool lcd_overwrite_program(String program);
 #line 125 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void setup() {
@@ -247,7 +249,10 @@ void setup() {
   server.begin();                                                                 // start Arduino server
   debug("server is at ");
   debugln(Ethernet.localIP());
-}
+
+  my_file = SD.open("/");
+  list_files(my_file);
+}                                                                                 // END SETUP()
 
 void loop() {
   if (menu_flag) menu();                                                          // Execute menu funciton when external interrupt flag is true
@@ -763,11 +768,8 @@ void program_mode() {                                               // Loop thro
       for (int n = 0; n < 8; n++) {                                 // Brake signal digital outputs. Number of brake signals. 
         val_char[2] = data[step][n];                                // Read brake signal from program data
         val_int = atoi(val_char);
-        debug(val_int);
-        debug(" ");
         digitalWrite(output_pins[n], val_int);
       }
-      debugln("");
       for (int m = 0; m < 10; m++) {                                // Speed signal & analog outputs. Number of signals = 10
         for (int p = 0; p < 3; p++) {
           val_char[p] = data[step][p + 3 * m + 8];                  // Read speed signal from program data
@@ -817,7 +819,7 @@ void latency_automatic() {
 void latency_test(){
   unsigned long start_time;
   unsigned long latency_time;
-  unsigned long timeout = 1000;                                // 60 000ms = 1 min
+  unsigned long timeout = 60000;                                // 60 000ms = 1 min
   bool no_response = false;
 
   latency_running_state();
@@ -875,50 +877,53 @@ void output_reset() {                                           // Turn off all 
 }
 
 void SD_write() {                                               // Write data to SD card
-  char file_name[7] = { "xx.txt" };                             // Defualt file name
-  String str;
-  str = String(program_number);                                 // Convert program number to string
-  if (program_number < 10) file_name[1] = str[0];               // Update file name 
-  else {
-    file_name[0] = str[0];
-    file_name[1] = str[1];
-  }
-  
-  SD.remove(file_name);                                         // Remove file
-
-  my_file = SD.open(file_name, FILE_WRITE);                     // Create program 0
-
-  if (my_file) {
-    my_file.print(file_name[0]);                                // Program #
-    my_file.print(file_name[1]);
-    my_file.print('\n');
-
-    my_file.print(program_speed);                               // Program speed. Step time [ms]
-    my_file.print('\n');
-
-    for (int i = 0; i < data_steps; i++){                       // Step data
-      my_file.print(data[i]);
-      my_file.print('\n');
+if (program_number != 0){                                       // Program 0 can not be removed
+    char file_name[7] = {'0', '0', '.', 't', 'x', 't'};         // Defualt file name
+    String str;
+    str = String(program_number);                                 // Convert program number to string
+    if (program_number < 10) file_name[1] = str[0];               // Update file name 
+    else {
+      file_name[0] = str[0];
+      file_name[1] = str[1];
     }
-    
-    my_file.close();
+         
+    SD.remove(file_name);                                         // Remove file
 
-    debug("program saved to SD");
+    my_file = SD.open(file_name, FILE_WRITE);                     // Create program 0
+
+    if (my_file) {
+      my_file.print(file_name[0]);                                // Program #
+      my_file.print(file_name[1]);
+      my_file.print('\n');
+
+      my_file.print(program_speed);                               // Program speed. Step time [ms]
+      my_file.print('\n');
+
+      for (int i = 0; i < data_steps; i++){                       // Step data
+        my_file.print(data[i]);
+        my_file.print('\n');
+      }
+      
+      my_file.close();
+
+      debugln("program saved to SD");
+    }
+    else {
+      debugln("Failed to save program to SD");
+    } 
   }
-  else {
-    debugln("Failed to save program to SD");
-  } 
+  else{
+    lcd.clear();
+    lcd.print("PROGRAM 0 CAN");
+    lcd.setCursor(0,1);
+    lcd.print("NOT BE MODIFIED");
+    delay(2000);
+    lcd_update_running();
+  }
 }
 
 void SD_read(int program_num) {                               // Read and process data. program_number = selcted program (1, 2, 3....)
-  // Check if program exists
-  // Reset char* data[] elements to '\0'? Need to reset each element
-  // Open .txt file 
-  // read data and save each line as element in char* data[]
-  // calculate nubmber of steps in program -> data_steps
-  // Determine program speed -> program_speed
-
-  char file_name[7] = { "00.txt" };                           // Defualt file name
+  char file_name[7] = {'0', '0', '.', 't', 'x', 't'};         // Defualt file name
   String str;
   str = String(program_num);                                  // Convert program number to string
   if (program_num < 10) file_name[1] = str[0];                // Update file name 
@@ -927,6 +932,7 @@ void SD_read(int program_num) {                               // Read and proces
     file_name[1] = str[1];
   }
 
+  debug("File name = ");
   debugln(file_name);
 
   my_file = SD.open(file_name);                               // Open selected program number
@@ -995,8 +1001,6 @@ void menu_pressed() {                                           // External inte
 }
 
 void ethernet(){
-  static bool do_once = true;
-
   EthernetClient client = server.available();                   // listen for incoming clients
   
   if (client) {
@@ -1004,60 +1008,83 @@ void ethernet(){
 
     boolean currentLineIsBlank = true;                          // an http request ends with a blank line
     
-    if (client.connected()) {
-      while (client.available()) {
-        char c = client.read();
-        // Serial.write(c);
-        readString += c;                                        // Store incoming data from http client
-        
-        if (c == '\n' && currentLineIsBlank) {                  // if you've gotten to the end of the line (received a newline character) and the line is blank, the http request has ended, so you can send a reply
-          client.println("HTTP/1.1 200 OK");                    // send a standard http response header
-          client.println("Content-Type: text/html");
-  //          client.println("Connection: close");                    // the connection will be closed after completion of the response
-          client.println("Connection: keep-alive");
-          client.println();
-
-          // if (do_once){
-          //   update_html(client);
-          //   do_once = false;
-          // }
-        }
-        
-        else if (c == '\n') {
-          currentLineIsBlank = true;                            // you're starting a new line
-        } 
-        else if (c != '\r') {
-          currentLineIsBlank = false;                           // you've gotten a character on the current line
-        }
+    while (client.available()) {
+      char c = client.read();
+      // Serial.write(c);
+      readString += c;                                          // Store incoming data from http client
+      
+      if (c == '\n' && currentLineIsBlank) {                    // if you've gotten to the end of the line (received a newline character) and the line is blank, the http request has ended, so you can send a reply
+        client.println("HTTP/1.1 200 OK");                      // send a standard http response header
+        client.println("Content-Type: text/html");
+        client.println("Connection: keep-alive");
+        client.println();
+      }
+      
+      else if (c == '\n') {
+        currentLineIsBlank = true;                              // you're starting a new line
+      } 
+      else if (c != '\r') {
+        currentLineIsBlank = false;                             // you've gotten a character on the current line
       }
     }
-
-    decode_ethernet(client);                                          // Decode the readString and save program 
+    decode_ethernet(client);                                    // Decode readString
 
     readString = "";                                            // Reset readString
   }
 }
 
-void update_html(EthernetClient client){
-  // update with whatever program is selected
-  my_file = SD.open("html.txt");                        // open html file
-  if (my_file){
-    Serial.println("HTML file opened");
-    while(my_file.available()){                         // Read html file
-      char val;
-      val = my_file.read();
-      client.print(val);                                // Write html content to browser
+void update_html(EthernetClient client, int page){
+  if (page == 0){                                                 // main.html
+    my_file = SD.open("html.txt");                                // open html file
+    if (my_file){
+      debugln("main.html file opened");
+      while(my_file.available()){                                 // Read html file
+        char val;
+        val = my_file.read();
+        client.print(val);                                        // Write html content to browser
+      }
+      my_file.close();
     }
-    my_file.close();
+    else debugln("main.html failed to open");
   }
-  else debugln("html failed to open");
+  else if (page == 1){                                            // list.html        list of saved programs
+    my_file = SD.open("list.txt");                                // open html file
+    if (my_file){
+      debugln("list.html file opened");
+      while(my_file.available()){                                 // Read html file
+        char val;
+        val = my_file.read();
+        client.print(val);                                        // Write html content to browser
+      }
+      my_file.close();
+    }
+    else debugln("list.html failed to open");
+  }
+}
+
+void list_files(File dir) {
+  while (true){
+    File entry =  dir.openNextFile();
+    if (! entry) break;                                         // no more files
+
+    debugln(entry.name());
+    
+    entry.close();
+  }
 }
 
 void decode_ethernet(EthernetClient client){
+  static bool first_html = true;                                              // Load main.html the first time the client is connected
   bool save_flag;
 
   String step_names[] = { "step_0_data", "step_1_data", "step_2_data", "step_3_data", "step_4_data", "step_5_data", "step_6_data", "step_7_data", "step_8_data", "step_9_data",
         "step_10_data", "step_11_data", "step_12_data", "step_13_data", "step_14_data", "step_15_data", "step_16_data", "step_17_data", "step_18_data", "step_19_data" };
+
+  if (first_html) {
+    update_html(client, 0);                                                   // Load main.html
+    first_html = false;                                                       
+    return;
+  }
 
   if (readString.indexOf("program=") > 0){                                    // Read the program number being uploaded from html page
     int index = readString.indexOf("program=");
@@ -1089,28 +1116,66 @@ void decode_ethernet(EthernetClient client){
       save_flag = false;                                                 
       debugln("No program # selected");    
     }                
-  }           
+             
 
-  if (save_flag){                                                             // if continue flag, proceed with for loop below
-  data_steps = 0;                                                             // Reset step count. New program will be loaded
-    for (int i = 0; i < 20; i++){                                             // Loop through all possible steps from html page
-      if (readString.indexOf(step_names[i]) > 0){                             // > 0 if data exists
-        int index = readString.indexOf(step_names[i]);
-        String val = readString.substring(index + 12, index + 12 + 38);       // 12 = length of "step_x_data=" string
-        for (int x = 0; x < 38; x++){                                         // Save data to data_step_i variables
-          data[i][x] = val[x];
-          debug(data[i][x]);
+    if (save_flag){                                                               // if continue flag, proceed with for loop below
+      if (readString.indexOf("speed=") > 0){                                      // Extract speed value
+        int index = readString.indexOf("speed=");
+        String val = readString.substring(index + 6, index + 6 + 4);              // 6 = length of "speed=" string
+        if (val[0] != '&') {                                                      // Check if number was saved. & = no number in input box
+          if (val[1] == '&'){                                                     // Val < 10. ex 1 -> 1&
+            val[3] = val[0];                                                      // convert val 1&tp -> 0001
+            val[2] = '0';
+            val[1] = '0';
+            val[0] = '0';
+          }
+          else if (val[2] == '&'){                                                // 10 < Val < 100. ex 10 -> 10&
+            val[3] = val[1];
+            val[2] = val[0];                                                      // convert val 10&s -> 0010
+            val[1] = '0';
+            val[0] = '0';
+          }
+          else if (val[3] == '&'){                                                // 100 < Val < 1000. ex 100& -> 0100
+            val[3] = val[2];
+            val[2] = val[1];
+            val[1] = val[0];                                                      // convert val 10& -> 0100
+            val[0] = '0';
+          }
+          program_speed = val.toInt();
+          debug("Program speed uploaded: ");  
+          debugln(val);  
         }
-        debugln(" ");
-        data_steps++;                                                         // Increase step count
+        else program_speed = 1000;                                              // No speed inputed, default to 1000ms step time
       }
+
+      data_steps = 0;                                                           // Reset step count. New program will be loaded
+      for (int i = 0; i < 20; i++){                                             // Loop through all possible steps from html page
+        if (readString.indexOf(step_names[i]) > 0){                             // > 0 if data exists
+          int index = readString.indexOf(step_names[i]);
+          String val = readString.substring(index + 12, index + 12 + 38);       // 12 = length of "step_x_data=" string
+          for (int x = 0; x < 38; x++){                                         // Save data to data_step_i variables
+            data[i][x] = val[x];
+            debug(data[i][x]);
+          }
+          debugln(" ");
+          data_steps++;                                                         // Increase step count
+        }
+      }
+
+      SD_write();                                                               // Save program to SD card. SD_write()
+      SD_read(program_number);                                                  // Read and load new program
     }
-    debugln(program_number);
-    // SD_write();                                                               // Save program to SD card. SD_write()
-    // SD_read();                                                                // Read and load new program
+
+    debugln(" ");
+    debug("loading : main.html");
+    update_html(client, 0);                                                     // Update html with current program settings
   }
 
-  update_html(client);                                                        // Update html with current program settings
+  else if (readString.indexOf("list_form=") > 0){ 
+    debugln(" ");
+    debugln("loading : list.html");
+    update_html(client, 1);                                                   // Load list.html 
+  }
 }
 
 bool lcd_overwrite_program(String program){
