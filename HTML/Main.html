@@ -4,6 +4,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
 <title>GPIO Box REV 2</title>
 <style>
+body{
+    display: flex;
+    flex-direction: column;
+}
 h1 { 
     text-align: center;
     border-bottom: 2px solid darkslategray;
@@ -44,8 +48,16 @@ h1 {
     width: 35px;
     margin: auto;
 }
+#my_form{
+    display: flex;
+    flex-direction: column;
+}
 #form_data{
     width: 500px;;
+}
+.step_button{
+    width: 200px;
+    margin: 5px;
 }
 .hidden{
     visibility: hidden;
@@ -64,6 +76,11 @@ h1 {
 .step_label{
     margin-left: 15px;
 }
+#description{
+    margin: 5px;
+    display: flex;
+    width: auto;
+}
 </style>
 </head>
 
@@ -72,8 +89,7 @@ h1 {
 
 <h1>GPIO BOX REV 2</h1>
 
-<iframe name="iframe2" style="display:none;"></iframe>
-<form id="list_form" method="post" action="/" name="pins" target="iframe2">
+<form id="list_form" method="post" action="/">
     <input type="submit" name="list_form" value="Click to view the list of saved programs">
 </form>
 
@@ -126,12 +142,13 @@ h1 {
     </div>
 </div>
 
-<input type="button" value="Add Step" onclick="add_step()">
-<input type="button" value="Remove Step" onclick="remove_step()"><br><br>
+<input class="step_button" type="button" value="Add Step" onclick="add_step()">
+<input class="step_button" type="button" value="Remove Step" onclick="remove_step()"><br>
 
 <iframe name="iframe1" style="display:none;"></iframe>
 <form id="my_form" method="post" action="/" name="pins" target="iframe1" onsubmit="save_data()">
-    <input type="submit" value="Save program">
+    Program description:<input type="text" id="description" name="description" maxlength="100">Limit 100 characters<br>
+    <input class="step_button" type="submit" value="Save program">
     <input type="text" id="program" class="hidden" name="program">
     <input type="text" id="speed" class="hidden" name="speed">
     <input id="form_data" type="text" name="step_0_data" value="00000000000000000000000000000000000000" class="hidden">
@@ -168,7 +185,7 @@ h1 {
                     }
                 }
             }
-            document.getElementById("my_form").children[x+3].value = current_data;
+            document.getElementById("my_form").children[x+5].value = current_data;
         }
     }
 

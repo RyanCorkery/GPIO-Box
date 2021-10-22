@@ -6,29 +6,33 @@
         }
         .info{
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
         }
-        #file_names{
-            margin-right: 40px;
+        .info > p > input{
+            margin-left: 30px;
         }
     </style>
     <head>
 
     </head>
-    <body onload="read_url()">
+    <!-- <body onload="read_url()"> -->
+    <body>
         <h1>SAVED PROGRAMS</h1>
 
-        <input type="button" onclick="load_main()" value="Return to programming page">
+        <form method="post" action="/">
+            <input type="submit" name="load_main" value="Return to programming page">
+        </form>
+
+        <iframe name="iframe" style="display: none;"></iframe>
+        <form method="post" action="/" name="save_descriptions" target="iframe">
+            <input type="button" onclick="save_descriptions()" value="Save descriptions">
+        </form>
+        
 
         <div class="list">
             <div class="info">
-                <div>
-                    <p id="file_names"></p>
-                </div>
-                <div>
-                    <!-- Add abillity to add comments -->
-                    <p id="file_descriptions">Default program<br><br></p>           
-                </div>
+                <p >00.txt<input type="text" value="Default Program"></input></p>
+                <p >01.txt<input type="text" value="Disco Party"></input></p>
             </div>
         </div>
 
@@ -42,6 +46,10 @@
 
             function load_main(){
                 window.location = "Main.html";
+            }
+
+            function save_descriptions(){
+                // add code
             }
         </script>
     </body>

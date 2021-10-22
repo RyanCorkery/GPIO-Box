@@ -96,6 +96,8 @@ char data_step_17[38];
 char data_step_18[38];
 char data_step_19[38];
 
+char description[100] = {"Hello World"}; // 100 char limit *** can maybe be increased, need to test
+
 // Array of step data
 char* data[] = { data_step_0, data_step_1, data_step_2, data_step_3, data_step_4, data_step_5, data_step_6, data_step_7, data_step_8, data_step_9,
         data_step_10, data_step_11, data_step_12, data_step_13, data_step_14, data_step_15, data_step_16, data_step_17, data_step_18, data_step_19 };
@@ -163,7 +165,7 @@ void setup() {
   delay(2000);
 
   lcd.clear();  */
-# 152 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+# 154 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
                                                                                   // END LCD START UP DISPLAY
 
   digitalWrite(adam6017_power, 0x1); // Power on Adam moudules
@@ -206,8 +208,7 @@ void setup() {
   Serial.print("server is at ");
   Serial.println(Ethernet.localIP());
 
-  my_file = SD.open("/");
-  list_files(my_file);
+  // list_files(false);
 } // END SETUP()
 
 void loop() {
@@ -860,6 +861,9 @@ if (program_number != 0){ // Program 0 can not be removed
         my_file.print('\n');
       }
 
+      my_file.print('\n');
+      my_file.print(description); // Program description
+
       my_file.close();
 
       Serial.println("program saved to SD");
@@ -900,6 +904,7 @@ void SD_read(int program_num) { // Read and process data. program_number = selct
     data_steps = 0; // Reset the number of steps in current program
     char program_num_char[2] = {}; // Read and save program number. First two bytes in file
     char program_spd_char[4] = {}; // Read and save program number. First two bytes in file
+    bool new_line = false;
 
     while (my_file.available()) {
       val = my_file.read(); // Read next byte from txt file
@@ -916,8 +921,23 @@ void SD_read(int program_num) { // Read and process data. program_number = selct
           data[data_steps][index] = val;
           index++;
         }
+        new_line = false;
       }
-      else {
+      else if (new_line){ // Blank line was read, this indicates end of data, start of description
+        index = 0;
+        while (my_file.available()){ // Read the rest of the file
+          val = my_file.read();
+          if (val == '+') val = ' ';
+          description[index] = val;
+          index++;
+        }
+        Serial.println("description:");
+        Serial.println(description);
+        break;
+      }
+      else { // New line reached
+        new_line = true;
+
         Serial.print(SD_step);
         Serial.print("  ");
 
@@ -966,7 +986,7 @@ void ethernet(){
 
     while (client.available()) {
       char c = client.read();
-      // Serial.write(c);
+      Serial.write(c);
       readString += c; // Store incoming data from http client
 
       if (c == '\n' && currentLineIsBlank) { // if you've gotten to the end of the line (received a newline character) and the line is blank, the http request has ended, so you can send a reply
@@ -1004,9 +1024,9 @@ void update_html(EthernetClient client, int page){
     else Serial.println("main.html failed to open");
   }
   else if (page == 1){ // list.html        list of saved programs
-    my_file = SD.open("list.txt"); // open html file
+    my_file = SD.open("list1.txt"); // open start half html file
     if (my_file){
-      Serial.println("list.html file opened");
+      Serial.println("list1.html file opened");
       while(my_file.available()){ // Read html file
         char val;
         val = my_file.read();
@@ -1014,16 +1034,76 @@ void update_html(EthernetClient client, int page){
       }
       my_file.close();
     }
-    else Serial.println("list.html failed to open");
+    else Serial.println("list1.html failed to open");
+
+    // print file names and descriptions
+    list_files(client, true);
+
+    my_file = SD.open("list2.txt"); // open second half html file
+    if (my_file){
+      Serial.println("list2.html file opened");
+      while(my_file.available()){ // Read html file
+        char val;
+        val = my_file.read();
+        client.print(val); // Write html content to browser
+      }
+      my_file.close();
+    }
+    else Serial.println("list2.html failed to open");
   }
 }
 
-void list_files(File dir) {
+void list_files(EthernetClient client, bool print) { // print = true -> print to client
+  my_file = SD.open("/");
   while (true){
-    File entry = dir.openNextFile();
+    File entry = my_file.openNextFile();
     if (! entry) break; // no more files
 
-    Serial.println(entry.name());
+    if (print){
+      client.print((reinterpret_cast<const __FlashStringHelper *>(
+# 1048 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                  (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 1048 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                  "<p>"
+# 1048 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                  ); &__c[0];}))
+# 1048 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                  )));
+      char str[] = {*entry.name()};
+      client.print(str[0]);
+      client.print(str[1]);
+      client.print((reinterpret_cast<const __FlashStringHelper *>(
+# 1052 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                  (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 1052 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                  "<input type='text' value='"
+# 1052 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                  ); &__c[0];}))
+# 1052 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                  )));
+      // description goes here
+      int index = 0;
+      while (entry.available()){ // Extract description from current entry
+        char val = entry.read();
+        if (val == '\n') {
+          // read lines
+          // once last line is read, that will be the description
+          description[index] = val;
+          index++;
+        }
+      }
+      client.print(description);
+      client.print((reinterpret_cast<const __FlashStringHelper *>(
+# 1065 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                  (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 1065 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                  "'></input></p>"
+# 1065 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                  ); &__c[0];}))
+# 1065 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                  )));
+    }
+    else Serial.println(entry.name());
 
     entry.close();
   }
@@ -1037,6 +1117,7 @@ void decode_ethernet(EthernetClient client){
         "step_10_data", "step_11_data", "step_12_data", "step_13_data", "step_14_data", "step_15_data", "step_16_data", "step_17_data", "step_18_data", "step_19_data" };
 
   if (first_html) {
+    Serial.println("first html load");
     update_html(client, 0); // Load main.html
     first_html = false;
     return;
@@ -1098,6 +1179,7 @@ void decode_ethernet(EthernetClient client){
             val[0] = '0';
           }
           program_speed = val.toInt();
+          Serial.println("");
           Serial.print("Program speed uploaded: ");
           Serial.println(val);
         }
@@ -1118,12 +1200,24 @@ void decode_ethernet(EthernetClient client){
         }
       }
 
+      if (readString.indexOf("description=") > 0){ // Extract program description
+        int index = readString.indexOf("description=");
+        String val = readString.substring(index + 12, readString.indexOf("program=")-1); // 12 = length of "description=" string
+        for (int i = 0; i < 100; i++){ // Reset the description
+          description[i] = '\0';
+        }
+        for (int i = 0; i < val.length(); i++){ // Copy description received from client
+          description[i] = val[i];
+        }
+        Serial.println(description);
+      }
+
       SD_write(); // Save program to SD card. SD_write()
       SD_read(program_number); // Read and load new program
     }
 
     Serial.println(" ");
-    Serial.print("loading : main.html");
+    Serial.println("loading : main.html");
     update_html(client, 0); // Update html with current program settings
   }
 
@@ -1131,6 +1225,16 @@ void decode_ethernet(EthernetClient client){
     Serial.println(" ");
     Serial.println("loading : list.html");
     update_html(client, 1); // Load list.html 
+  }
+  else if (readString.indexOf("load_main=") > 0){
+    Serial.println(" ");
+    Serial.println("loading : main.html");
+    update_html(client, 0); // Load list.html 
+  }
+  else if (readString.indexOf("save_descriptions=") > 0){ // Update descriptions from list.html page
+    Serial.println(" ");
+    Serial.println("Saving descriptions to SD card");
+    // read desciptions and save to SD
   }
 }
 
