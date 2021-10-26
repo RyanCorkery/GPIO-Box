@@ -1053,57 +1053,63 @@ void update_html(EthernetClient client, int page){
   }
 }
 
-void list_files(EthernetClient client, bool print) { // print = true -> print to client
+void list_files(EthernetClient client, bool print) { // print = true -> print html content to client
   my_file = SD.open("/");
   while (true){
     File entry = my_file.openNextFile();
     if (! entry) break; // no more files
 
     if (print){
-      client.print((reinterpret_cast<const __FlashStringHelper *>(
-# 1048 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
-                  (__extension__({static const char __c[] __attribute__((__progmem__)) = (
-# 1048 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
-                  "<p>"
-# 1048 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
-                  ); &__c[0];}))
-# 1048 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
-                  )));
-      char str[] = {*entry.name()};
-      client.print(str[0]);
-      client.print(str[1]);
-      client.print((reinterpret_cast<const __FlashStringHelper *>(
-# 1052 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
-                  (__extension__({static const char __c[] __attribute__((__progmem__)) = (
-# 1052 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
-                  "<input type='text' value='"
-# 1052 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
-                  ); &__c[0];}))
-# 1052 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
-                  )));
-      // description goes here
-      int index = 0;
-      while (entry.available()){ // Extract description from current entry
-        char val = entry.read();
-        if (val == '\n') {
-          // read lines
-          // once last line is read, that will be the description
-          description[index] = val;
-          index++;
+      char *str = entry.name();
+      if (isDigit(str[0])){ // Do not read HTML, LIST files. Only program files
+        client.print((reinterpret_cast<const __FlashStringHelper *>(
+# 1050 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                    (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 1050 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                    "<p><label>"
+# 1050 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                    ); &__c[0];}))
+# 1050 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                    )));
+        client.print(str[0]);
+        client.print(str[1]);
+        client.print((reinterpret_cast<const __FlashStringHelper *>(
+# 1053 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                    (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 1053 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                    "</label><input type='text' value='"
+# 1053 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                    ); &__c[0];}))
+# 1053 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                    )));
+
+        int index = 0;
+        memset(description, '\0', sizeof(description));
+        while (entry.available()){ // Extract description from current entry
+          char val = entry.read();
+          if (val != '\n') { // Read next char
+            if (val == '+') val = ' ';
+            description[index] = val; // Once last line is read, that will be the description
+            index++; // Go to next line
+          }
+          else {
+            index = 0;
+            memset(description, '\0', sizeof(description));
+          }
         }
+        client.print(description);
+        client.print((reinterpret_cast<const __FlashStringHelper *>(
+# 1070 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                    (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 1070 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                    "'></input></p>"
+# 1070 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                    ); &__c[0];}))
+# 1070 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                    )));
       }
-      client.print(description);
-      client.print((reinterpret_cast<const __FlashStringHelper *>(
-# 1065 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
-                  (__extension__({static const char __c[] __attribute__((__progmem__)) = (
-# 1065 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
-                  "'></input></p>"
-# 1065 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
-                  ); &__c[0];}))
-# 1065 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
-                  )));
     }
-    else Serial.println(entry.name());
+    else Serial.println(entry.name()); // Print list of files to serial monitor
 
     entry.close();
   }
@@ -1138,6 +1144,7 @@ void decode_ethernet(EthernetClient client){
       char file_name[] = {val[0], val[1], '.', 't', 'x', 't'}; // File name with selected program number
       my_file = SD.open(file_name);
       if (my_file){ // check if program # already exists on SD card
+        update_html(client, 2); // Save.html page
         save_flag = lcd_overwrite_program(val); // if exisits, overwrite yes/no?
       }
       else {

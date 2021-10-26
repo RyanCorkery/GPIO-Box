@@ -1036,35 +1036,54 @@ void update_html(EthernetClient client, int page){
     }
     else debugln("list2.html failed to open");
   }
+  // else if (page == 2){                                            // Save program yes/no message
+  //   my_file = SD.open("save.txt");                                // open html file
+  //   if (my_file){
+  //     debugln("save.html file opened");
+  //     while(my_file.available()){                                 // Read html file
+  //       char val;
+  //       val = my_file.read();
+  //       client.print(val);                                        // Write html content to browser
+  //     }
+  //     my_file.close();
+  //   }
+  //   else debugln("save.html failed to open");
+  // }
 }
 
-void list_files(EthernetClient client, bool print) {              // print = true -> print to client
+void list_files(EthernetClient client, bool print) {              // print = true -> print html content to client
   my_file = SD.open("/");
   while (true){
     File entry =  my_file.openNextFile();
     if (! entry) break;                                           // no more files
 
     if (print){
-      client.print(F("<p>"));
-      char str[] = {*entry.name()};
-      client.print(str[0]);
-      client.print(str[1]);
-      client.print(F("<input type='text' value='"));
-      // description goes here
-      int index = 0;
-      while (entry.available()){                                // Extract description from current entry
-        char val = entry.read();
-        if (val == '\n') {
-          // read lines
-          // once last line is read, that will be the description
-          description[index] = val;
-          index++;
+      char *str = entry.name();
+      if (isDigit(str[0])){                                       // Do not read HTML, LIST files. Only program files
+        client.print(F("<p><label>"));
+        client.print(str[0]);
+        client.print(str[1]);
+        client.print(F("</label><input type='text' value='"));
+
+        int index = 0;
+        memset(description, '\0', sizeof(description));
+        while (entry.available()){                                // Extract description from current entry
+          char val = entry.read();
+          if (val != '\n') {                                      // Read next char
+            if (val == '+') val = ' ';
+            description[index] = val;                             // Once last line is read, that will be the description
+            index++;                                              // Go to next line
+          }
+          else {
+            index = 0;
+            memset(description, '\0', sizeof(description));
+          }
         }
+        client.print(description);
+        client.print(F("'></input></p>"));
       }
-      client.print(description);
-      client.print(F("'></input></p>"));
     }
-    else debugln(entry.name());
+    else debugln(entry.name());                                 // Print list of files to serial monitor
     
     entry.close();
   }
@@ -1099,6 +1118,7 @@ void decode_ethernet(EthernetClient client){
       char file_name[] = {val[0], val[1], '.', 't', 'x', 't'};                // File name with selected program number
       my_file = SD.open(file_name);
       if (my_file){                                                           // check if program # already exists on SD card
+        // update_html(client, 2);                                               // Save.html page
         save_flag = lcd_overwrite_program(val);                               // if exisits, overwrite yes/no?
       }
       else {
