@@ -115,6 +115,8 @@ char* data[] = { data_step_0, data_step_1, data_step_2, data_step_3, data_step_4
 int data_steps;
 // declare data array as char* data[100], 100 may be overkill, desktop app will determine max number of steps in program
 
+char program_list[300] = {"00-"};
+
 typedef enum menu_button_pressed {left, up, down, right} menu_button_pressed;       // Menu button options
 
 LiquidCrystal_I2C lcd(0x3F, 20, 4);                                                 // LCD address = 0x3F. 20x4 LCD
@@ -126,63 +128,69 @@ byte mac[] = {0xA8, 0x61, 0x0A, 0xAE, 0x83, 0xB1};                              
 IPAddress ip(192, 168, 0, 116);                                                     // Must be unique for each GPIO box Arduino
 EthernetServer server(80);                                                          // (port 80 is default for HTTP):
 
-#line 127 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 129 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void setup();
-#line 199 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 201 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void loop();
-#line 210 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 212 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void lcd_update_running();
-#line 256 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 258 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void lcd_update_layer_1_selection(int index);
-#line 285 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 287 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void lcd_update_mode_selection(int index);
-#line 312 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 314 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void lcd_update_program_number(int program_num);
-#line 319 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 321 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void lcd_update_program_speed(int program_spd, bool refresh);
-#line 331 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 333 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void lcd_update_loop_mode();
-#line 344 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 346 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void menu();
-#line 648 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 650 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 int menu_read_button_pressed();
-#line 667 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 669 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void switch_mode();
-#line 685 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 687 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void manual_mode();
-#line 701 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 703 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void program_mode();
-#line 737 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 739 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void latency_manual();
-#line 747 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 749 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void latency_automatic();
-#line 761 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 763 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void latency_test();
-#line 785 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 787 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void latency_running_state();
-#line 796 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 798 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void latency_no_response();
-#line 803 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 805 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void latency_result(long time);
-#line 811 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 813 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void output_reset();
-#line 821 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 823 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void SD_write();
-#line 870 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 874 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void SD_read(int program_num);
-#line 960 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
-void menu_pressed();
 #line 964 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+void menu_pressed();
+#line 968 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void ethernet();
-#line 997 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
-void update_html(EthernetClient client, int page);
-#line 1041 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 1002 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+void update_html(EthernetClient client, int page, int count);
+#line 1187 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void list_files(EthernetClient client, bool print);
-#line 1079 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 1227 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+void sorted_files_list();
+#line 1233 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void decode_ethernet(EthernetClient client);
-#line 1209 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 1372 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+void delete_program();
+#line 1376 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+void load_program(EthernetClient client);
+#line 1408 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 bool lcd_overwrite_program(String program);
-#line 127 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 129 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void setup() {
   Serial.begin(9600);
   delay(500);                                                                       // Wait for serial to begin. while(!Serial) not working...
@@ -901,7 +909,9 @@ if (program_number != 0){                                       // Program 0 can
       my_file.print('\n');
 
       for (int i = 0; i < data_steps; i++){                       // Step data
-        my_file.print(data[i]);
+        for (int x = 0; x < 38; x++){
+          my_file.print(data[i][x]);
+        }
         my_file.print('\n');
       }
 
@@ -1037,6 +1047,7 @@ void ethernet(){
         client.println("HTTP/1.1 200 OK");                      // send a standard http response header
         client.println("Content-Type: text/html");
         client.println("Connection: keep-alive");
+        // client.println("Connection: close");
         client.println();
       }
       
@@ -1053,11 +1064,11 @@ void ethernet(){
   }
 }
 
-void update_html(EthernetClient client, int page){
+void update_html(EthernetClient client, int page, int count){
   if (page == 0){                                                 // main.html
-    my_file = SD.open("html.txt");                                // open html file
+    my_file = SD.open("htmlA.txt");                                // open html file
     if (my_file){
-      debugln("main.html file opened");
+      debugln("htmlA file opened");
       while(my_file.available()){                                 // Read html file
         char val;
         val = my_file.read();
@@ -1065,7 +1076,22 @@ void update_html(EthernetClient client, int page){
       }
       my_file.close();
     }
-    else debugln("main.html failed to open");
+    else debugln("htmlA failed to open");
+    // get sorted list of saved files
+    // print list to hidden text input
+    // print number followed by - ie 01-02-...
+    client.print(program_list);                   // TEST data
+    my_file = SD.open("htmlB.txt");                                // open html file
+    if (my_file){
+      debugln("htmlB file opened");
+      while(my_file.available()){                                 // Read html file
+        char val;
+        val = my_file.read();
+        client.print(val);                                        // Write html content to browser
+      }
+      my_file.close();
+    }
+    else debugln("htmlB failed to open");
   }
   else if (page == 1){                                            // list.html        list of saved programs
     my_file = SD.open("list1.txt");                                // open start half html file
@@ -1095,9 +1121,135 @@ void update_html(EthernetClient client, int page){
     }
     else debugln("list2.html failed to open");
   }
+  else if (page == 2){                                            // Load program
+    my_file = SD.open("html1.txt");                               // open html file
+    if (my_file){
+      debugln("html1 file opened");
+      while(my_file.available()){                                 // Read html file
+        char val;
+        val = my_file.read();
+        client.print(val);                                        // Write html content to browser
+      }
+      my_file.close();
+    }
+    else debugln("html1 failed to open");
+    // Program nuber
+    client.print(readString.substring(0,2));
+    //
+    my_file = SD.open("html2.txt");                                // open html file
+    if (my_file){
+      debugln("html2 file opened");
+      while(my_file.available()){                                 // Read html file
+        char val;
+        val = my_file.read();
+        client.print(val);                                        // Write html content to browser
+      }
+      my_file.close();
+    }
+    else debugln("html2 failed to open");
+    // program speed
+    client.print(readString.substring(2,6));
+    //
+    my_file = SD.open("html3.txt");                                // open html file
+    if (my_file){
+      debugln("html3 file opened");
+      while(my_file.available()){                                 // Read html file
+        char val;
+        val = my_file.read();
+        client.print(val);                                        // Write html content to browser
+      }
+      my_file.close();
+    }
+    else debugln("html3 failed to open");
+    // step data ui
+    for (int i = 0; i < count - 4; i++){                          // 4 lines are program number, speed, blank, description
+      client.print("<div class='step'>");
+      client.print("<div class='step_label'>");
+      client.print(i);
+      client.print("</div>");
+
+      int index = 7 + i*39;                                       // First char in line
+      for (int a = 0; a < 8; a++){
+        client.print("<div><input type='checkbox'");
+        if (readString[index + a] == '1') client.print(" checked ");
+        client.print("></div>");
+      }       
+      for (int b = 0; b < 10; b++){
+        client.print("<div><input type='text' value='");
+        client.print(readString.substring(index + 8 + 3*b, index + 8 + 3*b + 3));
+        client.print("'></div>");
+      }
+
+      client.print("</div>");
+    }
+    //
+    my_file = SD.open("html4.txt");                                // open html file
+    if (my_file){
+      debugln("html4 file opened");
+      while(my_file.available()){                                 // Read html file
+        char val;
+        val = my_file.read();
+        client.print(val);                                        // Write html content to browser
+      }
+      my_file.close();
+    }
+    else debugln("html4 failed to open");
+    // Description
+    int index = 19 + (count - 4)*38;                                     // First char in last line in file
+    client.print(readString.substring(index));
+    //
+    my_file = SD.open("html5.txt");                               // open html file
+    if (my_file){
+      debugln("html5 file opened");
+      while(my_file.available()){                                 // Read html file
+        char val;
+        val = my_file.read();
+        client.print(val);                                        // Write html content to browser
+      }
+      my_file.close();
+    }
+    else debugln("html5 failed to open");
+    // step_data_x hidden 
+    for (int i = 0; i < count - 4; i++){                          // 4 lines are program number, speed, blank, description
+      client.print("<input id='form_data' type='text' name='step_");
+      client.print(i);
+      client.print("_data' value='");
+
+      int index = 7 + i*39;                                       // First char in line
+      for (int i = 0; i < 38; i++) client.print(readString[index + i]);
+
+      client.print("' class='hidden'>");
+    }
+    //
+    my_file = SD.open("html6.txt");                               // open html file
+    if (my_file){
+      debugln("html6 file opened");
+      while(my_file.available()){                                 // Read html file
+        char val;
+        val = my_file.read();
+        client.print(val);                                        // Write html content to browser
+      }
+      my_file.close();
+    }
+    else debugln("html6 failed to open");
+    // Program list
+    client.print(program_list);                   // TEST data
+    //
+    my_file = SD.open("html7.txt");                               // open html file
+    if (my_file){
+      debugln("html7 file opened");
+      while(my_file.available()){                                 // Read html file
+        char val;
+        val = my_file.read();
+        client.print(val);                                        // Write html content to browser
+      }
+      my_file.close();
+    }
+    else debugln("html7 failed to open");
+  }
 }
 
-void list_files(EthernetClient client, bool print) {              // print = true -> print html content to client
+void list_files(EthernetClient client, bool print) {              // print = true -> print html content to client. False -> created sorted list
   my_file = SD.open("/");
   while (true){
     File entry =  my_file.openNextFile();
@@ -1105,11 +1257,11 @@ void list_files(EthernetClient client, bool print) {              // print = tru
 
     if (print){
       char *str = entry.name();
-      if (isDigit(str[0])){                                       // Do not read HTML, LIST files. Only program files
-        client.print(F("<p><label>"));
+      if (isDigit(str[0])){                                       // Do not read HTML, LIST files, etc. Only program files
+        client.print(F("<div><label>"));
         client.print(str[0]);
         client.print(str[1]);
-        client.print(F("</label><input type='text' value='"));
+        client.print(F("</label><label>"));
 
         int index = 0;
         memset(description, '\0', sizeof(description));
@@ -1126,13 +1278,21 @@ void list_files(EthernetClient client, bool print) {              // print = tru
           }
         }
         client.print(description);
-        client.print(F("'></input></p>"));
+        client.print(F("</label></div>"));
       }
     }
-    else debugln(entry.name());                                 // Print list of files to serial monitor
-    
+    else {
+      debugln(entry.name());                                     // Print list of files to serial monitor
+      sorted_files_list();
+    }
     entry.close();
   }
+}
+
+void sorted_files_list(){
+  // save file names to array
+  // sort array
+  
 }
 
 void decode_ethernet(EthernetClient client){
@@ -1144,7 +1304,7 @@ void decode_ethernet(EthernetClient client){
 
   if (first_html) {
     debugln("first html load");
-    update_html(client, 0);                                                   // Load main.html
+    update_html(client, 0, 0);                                                // Load main.html
     first_html = false;                                                       
     return;
   }
@@ -1164,7 +1324,7 @@ void decode_ethernet(EthernetClient client){
       char file_name[] = {val[0], val[1], '.', 't', 'x', 't'};                // File name with selected program number
       my_file = SD.open(file_name);
       if (my_file){                                                           // check if program # already exists on SD card
-        update_html(client, 2);                                               // Save.html page
+        // update_html(client, 2, 0);                                               // Save.html page
         save_flag = lcd_overwrite_program(val);                               // if exisits, overwrite yes/no?
       }
       else {
@@ -1245,23 +1405,68 @@ void decode_ethernet(EthernetClient client){
 
     debugln(" ");
     debugln("loading : main.html");
-    update_html(client, 0);                                                     // Update html with current program settings
+    update_html(client, 0, 0);                                                  // Update html with current program settings
   }
 
   else if (readString.indexOf("list_form=") > 0){ 
     debugln(" ");
     debugln("loading : list.html");
-    update_html(client, 1);                                                   // Load list.html 
+    update_html(client, 1, 0);                                                  // Load list.html 
   }
   else if (readString.indexOf("load_main=") > 0){ 
     debugln(" ");
     debugln("loading : main.html");
-    update_html(client, 0);                                                   // Load list.html 
+    update_html(client, 0, 0);                                                  // Load list.html 
   }
-  else if (readString.indexOf("save_descriptions=") > 0){                     // Update descriptions from list.html page
+  else if (readString.indexOf("program_load=") > 0){                            // Update descriptions from list.html page
     debugln(" ");
-    debugln("Saving descriptions to SD card");
-    // read desciptions and save to SD
+    debugln("Check if program exists and load program");
+    load_program(client);                                                       // Load selected program
+  }
+  else if (readString.indexOf("delete_program=") > 0){                          // Delete selected program
+    debugln(" ");
+    debugln("Delete program");  
+    delete_program();     
+    update_html(client, 0, 0);                                           
+  }
+  else{
+    update_html(client, 0, 0);                                                  // Load main.html, page refesh
+  }
+}
+
+void delete_program(){
+  
+}
+
+void load_program(EthernetClient client){
+  debugln("load program function");
+  int index = readString.indexOf("program_load=");
+  String val = readString.substring(index + 13);
+  debugln(val);
+  unsigned int length = val.length();
+  debugln(length);
+  char file_name[7] = "00.txt";                                         // Convert readString to file_name
+  debug("file name: ");
+  if (length < 2) file_name[1] = val[0];
+  else{
+    file_name[0] = val[0];
+    file_name[1] = val[1];
+  }
+  debugln(file_name);
+  my_file = SD.open(file_name);                                         // Try to open program file
+  if (my_file) {                                                        // Program exists if true
+    readString = "";                                                    // Reset readstring
+    int count = 0;
+    debugln("in while loop...");
+    while (my_file.available()){
+      char val = my_file.read();
+      if (val == '\n') count++;
+      readString += val;                                                // Save program data to readstring
+    }
+    count++;                                                            // Last line of txt is missing \n
+    my_file.close();
+    debugln("load program via html");
+    update_html(client, 2, count);                                      // If program is saved on SD, load program
   }
 }
 
@@ -1269,6 +1474,8 @@ bool lcd_overwrite_program(String program){
   static int menu_button_pressed;                                       // Variable to store the result of enum
   bool selection = false;                                               // true once user makes selection, ie presses the right button
   bool overwrite = false;                                               // true = overwrite
+
+  delay(100);                                   // TESTING
 
   lcd.clear();
   lcd.print("Program ");

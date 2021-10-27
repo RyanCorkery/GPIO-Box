@@ -11,8 +11,14 @@ void setup() {
     while (1);
   }
 
-
-  my_file = SD.open("04.txt");
+  SD.remove("01.txt");
+  SD.remove("02.txt");
+  SD.remove("03.txt");
+  SD.remove("04.txt");
+  SD.remove("05.txt");
+  SD.remove("10.txt");
+  
+  my_file = SD.open("02.txt");
 
   if (my_file){
     while (my_file.available()){

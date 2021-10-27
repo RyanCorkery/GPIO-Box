@@ -93,9 +93,15 @@ h1 {
     <input type="submit" name="list_form" value="Click to view the list of saved programs">
 </form>
 
+<iframe name="program_iframe" style="display: none;"></iframe>
+<form id="program_load" method="post" action="/" target="program_iframe" style="display: none;">
+    <input type="text" value="" id="program_submit">
+    <input type="submit">
+</form>
+
 <div class="grid-container">
-    <div class="program">Program Number: <input id="program_ui" onchange="update_program_number()"></div>
-    <div class="program">Program Speed:  <input id="speed_ui" onchange="update_program_speed()"></div>
+    <div class="program">Program Number: <input id="program_ui" value="" onchange="update_program_number()"></div>
+    <div class="program">Program Speed:  <input id="speed_ui" value="" onchange="update_program_speed()"></div>
     <div id="step_inputs">
         <div class="Labels">
             <div id="step_title">Step #</div>
@@ -147,7 +153,7 @@ h1 {
 
 <iframe name="iframe1" style="display:none;"></iframe>
 <form id="my_form" method="post" action="/" name="pins" target="iframe1" onsubmit="save_data()">
-    Program description:<input type="text" id="description" name="description" maxlength="100">Limit 100 characters<br>
+    Program description:<input type="text" value="" id="description" name="description" maxlength="100">Limit 100 characters<br>
     <input class="step_button" type="submit" value="Save program">
     <input type="text" id="program" class="hidden" name="program">
     <input type="text" id="speed" class="hidden" name="speed">
@@ -241,6 +247,8 @@ h1 {
     function update_program_number(){
         var program_number = document.getElementById("program_ui").value;
         document.getElementById("program").value = program_number;
+        document.getElementById("program_submit").value = program_number;
+        document.getElementById("program_load").submit();
     }
 
     function update_program_speed(){

@@ -93,9 +93,15 @@ h1 {
     <input type="submit" name="list_form" value="Click to view the list of saved programs">
 </form>
 
+<!-- <iframe name="program_iframe" style="display: none;"></iframe> -->
+<form id="program_load" method="post" action="/" style="display: none;">
+    <input type="text" value="" id="program_submit" name="program_load">
+    <input type="submit">
+</form>
+
 <div class="grid-container">
-    <div class="program">Program Number: <input id="program_ui" onchange="update_program_number()"></div>
-    <div class="program">Program Speed:  <input id="speed_ui" onchange="update_program_speed()"></div>
+    <div class="program">Program Number: <input id="program_ui" value="" onchange="update_program_number()"></div>
+    <div class="program">Program Speed:  <input id="speed_ui" value="" onchange="update_program_speed()"></div>
     <div id="step_inputs">
         <div class="Labels">
             <div id="step_title">Step #</div>
@@ -145,19 +151,33 @@ h1 {
 <input class="step_button" type="button" value="Add Step" onclick="add_step()">
 <input class="step_button" type="button" value="Remove Step" onclick="remove_step()"><br>
 
+<form id="delete_form" method="post" action="/">
+    <input type="submit" value="Delete Program" class="step_button">
+    <input type="text" id="program_number_delete" value='' name="delete_program" hidden>
+</form>
+
 <iframe name="iframe1" style="display:none;"></iframe>
 <form id="my_form" method="post" action="/" name="pins" target="iframe1" onsubmit="save_data()">
-    Program description:<input type="text" id="description" name="description" maxlength="100">Limit 100 characters<br>
+    Program description:<input type="text" value="" id="description" name="description" maxlength="100">Limit 100 characters<br>
     <input class="step_button" type="submit" value="Save program">
     <input type="text" id="program" class="hidden" name="program">
     <input type="text" id="speed" class="hidden" name="speed">
     <input id="form_data" type="text" name="step_0_data" value="00000000000000000000000000000000000000" class="hidden">
 </form>
 
-<input type="text" id="program_list" class="hidden">
+<input type="text" id="program_list" class="hidden" value="01-02-21">
 
 <script>
     function save_data(){
+        // Check if program exists
+        var program_number = document.getElementById("program_ui").value;
+        // if program # exists 
+        // alert, overwrite? Check IO box
+        if (program_number.length == 1) program_number = '0' + program_number;
+        if (document.getElementById("program_list").value.includes(program_number)){
+            if (confirm("This program exists. Make selection on IO box BEFORE clicking ok")){}
+        }
+
         var number_of_steps = document.getElementById("step_inputs").children.length - 1;                           // Count number of steps in program
 
         var inputs = document.getElementById("step_inputs");                                                        // Count number of checkboxes in HTML page (break / speed / analog inputs)
@@ -201,7 +221,8 @@ h1 {
         var count = document.getElementById("step_inputs").children.length;                                         // Check the number of steps in the HTML page
 
         if (count <= 20){                                                                                           // 20 = max steps allowed. Could change but will also have to change arduino code
-            var original = document.getElementById("step_0");                                                       // Clone step inputs from step_0
+            // var original = document.getElementById("step_0");                                                       // Clone step inputs from step_0
+            var original = document.getElementById("step_inputs").children[1];
             var clone = original.cloneNode(true);
             clone.id = count - 1;
             original.parentNode.appendChild(clone);                                                                 // Appned cloned step to the end of step inputs div
@@ -241,6 +262,16 @@ h1 {
     function update_program_number(){
         var program_number = document.getElementById("program_ui").value;
         document.getElementById("program").value = program_number;
+        document.getElementById("program_submit").value = program_number;
+        // if program # exists then submit
+        // alert if loading program, data will be lost
+        if (program_number.length == 1) program_number = '0' + program_number + '-';
+        else program_number = program_number + '-';
+        if (document.getElementById("program_list").value.includes(program_number)){
+            if (confirm("Load program? Current data inputs will be lost")){
+                document.getElementById("program_load").submit();
+            }
+        }
     }
 
     function update_program_speed(){

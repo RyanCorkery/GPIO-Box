@@ -87,6 +87,7 @@ void setup() {
     my_file.print('\n');
     my_file.print("00000000000000000000000000000000250000");
     my_file.print('\n');
+    my_file.print('\n');
     my_file.print("Default test program");
     my_file.close();
   }
