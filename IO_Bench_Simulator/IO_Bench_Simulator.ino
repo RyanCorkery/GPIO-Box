@@ -113,7 +113,8 @@ char* data[] = { data_step_0, data_step_1, data_step_2, data_step_3, data_step_4
 int data_steps;
 // declare data array as char* data[100], 100 may be overkill, desktop app will determine max number of steps in program
 
-char program_list[300] = {"00-"};
+char program_list[300] = {"00-01-"};
+String program_list_string = "";
 
 typedef enum menu_button_pressed {left, up, down, right} menu_button_pressed;       // Menu button options
 
@@ -125,6 +126,8 @@ String readString;                                                              
 byte mac[] = {0xA8, 0x61, 0x0A, 0xAE, 0x83, 0xB1};                                  // Must be unique for each GPIO box Arduino
 IPAddress ip(192, 168, 0, 116);                                                     // Must be unique for each GPIO box Arduino
 EthernetServer server(80);                                                          // (port 80 is default for HTTP):
+
+EthernetClient client_null;                                                         // Update html without client
 
 void setup() {
   Serial.begin(9600);
@@ -195,7 +198,8 @@ void setup() {
   debug("server is at ");
   debugln(Ethernet.localIP());
 
-  // list_files(false);
+  list_files(client_null, false);
+  debugln(program_list_string);
 }                                                                                 // END SETUP()
 
 void loop() {
@@ -1015,7 +1019,10 @@ void update_html(EthernetClient client, int page, int count){
     // get sorted list of saved files
     // print list to hidden text input
     // print number followed by - ie 01-02-...
-    client.print(program_list);                   // TEST data
+    // client.print(program_list);                   // TEST data
+    list_files(client_null, false);
+    client.print(program_list_string);
+    //
     my_file = SD.open("htmlB.txt");                                // open html file
     if (my_file){
       debugln("htmlB file opened");
@@ -1168,7 +1175,8 @@ void update_html(EthernetClient client, int page, int count){
     }
     else debugln("html6 failed to open");
     // Program list
-    client.print(program_list);                   // TEST data
+    // client.print(program_list);                   // TEST data
+    client.print(program_list_string);  
     //
     my_file = SD.open("html7.txt");                               // open html file
     if (my_file){
@@ -1186,6 +1194,7 @@ void update_html(EthernetClient client, int page, int count){
 
 void list_files(EthernetClient client, bool print) {              // print = true -> print html content to client. False -> created sorted list
   my_file = SD.open("/");
+  program_list_string = "";
   while (true){
     File entry =  my_file.openNextFile();
     if (! entry) break;                                           // no more files
@@ -1217,7 +1226,13 @@ void list_files(EthernetClient client, bool print) {              // print = tru
       }
     }
     else {
-      debugln(entry.name());                                     // Print list of files to serial monitor
+      // debugln(entry.name());                                     // Print list of files to serial monitor
+      if (isDigit(entry.name()[0])) {
+        char *str = entry.name();
+        program_list_string += str[0];
+        program_list_string += str[1];
+        program_list_string += "-";
+      }
       sorted_files_list();
     }
     entry.close();
@@ -1227,7 +1242,7 @@ void list_files(EthernetClient client, bool print) {              // print = tru
 void sorted_files_list(){
   // save file names to array
   // sort array
-  
+  // program_list_string += 
 }
 
 void decode_ethernet(EthernetClient client){
@@ -1336,6 +1351,9 @@ void decode_ethernet(EthernetClient client){
 
       SD_write();                                                               // Save program to SD card. SD_write()
       SD_read(program_number);                                                  // Read and load new program
+
+      list_files(client_null, false);                                           // Update program list
+      debugln(program_list_string);
     }
 
     debugln(" ");
@@ -1358,10 +1376,12 @@ void decode_ethernet(EthernetClient client){
     debugln("Check if program exists and load program");
     load_program(client);                                                       // Load selected program
   }
-  else if (readString.indexOf("delete_program=") > 0){                          // Delete selected program
+  else if (readString.indexOf("delete=") > 0){                                  // Delete selected program
     debugln(" ");
     debugln("Delete program");  
     delete_program();     
+    list_files(client_null, false);                                             // Update program list
+    debugln(program_list_string);
     update_html(client, 0, 0);                                           
   }
   else{
@@ -1370,7 +1390,13 @@ void decode_ethernet(EthernetClient client){
 }
 
 void delete_program(){
-  
+  int index = readString.indexOf("delete=");
+  String val = readString.substring(index + 7);
+  char file_name[7] = "00.txt";                                         // Convert readString to file_name
+  file_name[0] = val[0];
+  file_name[1] = val[1];
+
+  SD.remove(file_name);                                                 // Delete file
 }
 
 void load_program(EthernetClient client){

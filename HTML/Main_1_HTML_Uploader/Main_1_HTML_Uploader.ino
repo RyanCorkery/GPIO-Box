@@ -103,11 +103,14 @@ my_file.println(F("    margin: 5px;"));
 my_file.println(F("    display: flex;"));
 my_file.println(F("    width: auto;"));
 my_file.println(F("}"));
+my_file.println(F("#page_name{"));
+my_file.println(F("    visibility: hidden;"));
+my_file.println(F("}"));
 my_file.println(F("</style>"));
 my_file.println(F("</head>"));
 my_file.println(F(""));
 my_file.println(F(""));
-my_file.println(F("<body>"));
+my_file.println(F("<body id='page_name'>"));
 my_file.println(F(""));
 my_file.println(F("<h1>GPIO BOX REV 2</h1>"));
 my_file.println(F(""));
@@ -121,7 +124,7 @@ my_file.println(F("    <input type='submit'>"));
 my_file.println(F("</form>"));
 my_file.println(F(""));
 my_file.println(F("<div class='grid-container'>"));
-my_file.println(F("    <div class='program'>Program Number: <input id='program_ui' value='"));
+my_file.println(F("    <div class='program'><label>Program Number:</label><input id='program_ui' value='"));
     // ******************************** //
     // End copy and paste
     // ******************************** //

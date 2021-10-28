@@ -21,6 +21,9 @@ void setup() {
     // Copy and past html_Arduino below
     // ******************************** //
 my_file.println(F("'>"));
+my_file.println(F("<form id='delete_form' method='post' action='/'>"));
+my_file.println(F("    <input type='text' id='program_number_delete' value='' name='delete' hidden>"));
+my_file.println(F("</form>"));
 my_file.println(F(""));
 my_file.println(F("<script>"));
 my_file.println(F("    function save_data(){"));
@@ -113,18 +116,19 @@ my_file.println(F("    }"));
 my_file.println(F(""));
 my_file.println(F("    function update_program_number(){"));
 my_file.println(F("        var program_number = document.getElementById('program_ui').value;"));
+my_file.println(F("        var raw_program_number = program_number;"));
 my_file.println(F("        document.getElementById('program').value = program_number;"));
 my_file.println(F("        document.getElementById('program_submit').value = program_number;"));
-
+my_file.println(F("        document.getElementById('program_number_delete').value = program_number;"));
 my_file.println(F("if (program_number.length == 1) program_number = '0' + program_number + '-';"));
 my_file.println(F("else program_number = program_number + '-';"));
 my_file.println(F("        if (document.getElementById('program_list').value.includes(program_number)){"));
-my_file.println(F("            if (confirm('Load program? Current data inputs will be lost')){"));
+my_file.println(F("            if (confirm('Load program ' + raw_program_number + '? Current data inputs will be lost')){"));
 my_file.println(F("                document.getElementById('program_load').submit();"));
 my_file.println(F("            }"));
 my_file.println(F("        }"));
-
 my_file.println(F("    }"));
+
 my_file.println(F(""));
 my_file.println(F("    function update_program_speed(){"));
 my_file.println(F("        var program_speed = document.getElementById('speed_ui').value;"));
@@ -135,6 +139,25 @@ my_file.println(F("    function load_list(){"));
 my_file.println(F("        var list = document.getElementById('program_list').value;"));
 my_file.println(F("        window.open('list.html?variable=' + list, '_self');"));
 my_file.println(F("    }"));
+
+my_file.println(F("    function delete_program(){"));
+my_file.println(F("        var program_number = document.getElementById('program_ui').value;"));
+my_file.println(F("        var raw_program_number = program_number;"));
+my_file.println(F("document.getElementById('program_number_delete').value = program_number;"));
+my_file.println(F("if (program_number.length == 1) program_number = '0' + program_number + '-';"));
+my_file.println(F("else program_number = program_number + '-';"));
+my_file.println(F("        if (document.getElementById('program_list').value.includes(program_number)){"));
+my_file.println(F("            if (confirm('Delete program ' + raw_program_number)){"));
+my_file.println(F("                document.getElementById('delete_form').submit();"));
+my_file.println(F("            }"));
+my_file.println(F("        }"));
+my_file.println(F("    }"));
+
+my_file.println(F("window.addEventListener('load', page_load());"));
+my_file.println(F("function page_load(){"));
+my_file.println(F("document.getElementById('page_name').style.visibility = 'visible';"));
+my_file.println(F("}"));
+
 my_file.println(F("</script>"));
 my_file.println(F("</body>"));
 my_file.println(F("</html>"));
