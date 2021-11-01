@@ -22,8 +22,9 @@ void setup() {
     // ******************************** //
 my_file.println(F("' id='description' name='description' maxlength='100'>Limit 100 characters<br>"));
 my_file.println(F("    <input class='step_button' type='submit' value='Save program'>"));
-my_file.println(F("    <input type='text' id='program' class='hidden' name='program'>"));
-my_file.println(F("    <input type='text' id='speed' class='hidden' name='speed'>"));
+my_file.println(F("    <input type='text' id='program' class='hidden' name='program' value='"));
+//my_file.println(F("    <input type='text' id='program' class='hidden' name='program' value=''>"));
+//my_file.println(F("    <input type='text' id='speed' class='hidden' name='speed' value=''>"));
 
     // ******************************** //
     // End copy and paste

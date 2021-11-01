@@ -32,7 +32,7 @@ my_file.println(F("    <input type='button' value='Delete Program' class='step_b
 
 my_file.println(F("<iframe name='iframe1' style='display:none;'></iframe>"));
 my_file.println(F("<form id='my_form' method='post' action='/' name='pins' target='iframe1' onsubmit='save_data()'>"));
-my_file.println(F("    Program description:<input type='text' value='"));
+my_file.println(F("    <label>Program description:</label><input type='text' value='"));
     // ******************************** //
     // End copy and paste
     // ******************************** //

@@ -652,21 +652,25 @@ void menu() {                                       // UI button pressed, execut
 }
 
 int menu_read_button_pressed() {
+  unsigned long debounce = 350;
   if (digitalRead(menu_left)) {
-    delay(300);                                                     // Needs a bit of debounce.... (check schmitt trigger)
+    delay(debounce);                                                // Needs a bit of debounce.... (check schmitt trigger)
     return left;                                                    // Left
   }
   else if (digitalRead(menu_up)) {
-    delay(300);                                                     // Needs a bit of debounce.... (check schmitt trigger)
+    delay(debounce);                                                // Needs a bit of debounce.... (check schmitt trigger)
     return up;                                                      // Up
   }
   else if (digitalRead(menu_down)) {
-    delay(300);                                                     // Needs a bit of debounce.... (check schmitt trigger)
+    delay(debounce);                                                // Needs a bit of debounce.... (check schmitt trigger)
     return down;                                                    // Down
   }
   else if (digitalRead(menu_right)) {
-    delay(300);                                                     // Needs a bit of debounce.... (check schmitt trigger)
+    delay(debounce);                                                // Needs a bit of debounce.... (check schmitt trigger)
     return right;                                                   // Right
+  }
+  else if (digitalRead(menu_run)) {
+    delay(debounce);                                                // Needs a bit of debounce.... (check schmitt trigger)
   }
 }
 
@@ -738,6 +742,7 @@ void program_mode() {                                               // Loop thro
       program_time = millis();
     }
   }
+  else step = 0;
 }
 
 void latency_manual() {
@@ -1092,7 +1097,7 @@ void update_html(EthernetClient client, int page, int count){
     // program speed
     client.print(readString.substring(2,6));
     //
-    my_file = SD.open("html3.txt");                                // open html file
+    my_file = SD.open("html3.txt");                               // open html file
     if (my_file){
       debugln("html3 file opened");
       while(my_file.available()){                                 // Read html file
@@ -1117,9 +1122,13 @@ void update_html(EthernetClient client, int page, int count){
         client.print("></div>");
       }       
       for (int b = 0; b < 10; b++){
-        client.print("<div><input type='text' value='");
-        client.print(readString.substring(index + 8 + 3*b, index + 8 + 3*b + 3));
-        client.print("'></div>");
+        client.print("<div><input type='number' value='");
+        // client.print(readString.substring(index + 8 + 3*b, index + 8 + 3*b + 3));
+        String str = readString.substring(index + 8 + 3*b, index + 8 + 3*b + 3);
+        float val = str.toFloat();
+        val = map(val, 0, 255, 0, 20);
+        client.print(val, 1);
+        client.print("' onchange='limit_break(this)'></div>");
       }
 
       client.print("</div>");
@@ -1137,8 +1146,21 @@ void update_html(EthernetClient client, int page, int count){
     }
     else debugln("html4 failed to open");
     // Description
-    int index = 19 + (count - 4)*38;                                     // First char in last line in file
-    client.print(readString.substring(index));
+    // int index = 19 + (count - 4)*38;                              // First char in last line in file
+    // client.print(readString.substring(index));
+
+    bool first = false;
+    int index2 = 0;
+    while(1){
+      char val2 = readString[index2];
+      if (val2 != '\n') {
+        index2++;
+        first = false;
+      }
+      else if (val2 == '\n' && first == false) first == true;
+      else if (val2 == '\n' && first == true) break;
+    }
+    client.print(readString.substring(index2));
     //
     my_file = SD.open("html5.txt");                               // open html file
     if (my_file){
@@ -1152,6 +1174,14 @@ void update_html(EthernetClient client, int page, int count){
     }
     else debugln("html5 failed to open");
     // step_data_x hidden 
+    client.print(readString.substring(0,2));                      // Program nuber
+    client.print("'>");
+
+    client.print("<input type='text' id='speed' class='hidden' name='speed' value='");    
+    client.print(readString.substring(2,6));                      // Program speed
+    client.print("'>");
+
+
     for (int i = 0; i < count - 4; i++){                          // 4 lines are program number, speed, blank, description
       client.print("<input id='form_data' type='text' name='step_");
       client.print(i);
@@ -1159,6 +1189,7 @@ void update_html(EthernetClient client, int page, int count){
 
       int index = 7 + i*39;                                       // First char in line
       for (int i = 0; i < 38; i++) client.print(readString[index + i]);
+      
 
       client.print("' class='hidden'>");
     }

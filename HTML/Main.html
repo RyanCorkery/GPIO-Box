@@ -4,6 +4,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
 <title>GPIO Box REV 2</title>
 <style>
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {                       
+  -moz-appearance: textfield;
+}
 body{
     display: flex;
     flex-direction: column;
@@ -45,7 +53,7 @@ h1 {
     text-align: center;
 }
 .step > div > input{
-    width: 35px;
+    width: 40px;
     margin: auto;
 }
 #my_form{
@@ -60,7 +68,7 @@ h1 {
     margin: 5px;
 }
 .hidden{
-    visibility: hidden;
+    /* visibility: hidden; */
 }
 .program{
     margin: 5px;
@@ -102,8 +110,8 @@ h1 {
 </form>
 
 <div class="grid-container">
-    <div class="program"><label>Program Number:</label><input id="program_ui" value="" onchange="update_program_number()"></div>
-    <div class="program"><label>Program Speed:</label><input id="speed_ui" value="" onchange="update_program_speed()"></div>
+    <div class="program"><label>Program Number:</label><input type="number" id="program_ui" value="" onchange="update_program_number(this)"></div>
+    <div class="program"><label>Program Speed:</label><input type="number" id="speed_ui" value="" onchange="update_program_speed(this)"></div>
     <div id="step_inputs">
         <div class="Labels">
             <div id="step_title">Step #</div>
@@ -136,16 +144,16 @@ h1 {
             <div><input type="checkbox"></div>
             <div><input type="checkbox"></div>
             <div><input type="checkbox"></div>
-            <div><input type="text" value="0"></div>
-            <div><input type="text" value="0"></div>
-            <div><input type="text" value="0"></div>
-            <div><input type="text" value="0"></div>
-            <div><input type="text" value="0"></div>
-            <div><input type="text" value="0"></div>
-            <div><input type="text" value="0"></div>
-            <div><input type="text" value="0"></div>
-            <div><input type="text" value="0"></div>
-            <div><input type="text" value="0"></div>
+            <div><input type="number" value="0" onchange="limit_break(this)"></div>
+            <div><input type="number" value="0" onchange="limit_break(this)"></div>
+            <div><input type="number" value="0" onchange="limit_break(this)"></div>
+            <div><input type="number" value="0" onchange="limit_break(this)"></div>
+            <div><input type="number" value="0" onchange="limit_break(this)"></div>
+            <div><input type="number" value="0" onchange="limit_break(this)"></div>
+            <div><input type="number" value="0" onchange="limit_break(this)"></div>
+            <div><input type="number" value="0" onchange="limit_break(this)"></div>
+            <div><input type="number" value="0" onchange="limit_break(this)"></div>
+            <div><input type="number" value="0" onchange="limit_break(this)"></div>
         </div>
     </div>
 </div>
@@ -157,14 +165,14 @@ h1 {
 
 <iframe name="iframe1" style="display:none;"></iframe>
 <form id="my_form" method="post" action="/" name="pins" target="iframe1" onsubmit="save_data()">
-    Program description:<input type="text" value="" id="description" name="description" maxlength="100">Limit 100 characters<br>
+    <label>Program description:</label><input type="text" value="" id="description" name="description" maxlength="100">Limit 100 characters<br>
     <input class="step_button" type="submit" value="Save program">
-    <input type="text" id="program" class="hidden" name="program">
-    <input type="text" id="speed" class="hidden" name="speed">
+    <input type="text" id="program" class="hidden" name="program" value="">
+    <input type="text" id="speed" class="hidden" name="speed" value="">
     <input id="form_data" type="text" name="step_0_data" value="00000000000000000000000000000000000000" class="hidden">
 </form>
 
-<input type="text" id="program_list" class="hidden" value="01-02-21">
+<input type="text" id="program_list" class="hidden" value="01-02-21-">
 
 <form id="delete_form" method="post" action="/">
     <input type="text" id="program_number_delete" value='' name="delete" hidden>
@@ -174,11 +182,16 @@ h1 {
     function save_data(){
         // Check if program exists
         var program_number = document.getElementById("program_ui").value;
+        var file_list = document.getElementById("program_list").value;
         // if program # exists 
         // alert, overwrite? Check IO box
         if (program_number.length == 1) program_number = '0' + program_number;
-        if (document.getElementById("program_list").value.includes(program_number)){
-            if (confirm("This program exists. Make selection on IO box BEFORE clicking ok")){}
+        if (file_list.includes(program_number)){
+            if (confirm("This program exists. Make selection on IO box. Click ok to proceeds")){}
+        }
+        else{
+            var file_list = file_list.concat(program_number, "-");
+            document.getElementById("program_list").value = file_list;
         }
 
         var number_of_steps = document.getElementById("step_inputs").children.length - 1;                           // Count number of steps in program
@@ -198,10 +211,12 @@ h1 {
                 }
             }
             for (var i = 0; i < 10; i++) {                                                                          // Loop through speed and analog text boxes in each step
-                if (inputs[i+x*18+8].type === 'text') {
+                if (inputs[i+x*18+8].type === 'number') {
                     value = inputs[i+x*18+8].value;                                                                 // Save text box value
-                    
-                    for (var n = 2; n>=0; n--){                                                                     // Check each digit of value (0 - 255)
+                    // map value 0-20 -> 0->255
+                    value = map_value(value);
+
+                    for (var n = 2; n >= 0; n--){                                                                     // Check each digit of value (0 - 255)
                         if (value[n]){                                                                              // If digit exists, update step data string
                             current_data = replaceChar(current_data, value[n], i*3+8+n);
                         }
@@ -262,8 +277,11 @@ h1 {
         }
     }
 
-    function update_program_number(){
+    function update_program_number(selectObject){
+        limit_input(selectObject, 2);
+
         var program_number = document.getElementById("program_ui").value;
+        if (program_number == "") return;
         var raw_program_numer = program_number;
         document.getElementById("program").value = program_number;
         document.getElementById("program_submit").value = program_number;
@@ -279,25 +297,25 @@ h1 {
         }
     }
 
-    function update_program_speed(){
+    function update_program_speed(selectObject){
+        limit_input(selectObject, 4);
+
         var program_speed = document.getElementById("speed_ui").value;
         document.getElementById("speed").value = program_speed;
     }
 
-    function load_list(){
-        var list = document.getElementById("program_list").value;
-        window.open("list.html?variable=" + list, "_self");
-    }
-
     function delete_program(){
         var program_number = document.getElementById("program_ui").value;
-        var raw_program_numer = program_number;
+        var raw_program_number = program_number;
+        var file_list = document.getElementById("program_list").value;
         if (program_number.length == 1) program_number = '0' + program_number + '-';
         else program_number = program_number + '-';
-        console.log(program_number);
         if (document.getElementById("program_list").value.includes(program_number)){
-            if (confirm("Delete program " + raw_program_number)){
+            if (confirm("Delete program " + raw_program_number +"?")){
                 document.getElementById("delete_form").submit();
+
+                var file_list = file_list.replace(program_number, "");
+                document.getElementById("program_list").value = file_list;
             }
         }
     }
@@ -307,6 +325,54 @@ h1 {
         console.log("page fully loaded");
         document.getElementById("page_name").style.visibility = "visible";
         }
+
+    function limit_break(selectObject){
+        let max_length = 3;
+        var val = selectObject.value;
+        if (String(val).length > max_length - 1) {
+            selectObject.value = parseFloat(selectObject.value).toFixed(max_length-2);
+        }
+        if (val < 4) selectObject.value = 0;
+        else if (val > 20) selectObject.value = 20;
+    }
+
+    function limit_input(selectObject, max_length){
+        selectObject.value = parseFloat(selectObject.value).toFixed(0);
+        var val = selectObject.value;
+        if (String(val).length > max_length) {
+            var x;
+            if (max_length == 2) x = 100;
+            else if (max_length == 4) x = "10 000";
+            alert("Enter a number less than " + x);
+            selectObject.value = "";
+        }
+        else if (val <= 0 && max_length == 4){
+            alert("Enter a speed greater than 0");
+            selectObject.value = "";
+        }
+        else if (val < 0 && max_length == 2){
+            alert("Enter program number between 0 - 99");
+            selectObject.value = "";
+        }
+    }
+
+    // function map_value(x, in_min, in_max, out_min, out_max){
+    function map_value(x){
+        var val_map = String((x - 0) * (255 - 0) / (20 - 0) + 0);
+        var val = "";
+        if (val_map.length == 3) val = val_map;
+        else if (val_map.length == 2){
+            val = val.concat("0");
+            val = val.concat(val_map[0]);
+            val = val.concat(val_map[1]);
+        }
+        else if (val_map.length == 1){
+            val = val.concat("0");
+            val = val.concat("0");
+            val = val.concat(val_map[0]);
+        }
+        return val;
+    }
 </script>
 </body>
 </html>

@@ -26,6 +26,16 @@ my_file.println(F("<meta http-equiv='Content-Language' content='nl'>"));
 my_file.println(F("<meta http-equiv='Content-Type' content='text/html; charset=windows-1252'>"));
 my_file.println(F("<title>GPIO Box REV 2</title>"));
 my_file.println(F("<style>"));
+
+my_file.println(F("input::-webkit-outer-spin-button,"));
+my_file.println(F("input::-webkit-inner-spin-button {"));
+my_file.println(F("  -webkit-appearance: none;"));
+my_file.println(F("  margin: 0;"));
+my_file.println(F("}"));
+my_file.println(F("input[type=number] {    "));                   
+my_file.println(F("  -moz-appearance: textfield;"));
+my_file.println(F("}"));
+
 my_file.println(F("body{"));
 my_file.println(F("    display: flex;"));
 my_file.println(F("    flex-direction: column;"));
