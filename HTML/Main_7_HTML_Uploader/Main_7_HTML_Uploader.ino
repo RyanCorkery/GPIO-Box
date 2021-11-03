@@ -32,7 +32,8 @@ my_file.println(F("var program_number = document.getElementById('program_ui').va
 my_file.println(F("        var file_list = document.getElementById('program_list').value;"));
 my_file.println(F("        if (program_number.length == 1) program_number = '0' + program_number;"));
 my_file.println(F("        if (document.getElementById('program_list').value.includes(program_number)){"));
-my_file.println(F("            if (confirm('This program exists. Make selection on IO box BEFORE clicking ok')){}"));
+my_file.println(F("            if (program_number == '00') alert('Program 0 can not be modified');"));
+my_file.println(F("            else alert('Program ' + program_number + ' exists. Overwrite? Make selection on IO box. Click ok to proceed');"));
 my_file.println(F("        }"));
 my_file.println(F("       else{"));
 my_file.println(F("           var file_list = file_list.concat(program_number, '-');"));
@@ -67,8 +68,12 @@ my_file.println(F("                        }"));
 my_file.println(F("                    }"));
 my_file.println(F("                }"));
 my_file.println(F("            }"));
-my_file.println(F("            document.getElementById('my_form').children[x+5].value = current_data;"));
+my_file.println(F("            document.getElementById('my_form').children[x+6].value = current_data;"));
 my_file.println(F("        }"));
+
+my_file.println(F("        var description = document.getElementById('description');"));
+my_file.println(F("        if (description.value == '') description.value = ' ';"));
+
 my_file.println(F("    }"));
 my_file.println(F(""));
 my_file.println(F("    function replaceChar(origString, replaceChar, index) {"));
@@ -113,7 +118,8 @@ my_file.println(F("        var count = document.getElementById('step_inputs').ch
 my_file.println(F(""));
 my_file.println(F("        if (count > 2){                                                                                                                                    "));
 my_file.println(F("            let input = document.getElementById('step_inputs');                                                                     "));
-my_file.println(F("            input.removeChild(input.lastChild);"));
+//my_file.println(F("            input.removeChild(input.lastChild);"));
+my_file.println(F("            input.removeChild(input.lastElementChild);"));
 my_file.println(F(""));
 my_file.println(F("            let data = document.getElementById('my_form');                                                                             "));
 my_file.println(F("            data.removeChild(data.lastChild);   "));

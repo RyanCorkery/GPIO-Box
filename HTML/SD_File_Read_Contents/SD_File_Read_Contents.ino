@@ -13,7 +13,7 @@ void setup() {
 
 
   
-  my_file = SD.open("04.txt");
+  my_file = SD.open("02.txt");
 
   if (my_file){
     while (my_file.available()){

@@ -52,12 +52,11 @@ void setup() {
 //    my_file.print('\n');
 //    my_file.print("Default test program");
 
-    my_file.print(0);                                           // Program #
-    my_file.print(0);
+    my_file.print("00");                                           // Program #
 
     my_file.print('\n');
 
-    my_file.print("500");                                      // Program speed. Step time [ms]
+    my_file.print("0500");                                      // Program speed. Step time [ms]
 
     my_file.print('\n');
 

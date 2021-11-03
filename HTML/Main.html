@@ -17,8 +17,12 @@ body{
     flex-direction: column;
 }
 h1 { 
+    margin-top: 0;
     text-align: center;
     border-bottom: 2px solid darkslategray;
+}
+#list_form{
+    margin-bottom: 0;
 }
 .grid-container{
     padding: 15px;
@@ -68,10 +72,10 @@ h1 {
     margin: 5px;
 }
 .hidden{
-    /* visibility: hidden; */
+    visibility: hidden;
 }
 .program{
-    margin: 5px;
+    margin: 5px 5px 0 0;
 }
 #program_ui{
     margin-left: 10px;
@@ -187,7 +191,8 @@ h1 {
         // alert, overwrite? Check IO box
         if (program_number.length == 1) program_number = '0' + program_number;
         if (file_list.includes(program_number)){
-            if (confirm("This program exists. Make selection on IO box. Click ok to proceeds")){}
+            if (program_number == "00") alert("Program 0 can not be modified");
+            else alert("Program " + program_number + " exists. Overwrite? Make selection on IO box. Click ok to proceed");
         }
         else{
             var file_list = file_list.concat(program_number, "-");
@@ -223,8 +228,11 @@ h1 {
                     }
                 }
             }
-            document.getElementById("my_form").children[x+5].value = current_data;
+            document.getElementById("my_form").children[x+6].value = current_data;
         }
+
+        var description = document.getElementById("description");
+        if (description.value == '') description.value = ' ';
     }
 
     function replaceChar(origString, replaceChar, index) {
@@ -270,7 +278,8 @@ h1 {
 
         if (count > 2){                                                                                             // Leave at least one step on HTML page
             let input = document.getElementById("step_inputs");                                                     // Remove inputs
-            input.removeChild(input.lastChild);
+            // input.removeChild(input.lastChild);
+            input.removeChild(input.lastElementChild);
 
             let data = document.getElementById("my_form");                                                          // Remove step data
             data.removeChild(data.lastChild);   
@@ -312,6 +321,7 @@ h1 {
         else program_number = program_number + '-';
         if (document.getElementById("program_list").value.includes(program_number)){
             if (confirm("Delete program " + raw_program_number +"?")){
+                document.getElementById("program_number_delete").value = document.getElementById("program").value;
                 document.getElementById("delete_form").submit();
 
                 var file_list = file_list.replace(program_number, "");
