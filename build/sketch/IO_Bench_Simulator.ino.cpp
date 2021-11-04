@@ -12,7 +12,7 @@
 #include <Ethernet.h>
 
 // Debug
-#define DEBUG 1
+#define DEBUG 0
 
 #if DEBUG == 1
 #define debug(x) Serial.print(x)
@@ -149,50 +149,54 @@ void lcd_update_program_speed(int program_spd, bool refresh);
 void lcd_update_loop_mode();
 #line 350 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void menu();
-#line 654 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 657 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 int menu_read_button_pressed();
-#line 677 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 680 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void switch_mode();
-#line 695 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 698 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void manual_mode();
-#line 713 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 716 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void program_mode();
-#line 750 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 757 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+int calibrate_output(int val);
+#line 778 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void latency_manual();
-#line 760 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 788 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void latency_automatic();
-#line 774 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 802 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void latency_test();
-#line 798 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 826 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void latency_running_state();
-#line 809 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 837 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void latency_no_response();
-#line 816 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 844 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void latency_result(long time);
-#line 824 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 852 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void output_reset();
-#line 834 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 862 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void SD_write();
-#line 907 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 935 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void SD_read(int program_num);
-#line 997 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 1025 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void menu_pressed();
-#line 1001 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 1029 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void ethernet();
-#line 1035 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 1063 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void update_html(EthernetClient client, int page, int count);
-#line 1256 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 1284 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void list_files(EthernetClient client, bool print);
-#line 1303 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 1331 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void sorted_files_list();
-#line 1309 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 1337 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void decode_ethernet(EthernetClient client);
-#line 1455 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 1483 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void delete_program();
-#line 1477 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 1505 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void load_program(EthernetClient client);
-#line 1509 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 1537 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 bool lcd_overwrite_program(String program);
+#line 1587 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+float map_float(float x, float in_min, float in_max, float out_min, float out_max);
 #line 132 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void setup() {
   Serial.begin(9600);
@@ -435,7 +439,7 @@ void menu() {                                       // UI button pressed, execut
   if (digitalRead(menu_run)) {                                          // Program Start/Stop button pressed
   switch(mode){
     case 0:
-      Serial.println("Start / Stop Program");
+      debugln("Start / Stop Program");
       program_run = !program_run;                                       // Toggle start stop program
       if (!program_run) output_reset();                                   
       break;
@@ -452,7 +456,7 @@ void menu() {                                       // UI button pressed, execut
     switch (index_layer) {
     case 0:                                                             // Layer 0 = Enter menu
       index_layer++;                                                    // Step into next menu layer
-      Serial.println("Change Mode");                                    // Wake UI
+      debugln("Change Mode");                                    // Wake UI
       index_layer_1_option = 0;                                         // Reset layer 1 index option
       index_layer_2_option = 0;                                         // Reset layer 2 index option
       program_number_selection = program_number;                        // Reset menu
@@ -464,24 +468,24 @@ void menu() {                                       // UI button pressed, execut
       switch (menu_button_pressed) {
       case left:
         index_layer--;                                                  // Step into previous menu layer (go back)
-        Serial.print("Back to running UI, Mode: ");                     // Reset UI to running information  
-        Serial.println(mode);
+        debug("Back to running UI, Mode: ");                     // Reset UI to running information  
+        debugln(mode);
         lcd_update_running();                                           // Update LCD running display
         break;
       case up:
         if (index_layer_1_option > 0 && mode ==0) index_layer_1_option--;             // Decrement through options. Only increment option when in program mode. No need to change these settings unless we are in program mode
 
-        if (index_layer_1_option == 0) Serial.println("CHANGE MODE");
-        else if (index_layer_1_option == 1) Serial.println("CHANGE PROGRAM");
-        else if (index_layer_1_option == 2) Serial.println("CHANGE PROGRAM SPEED");
+        if (index_layer_1_option == 0) debugln("CHANGE MODE");
+        else if (index_layer_1_option == 1) debugln("CHANGE PROGRAM");
+        else if (index_layer_1_option == 2) debugln("CHANGE PROGRAM SPEED");
         lcd_update_layer_1_selection(index_layer_1_option);                           // Layer 1 LCD menu
         break;
       case down:
         if (index_layer_1_option < 3 && mode == 0) index_layer_1_option++;            // Increment through options. Only increment option when in program mode. No need to change these settings unless we are in program mode
 
-        if (index_layer_1_option == 0) Serial.println("CHANGE MODE");
-        else if (index_layer_1_option == 1) Serial.println("CHANGE PROGRAM");
-        else if (index_layer_1_option == 2) Serial.println("CHANGE PROGRAM SPEED");
+        if (index_layer_1_option == 0) debugln("CHANGE MODE");
+        else if (index_layer_1_option == 1) debugln("CHANGE PROGRAM");
+        else if (index_layer_1_option == 2) debugln("CHANGE PROGRAM SPEED");
         lcd_update_layer_1_selection(index_layer_1_option);                           // Layer 1 LCD menu
         break;
       case right:
@@ -489,29 +493,29 @@ void menu() {                                       // UI button pressed, execut
         switch (index_layer_1_option) {
           case 0:
             if (mode == 0) {
-              Serial.println("Program Mode");                           // Display current mode
+              debugln("Program Mode");                           // Display current mode
               index_layer_2_option = 0;
             }
             else if (mode == 1) {
-              Serial.println("Manual Mode");                           // Display current mode
+              debugln("Manual Mode");                           // Display current mode
               index_layer_2_option = 1;
             }
             else if (mode == 2) {
-              Serial.println("Latency Mode Manual");                  // Display current mode
+              debugln("Latency Mode Manual");                  // Display current mode
               index_layer_2_option = 2;
             }
             else if (mode == 3) {
-              Serial.println("Latency Mode Automatic");               // Display current mode
+              debugln("Latency Mode Automatic");               // Display current mode
               index_layer_2_option = 3;
             }
             lcd_update_mode_selection(index_layer_2_option);          // Update LCD menu
             break;
           case 1:
-            Serial.println(program_number);                           // Display current program number
+            debugln(program_number);                           // Display current program number
             lcd_update_program_number(program_number_selection);
             break;
           case 2:
-            Serial.println(program_speed);                            // Display current program speed
+            debugln(program_speed);                            // Display current program speed
             lcd_update_program_speed(program_speed_selection, true);
             break;
           case 3:
@@ -526,10 +530,10 @@ void menu() {                                       // UI button pressed, execut
       switch (menu_button_pressed) {
       case left:
         index_layer--;                                              // Step into previous menu layer (go back)
-        if (index_layer_1_option == 0) Serial.println("CHANGE MODE");
+        if (index_layer_1_option == 0) debugln("CHANGE MODE");
         if (mode == 0) {
-          if (index_layer_1_option == 1) Serial.println("CHANGE PROGRAM");
-          else Serial.println("CHANGE PROGRAM SPEED");
+          if (index_layer_1_option == 1) debugln("CHANGE PROGRAM");
+          else debugln("CHANGE PROGRAM SPEED");
         }
         lcd_update_layer_1_selection(index_layer_1_option);         // Layer 1 LCD menu
         break;
@@ -540,28 +544,28 @@ void menu() {                                       // UI button pressed, execut
 
           switch (index_layer_2_option) {
           case 0:
-            Serial.println("Program Mode");                     
+            debugln("Program Mode");                     
             index_layer_2_option = 0;                               // Mode to select = program
             break;
           case 1:
-            Serial.println("Manual Mode");
+            debugln("Manual Mode");
             index_layer_2_option = 1;                               // Mode to select = manual
             break;
           case 2:
-            Serial.println("Latency Mode Manual");
+            debugln("Latency Mode Manual");
             index_layer_2_option = 2;                               // Mode to select = latency mode manual
             break;
           case 3:
-            Serial.println("Latency Mode Automatic");
+            debugln("Latency Mode Automatic");
             index_layer_2_option = 3;                               // Mode to select = latency mode automatic                        
             break;
           }
-          Serial.println(index_layer_2_option);
+          debugln(index_layer_2_option);
           lcd_update_mode_selection(index_layer_2_option);          // Update LCD menu
           break;
         case 1:                                                     // PROGRAM NUMBER selection
           if (program_number_selection < 99) program_number_selection++;        // Increase program number
-          Serial.println(program_number_selection);
+          debugln(program_number_selection);
           lcd_update_program_number(program_number_selection);
           break;
         case 2:                                                     // PROGRAM SPEED selection
@@ -614,19 +618,19 @@ void menu() {                                       // UI button pressed, execut
 
           switch (index_layer_2_option) {
           case 0:
-            Serial.println("Program Mode");
+            debugln("Program Mode");
             mode_selection = 0;                                  // Mode to select = program
             break;
           case 1:
-            Serial.println("Manual Mode");
+            debugln("Manual Mode");
             mode_selection = 1;                                 // Mode to select = manual
             break;
           case 2:
-            Serial.println("Latency Mode Manual");
+            debugln("Latency Mode Manual");
             mode_selection = 2;                                 // Mode to select = latency mode manual
             break;
           case 3:
-            Serial.println("Latency Mode Automatic");
+            debugln("Latency Mode Automatic");
             mode_selection = 3;                                 // Mode to select = latency mode automatic
             break;
           }
@@ -634,7 +638,7 @@ void menu() {                                       // UI button pressed, execut
           break;
         case 1:                                                 // PROGRAM NUMBER selection
           if (program_number_selection > 0) program_number_selection--;       // Decrease program number
-          Serial.println(program_number_selection);
+          debugln(program_number_selection);
           lcd_update_program_number(program_number_selection);
           break;
         case 2:                                                 // PROGRAM SPEED selection
@@ -685,21 +689,24 @@ void menu() {                                       // UI button pressed, execut
         switch (index_layer_1_option) {
         case 0:                         
           mode = index_layer_2_option;                              // Updated mode to new selection
-          Serial.print("Back to running UI, mode: ");
-          Serial.println(mode);
+          debug("Back to running UI, mode: ");
+          debugln(mode);
           lcd_update_running();                                     // Update LCD running display
           switch_mode();
           break;
         case 1:
           program_number = program_number_selection;
-          Serial.print("Program number: ");
-          Serial.println(program_number);
+          debug("Program number: ");
+          debugln(program_number);
+          SD_read(program_number);                                  // Load new program
+          program_run = false;                                      // Stop running when program changes
+          output_reset();
           lcd_update_running();                                     // Update LCD running display
           break;
         case 2:
           program_speed = program_speed_selection;
-          Serial.print("Program speed: ");
-          Serial.println(program_speed);
+          debug("Program speed: ");
+          debugln(program_speed);
           lcd_update_running();                                     // Update LCD running display
           break;
         case 3:
@@ -717,22 +724,22 @@ void menu() {                                       // UI button pressed, execut
 }
 
 int menu_read_button_pressed() {
-  unsigned long debounce = 350;
+  unsigned long debounce = 0;
   if (digitalRead(menu_left)) {
-    delay(debounce);                                                // Needs a bit of debounce.... (check schmitt trigger)
     return left;                                                    // Left
+    delay(debounce);                                                // Needs a bit of debounce.... (check schmitt trigger)
   }
   else if (digitalRead(menu_up)) {
-    delay(debounce);                                                // Needs a bit of debounce.... (check schmitt trigger)
     return up;                                                      // Up
+    delay(debounce);                                                // Needs a bit of debounce.... (check schmitt trigger)
   }
   else if (digitalRead(menu_down)) {
-    delay(debounce);                                                // Needs a bit of debounce.... (check schmitt trigger)
     return down;                                                    // Down
+    delay(debounce);                                                // Needs a bit of debounce.... (check schmitt trigger)
   }
   else if (digitalRead(menu_right)) {
-    delay(debounce);                                                // Needs a bit of debounce.... (check schmitt trigger)
     return right;                                                   // Right
+    delay(debounce);                                                // Needs a bit of debounce.... (check schmitt trigger)
   }
   else if (digitalRead(menu_run)) {
     delay(debounce);                                                // Needs a bit of debounce.... (check schmitt trigger)
@@ -764,8 +771,8 @@ void manual_mode() {
   if (millis() - manual_time >= manual_update) {                    // Check if update time has been reached
     for (int i = 0; i < 10; i++) {                                  // 8 speed signals and 2 analog outputs
       int val = analogRead(pots[i]);                                // Read speed/analog signals
-      val = map(val, 0, 1023, 35, 255);
-      if (val <= 41) val = 0;                                       // 4-20ma -> 1-5V -> 41-242 analog write
+      val = map(val, 0, 1023, 35, 255);                             // 35 - 255 gives some buffer at each limit        
+      if (val <= 41) val = 0;                                       // 4-20ma -> 1-5V -> 41-243 analog write
       else if (val >= 243) val = 243;  
       analogWrite(output_pins[i + 8], val);                         // Output speed/analog signals
       debug(val);
@@ -794,6 +801,10 @@ void program_mode() {                                               // Loop thro
           val_char[p] = data[step][p + 3 * m + 8];                  // Read speed signal from program data
         }
         val_int = atoi(val_char);
+        debug(val_int);
+        debug(" - ");
+        val_int = calibrate_output(val_int);
+        debugln(val_int);
         analogWrite(output_pins[m + 8], val_int); 
       }
 
@@ -810,6 +821,27 @@ void program_mode() {                                               // Loop thro
     }
   }
   else step = 0;
+}
+
+int calibrate_output(int val){
+  if (val < 41) return val;
+  else if (41 <= val && val < 51) return val -= 1;
+  else if (51 <= val && val < 64) return val -= 2;
+  else if (64 <= val && val < 77) return val -= 3;
+  else if (77 <= val && val < 89) return val -= 4;
+  else if (89 <= val && val < 102) return val -= 6;
+  else if (102 <= val && val < 115) return val -= 7; 
+  else if (115 <= val && val < 128) return val -= 7;
+  else if (128 <= val && val < 140) return val -= 7;
+  else if (140 <= val && val < 153) return val -= 8;
+  else if (153 <= val && val < 166) return val -= 8;
+  else if (166 <= val && val < 179) return val -= 7;
+  else if (179 <= val && val < 191) return val -= 7;
+  else if (191 <= val && val < 204) return val -= 6;
+  else if (204 <= val && val < 217) return val -= 4;
+  else if (217 <= val && val < 230) return val -= 2;
+  else if (230 <= val && val < 242) return val -= 1;
+  else if (val >= 242) return val -= 1;
 }
 
 void latency_manual() {
@@ -1212,10 +1244,10 @@ void update_html(EthernetClient client, int page, int count){
       }       
       for (int b = 0; b < 10; b++){
         client.print("<div><input type='number' value='");
-        // client.print(readString.substring(index + 8 + 3*b, index + 8 + 3*b + 3));
         String str = readString.substring(index + 8 + 3*b, index + 8 + 3*b + 3);
         float val = str.toFloat();
-        val = map(val, 0, 255, 0, 20);
+        val = map_float(val, 41, 242, 4, 20);
+        if (val < 4) val = 0;
         if (val == 0) client.print('0');
         else client.print(val, 1);
         client.print("' onchange='limit_break(this)'></div>");
@@ -1273,7 +1305,7 @@ void update_html(EthernetClient client, int page, int count){
     client.print("'>");
 
     client.print("<input type='text' id='speed' class='hidden' name='speed' value='");    
-    client.print(readString.substring(2,6));                      // Program speed
+    client.print(readString.substring(3,7));                      // Program speed
     client.print("'>");
 
 
@@ -1621,3 +1653,7 @@ bool lcd_overwrite_program(String program){
   else return false;
 }
 
+float map_float(float x, float in_min, float in_max, float out_min, float out_max)
+{
+  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}

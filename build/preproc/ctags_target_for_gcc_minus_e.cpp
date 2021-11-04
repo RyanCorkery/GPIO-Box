@@ -184,7 +184,7 @@ void setup() {
     lcd.print("SD Initialization");
     lcd.setCursor(0, 1);
     lcd.print("Failed. Try Reboot");
-    Serial.println("SD failed");
+    ;
     while (1);
   }
 
@@ -206,15 +206,15 @@ void setup() {
 
   Ethernet.begin(mac, ip); // start the Ethernet connection and the server:
   if (Ethernet.hardwareStatus() == EthernetNoHardware) { // Check for Ethernet hardware present
-    Serial.println("Ethernet shield was not found.  Sorry, can't run without hardware");
+    ;
     while (1){}
   }
   server.begin(); // start Arduino server
-  Serial.print("server is at ");
-  Serial.println(Ethernet.localIP());
+  ;
+  ;
 
   list_files(client_null, false);
-  Serial.println(program_list_string);
+  ;
 } // END SETUP()
 
 void loop() {
@@ -385,7 +385,7 @@ void menu() { // UI button pressed, execute menu
   if (digitalRead(menu_run)) { // Program Start/Stop button pressed
   switch(mode){
     case 0:
-      Serial.println("Start / Stop Program");
+      ;
       program_run = !program_run; // Toggle start stop program
       if (!program_run) output_reset();
       break;
@@ -402,7 +402,7 @@ void menu() { // UI button pressed, execute menu
     switch (index_layer) {
     case 0: // Layer 0 = Enter menu
       index_layer++; // Step into next menu layer
-      Serial.println("Change Mode"); // Wake UI
+      ; // Wake UI
       index_layer_1_option = 0; // Reset layer 1 index option
       index_layer_2_option = 0; // Reset layer 2 index option
       program_number_selection = program_number; // Reset menu
@@ -414,24 +414,24 @@ void menu() { // UI button pressed, execute menu
       switch (menu_button_pressed) {
       case left:
         index_layer--; // Step into previous menu layer (go back)
-        Serial.print("Back to running UI, Mode: "); // Reset UI to running information  
-        Serial.println(mode);
+        ; // Reset UI to running information  
+        ;
         lcd_update_running(); // Update LCD running display
         break;
       case up:
         if (index_layer_1_option > 0 && mode ==0) index_layer_1_option--; // Decrement through options. Only increment option when in program mode. No need to change these settings unless we are in program mode
 
-        if (index_layer_1_option == 0) Serial.println("CHANGE MODE");
-        else if (index_layer_1_option == 1) Serial.println("CHANGE PROGRAM");
-        else if (index_layer_1_option == 2) Serial.println("CHANGE PROGRAM SPEED");
+        if (index_layer_1_option == 0) ;
+        else if (index_layer_1_option == 1) ;
+        else if (index_layer_1_option == 2) ;
         lcd_update_layer_1_selection(index_layer_1_option); // Layer 1 LCD menu
         break;
       case down:
         if (index_layer_1_option < 3 && mode == 0) index_layer_1_option++; // Increment through options. Only increment option when in program mode. No need to change these settings unless we are in program mode
 
-        if (index_layer_1_option == 0) Serial.println("CHANGE MODE");
-        else if (index_layer_1_option == 1) Serial.println("CHANGE PROGRAM");
-        else if (index_layer_1_option == 2) Serial.println("CHANGE PROGRAM SPEED");
+        if (index_layer_1_option == 0) ;
+        else if (index_layer_1_option == 1) ;
+        else if (index_layer_1_option == 2) ;
         lcd_update_layer_1_selection(index_layer_1_option); // Layer 1 LCD menu
         break;
       case right:
@@ -439,29 +439,29 @@ void menu() { // UI button pressed, execute menu
         switch (index_layer_1_option) {
           case 0:
             if (mode == 0) {
-              Serial.println("Program Mode"); // Display current mode
+              ; // Display current mode
               index_layer_2_option = 0;
             }
             else if (mode == 1) {
-              Serial.println("Manual Mode"); // Display current mode
+              ; // Display current mode
               index_layer_2_option = 1;
             }
             else if (mode == 2) {
-              Serial.println("Latency Mode Manual"); // Display current mode
+              ; // Display current mode
               index_layer_2_option = 2;
             }
             else if (mode == 3) {
-              Serial.println("Latency Mode Automatic"); // Display current mode
+              ; // Display current mode
               index_layer_2_option = 3;
             }
             lcd_update_mode_selection(index_layer_2_option); // Update LCD menu
             break;
           case 1:
-            Serial.println(program_number); // Display current program number
+            ; // Display current program number
             lcd_update_program_number(program_number_selection);
             break;
           case 2:
-            Serial.println(program_speed); // Display current program speed
+            ; // Display current program speed
             lcd_update_program_speed(program_speed_selection, true);
             break;
           case 3:
@@ -476,10 +476,10 @@ void menu() { // UI button pressed, execute menu
       switch (menu_button_pressed) {
       case left:
         index_layer--; // Step into previous menu layer (go back)
-        if (index_layer_1_option == 0) Serial.println("CHANGE MODE");
+        if (index_layer_1_option == 0) ;
         if (mode == 0) {
-          if (index_layer_1_option == 1) Serial.println("CHANGE PROGRAM");
-          else Serial.println("CHANGE PROGRAM SPEED");
+          if (index_layer_1_option == 1) ;
+          else ;
         }
         lcd_update_layer_1_selection(index_layer_1_option); // Layer 1 LCD menu
         break;
@@ -490,28 +490,28 @@ void menu() { // UI button pressed, execute menu
 
           switch (index_layer_2_option) {
           case 0:
-            Serial.println("Program Mode");
+            ;
             index_layer_2_option = 0; // Mode to select = program
             break;
           case 1:
-            Serial.println("Manual Mode");
+            ;
             index_layer_2_option = 1; // Mode to select = manual
             break;
           case 2:
-            Serial.println("Latency Mode Manual");
+            ;
             index_layer_2_option = 2; // Mode to select = latency mode manual
             break;
           case 3:
-            Serial.println("Latency Mode Automatic");
+            ;
             index_layer_2_option = 3; // Mode to select = latency mode automatic                        
             break;
           }
-          Serial.println(index_layer_2_option);
+          ;
           lcd_update_mode_selection(index_layer_2_option); // Update LCD menu
           break;
         case 1: // PROGRAM NUMBER selection
           if (program_number_selection < 99) program_number_selection++; // Increase program number
-          Serial.println(program_number_selection);
+          ;
           lcd_update_program_number(program_number_selection);
           break;
         case 2: // PROGRAM SPEED selection
@@ -564,19 +564,19 @@ void menu() { // UI button pressed, execute menu
 
           switch (index_layer_2_option) {
           case 0:
-            Serial.println("Program Mode");
+            ;
             mode_selection = 0; // Mode to select = program
             break;
           case 1:
-            Serial.println("Manual Mode");
+            ;
             mode_selection = 1; // Mode to select = manual
             break;
           case 2:
-            Serial.println("Latency Mode Manual");
+            ;
             mode_selection = 2; // Mode to select = latency mode manual
             break;
           case 3:
-            Serial.println("Latency Mode Automatic");
+            ;
             mode_selection = 3; // Mode to select = latency mode automatic
             break;
           }
@@ -584,7 +584,7 @@ void menu() { // UI button pressed, execute menu
           break;
         case 1: // PROGRAM NUMBER selection
           if (program_number_selection > 0) program_number_selection--; // Decrease program number
-          Serial.println(program_number_selection);
+          ;
           lcd_update_program_number(program_number_selection);
           break;
         case 2: // PROGRAM SPEED selection
@@ -635,21 +635,24 @@ void menu() { // UI button pressed, execute menu
         switch (index_layer_1_option) {
         case 0:
           mode = index_layer_2_option; // Updated mode to new selection
-          Serial.print("Back to running UI, mode: ");
-          Serial.println(mode);
+          ;
+          ;
           lcd_update_running(); // Update LCD running display
           switch_mode();
           break;
         case 1:
           program_number = program_number_selection;
-          Serial.print("Program number: ");
-          Serial.println(program_number);
+          ;
+          ;
+          SD_read(program_number); // Load new program
+          program_run = false; // Stop running when program changes
+          output_reset();
           lcd_update_running(); // Update LCD running display
           break;
         case 2:
           program_speed = program_speed_selection;
-          Serial.print("Program speed: ");
-          Serial.println(program_speed);
+          ;
+          ;
           lcd_update_running(); // Update LCD running display
           break;
         case 3:
@@ -667,22 +670,22 @@ void menu() { // UI button pressed, execute menu
 }
 
 int menu_read_button_pressed() {
-  unsigned long debounce = 350;
+  unsigned long debounce = 0;
   if (digitalRead(menu_left)) {
-    delay(debounce); // Needs a bit of debounce.... (check schmitt trigger)
     return left; // Left
+    delay(debounce); // Needs a bit of debounce.... (check schmitt trigger)
   }
   else if (digitalRead(menu_up)) {
-    delay(debounce); // Needs a bit of debounce.... (check schmitt trigger)
     return up; // Up
+    delay(debounce); // Needs a bit of debounce.... (check schmitt trigger)
   }
   else if (digitalRead(menu_down)) {
-    delay(debounce); // Needs a bit of debounce.... (check schmitt trigger)
     return down; // Down
+    delay(debounce); // Needs a bit of debounce.... (check schmitt trigger)
   }
   else if (digitalRead(menu_right)) {
-    delay(debounce); // Needs a bit of debounce.... (check schmitt trigger)
     return right; // Right
+    delay(debounce); // Needs a bit of debounce.... (check schmitt trigger)
   }
   else if (digitalRead(menu_run)) {
     delay(debounce); // Needs a bit of debounce.... (check schmitt trigger)
@@ -714,14 +717,14 @@ void manual_mode() {
   if (millis() - manual_time >= manual_update) { // Check if update time has been reached
     for (int i = 0; i < 10; i++) { // 8 speed signals and 2 analog outputs
       int val = analogRead(pots[i]); // Read speed/analog signals
-      val = map(val, 0, 1023, 35, 255);
-      if (val <= 41) val = 0; // 4-20ma -> 1-5V -> 41-242 analog write
+      val = map(val, 0, 1023, 35, 255); // 35 - 255 gives some buffer at each limit        
+      if (val <= 41) val = 0; // 4-20ma -> 1-5V -> 41-243 analog write
       else if (val >= 243) val = 243;
       analogWrite(output_pins[i + 8], val); // Output speed/analog signals
-      Serial.print(val);
-      Serial.print(" - ");
+      ;
+      ;
     }
-    Serial.println();
+    ;
   }
 }
 
@@ -744,6 +747,10 @@ void program_mode() { // Loop through the number of steps in the program and out
           val_char[p] = data[step][p + 3 * m + 8]; // Read speed signal from program data
         }
         val_int = atoi(val_char);
+        ;
+        ;
+        val_int = calibrate_output(val_int);
+        ;
         analogWrite(output_pins[m + 8], val_int);
       }
 
@@ -760,6 +767,27 @@ void program_mode() { // Loop through the number of steps in the program and out
     }
   }
   else step = 0;
+}
+
+int calibrate_output(int val){
+  if (val < 41) return val;
+  else if (41 <= val && val < 51) return val -= 1;
+  else if (51 <= val && val < 64) return val -= 2;
+  else if (64 <= val && val < 77) return val -= 3;
+  else if (77 <= val && val < 89) return val -= 4;
+  else if (89 <= val && val < 102) return val -= 6;
+  else if (102 <= val && val < 115) return val -= 7;
+  else if (115 <= val && val < 128) return val -= 7;
+  else if (128 <= val && val < 140) return val -= 7;
+  else if (140 <= val && val < 153) return val -= 8;
+  else if (153 <= val && val < 166) return val -= 8;
+  else if (166 <= val && val < 179) return val -= 7;
+  else if (179 <= val && val < 191) return val -= 7;
+  else if (191 <= val && val < 204) return val -= 6;
+  else if (204 <= val && val < 217) return val -= 4;
+  else if (217 <= val && val < 230) return val -= 2;
+  else if (230 <= val && val < 242) return val -= 1;
+  else if (val >= 242) return val -= 1;
 }
 
 void latency_manual() {
@@ -887,7 +915,7 @@ if (program_number != 0){ // Program 0 can not be removed
         prog_speed.concat("0");
         prog_speed.concat(str[0]);
       }
-      Serial.println(prog_speed);
+      ;
       my_file.print(prog_speed); // Program speed. Step time [ms]
       my_file.print('\n');
 
@@ -903,10 +931,10 @@ if (program_number != 0){ // Program 0 can not be removed
 
       my_file.close();
 
-      Serial.println("program saved to SD");
+      ;
     }
     else {
-      Serial.println("Failed to save program to SD");
+      ;
     }
   }
   else{
@@ -929,8 +957,8 @@ void SD_read(int program_num) { // Read and process data. program_number = selct
     file_name[1] = str[1];
   }
 
-  Serial.print("File name = ");
-  Serial.println(file_name);
+  ;
+  ;
 
   my_file = SD.open(file_name); // Open selected program number
   if (my_file) {
@@ -968,28 +996,28 @@ void SD_read(int program_num) { // Read and process data. program_number = selct
           description[index] = val;
           index++;
         }
-        Serial.println("description:");
-        Serial.println(description);
+        ;
+        ;
         break;
       }
       else { // New line reached
         new_line = true;
 
-        Serial.print(SD_step);
-        Serial.print("  ");
+        ;
+        ;
 
         if (SD_step == 0) {
           program_number = atoi(program_num_char); // Convert data to int
-          Serial.println(program_number);
+          ;
         }
         else if (SD_step == 1) {
           program_speed = atoi(program_spd_char); // Convert data to int
-          Serial.println(program_speed);
+          ;
         }
         else {
 
-            for (int w = 0; w < 38; w++) Serial.print(data[data_steps][w]);
-            Serial.println(" ");
+
+
 
           data_steps++;
         }
@@ -998,8 +1026,8 @@ void SD_read(int program_num) { // Read and process data. program_number = selct
       }
     }
     my_file.close();
-    Serial.print("Number of steps in program: ");
-    Serial.println(data_steps);
+    ;
+    ;
   }
   else {
     lcd.clear();
@@ -1017,7 +1045,7 @@ void ethernet(){
   EthernetClient client = server.available(); // listen for incoming clients
 
   if (client) {
-    Serial.println("new client");
+    ;
 
     boolean currentLineIsBlank = true; // an http request ends with a blank line
 
@@ -1051,7 +1079,7 @@ void update_html(EthernetClient client, int page, int count){
   if (page == 0){ // main.html
     my_file = SD.open("htmlA.txt"); // open html file
     if (my_file){
-      Serial.println("htmlA file opened");
+      ;
       while(my_file.available()){ // Read html file
         char val;
         val = my_file.read();
@@ -1059,7 +1087,7 @@ void update_html(EthernetClient client, int page, int count){
       }
       my_file.close();
     }
-    else Serial.println("htmlA failed to open");
+    else ;
     // get sorted list of saved files
     // print list to hidden text input
     // print number followed by - ie 01-02-...
@@ -1069,7 +1097,7 @@ void update_html(EthernetClient client, int page, int count){
     //
     my_file = SD.open("htmlB.txt"); // open html file
     if (my_file){
-      Serial.println("htmlB file opened");
+      ;
       while(my_file.available()){ // Read html file
         char val;
         val = my_file.read();
@@ -1077,12 +1105,12 @@ void update_html(EthernetClient client, int page, int count){
       }
       my_file.close();
     }
-    else Serial.println("htmlB failed to open");
+    else ;
   }
   else if (page == 1){ // list.html        list of saved programs
     my_file = SD.open("list1.txt"); // open start half html file
     if (my_file){
-      Serial.println("list1.html file opened");
+      ;
       while(my_file.available()){ // Read html file
         char val;
         val = my_file.read();
@@ -1090,14 +1118,14 @@ void update_html(EthernetClient client, int page, int count){
       }
       my_file.close();
     }
-    else Serial.println("list1.html failed to open");
+    else ;
 
     // print file names and descriptions
     list_files(client, true);
 
     my_file = SD.open("list2.txt"); // open second half html file
     if (my_file){
-      Serial.println("list2.html file opened");
+      ;
       while(my_file.available()){ // Read html file
         char val;
         val = my_file.read();
@@ -1105,12 +1133,12 @@ void update_html(EthernetClient client, int page, int count){
       }
       my_file.close();
     }
-    else Serial.println("list2.html failed to open");
+    else ;
   }
   else if (page == 2){ // Load program
     my_file = SD.open("html1.txt"); // open html file
     if (my_file){
-      Serial.println("html1 file opened");
+      ;
       while(my_file.available()){ // Read html file
         char val;
         val = my_file.read();
@@ -1118,13 +1146,13 @@ void update_html(EthernetClient client, int page, int count){
       }
       my_file.close();
     }
-    else Serial.println("html1 failed to open");
+    else ;
     // Program nuber
     client.print(readString.substring(0,2)); // Program number
     //
     my_file = SD.open("html2.txt"); // open html file
     if (my_file){
-      Serial.println("html2 file opened");
+      ;
       while(my_file.available()){ // Read html file
         char val;
         val = my_file.read();
@@ -1132,13 +1160,13 @@ void update_html(EthernetClient client, int page, int count){
       }
       my_file.close();
     }
-    else Serial.println("html2 failed to open");
+    else ;
     // program speed
     client.print(readString.substring(3,7));
     //
     my_file = SD.open("html3.txt"); // open html file
     if (my_file){
-      Serial.println("html3 file opened");
+      ;
       while(my_file.available()){ // Read html file
         char val;
         val = my_file.read();
@@ -1146,7 +1174,7 @@ void update_html(EthernetClient client, int page, int count){
       }
       my_file.close();
     }
-    else Serial.println("html3 failed to open");
+    else ;
     // step data ui
     for (int i = 0; i < count - 4; i++){ // 4 lines are program number, speed, blank, description
       client.print("<div class='step'>");
@@ -1162,10 +1190,10 @@ void update_html(EthernetClient client, int page, int count){
       }
       for (int b = 0; b < 10; b++){
         client.print("<div><input type='number' value='");
-        // client.print(readString.substring(index + 8 + 3*b, index + 8 + 3*b + 3));
         String str = readString.substring(index + 8 + 3*b, index + 8 + 3*b + 3);
         float val = str.toFloat();
-        val = map(val, 0, 255, 0, 20);
+        val = map_float(val, 41, 242, 4, 20);
+        if (val < 4) val = 0;
         if (val == 0) client.print('0');
         else client.print(val, 1);
         client.print("' onchange='limit_break(this)'></div>");
@@ -1176,7 +1204,7 @@ void update_html(EthernetClient client, int page, int count){
     //
     my_file = SD.open("html4.txt"); // open html file
     if (my_file){
-      Serial.println("html4 file opened");
+      ;
       while(my_file.available()){ // Read html file
         char val;
         val = my_file.read();
@@ -1184,7 +1212,7 @@ void update_html(EthernetClient client, int page, int count){
       }
       my_file.close();
     }
-    else Serial.println("html4 failed to open");
+    else ;
     // Description
     bool first = false;
     int index2 = 0;
@@ -1209,7 +1237,7 @@ void update_html(EthernetClient client, int page, int count){
     //
     my_file = SD.open("html5.txt"); // open html file
     if (my_file){
-      Serial.println("html5 file opened");
+      ;
       while(my_file.available()){ // Read html file
         char val;
         val = my_file.read();
@@ -1217,13 +1245,13 @@ void update_html(EthernetClient client, int page, int count){
       }
       my_file.close();
     }
-    else Serial.println("html5 failed to open");
+    else ;
     // step_data_x hidden 
     client.print(readString.substring(0,2)); // Program nuber
     client.print("'>");
 
     client.print("<input type='text' id='speed' class='hidden' name='speed' value='");
-    client.print(readString.substring(2,6)); // Program speed
+    client.print(readString.substring(3,7)); // Program speed
     client.print("'>");
 
 
@@ -1241,7 +1269,7 @@ void update_html(EthernetClient client, int page, int count){
     //
     my_file = SD.open("html6.txt"); // open html file
     if (my_file){
-      Serial.println("html6 file opened");
+      ;
       while(my_file.available()){ // Read html file
         char val;
         val = my_file.read();
@@ -1249,14 +1277,14 @@ void update_html(EthernetClient client, int page, int count){
       }
       my_file.close();
     }
-    else Serial.println("html6 failed to open");
+    else ;
     // Program list
     // client.print(program_list);                   // TEST data
     client.print(program_list_string);
     //
     my_file = SD.open("html7.txt"); // open html file
     if (my_file){
-      Serial.println("html7 file opened");
+      ;
       while(my_file.available()){ // Read html file
         char val;
         val = my_file.read();
@@ -1264,7 +1292,7 @@ void update_html(EthernetClient client, int page, int count){
       }
       my_file.close();
     }
-    else Serial.println("html7 failed to open");
+    else ;
   }
 }
 
@@ -1279,24 +1307,24 @@ void list_files(EthernetClient client, bool print) { // print = true -> print ht
       char *str = entry.name();
       if (isDigit(str[0])){ // Do not read HTML, LIST files, etc. Only program files
         client.print((reinterpret_cast<const __FlashStringHelper *>(
-# 1266 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+# 1294 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
                     (__extension__({static const char __c[] __attribute__((__progmem__)) = (
-# 1266 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+# 1294 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
                     "<div><label>"
-# 1266 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+# 1294 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
                     ); &__c[0];}))
-# 1266 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+# 1294 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
                     )));
         client.print(str[0]);
         client.print(str[1]);
         client.print((reinterpret_cast<const __FlashStringHelper *>(
-# 1269 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+# 1297 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
                     (__extension__({static const char __c[] __attribute__((__progmem__)) = (
-# 1269 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+# 1297 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
                     "</label><label>"
-# 1269 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+# 1297 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
                     ); &__c[0];}))
-# 1269 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+# 1297 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
                     )));
 
         int index = 0;
@@ -1315,13 +1343,13 @@ void list_files(EthernetClient client, bool print) { // print = true -> print ht
         }
         client.print(description);
         client.print((reinterpret_cast<const __FlashStringHelper *>(
-# 1286 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+# 1314 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
                     (__extension__({static const char __c[] __attribute__((__progmem__)) = (
-# 1286 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+# 1314 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
                     "</label></div>"
-# 1286 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+# 1314 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
                     ); &__c[0];}))
-# 1286 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+# 1314 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
                     )));
       }
     }
@@ -1353,7 +1381,7 @@ void decode_ethernet(EthernetClient client){
         "step_10_data", "step_11_data", "step_12_data", "step_13_data", "step_14_data", "step_15_data", "step_16_data", "step_17_data", "step_18_data", "step_19_data" };
 
   if (first_html) {
-    Serial.println("first html load");
+    ;
     update_html(client, 0, 0); // Load main.html
     first_html = false;
     return;
@@ -1368,9 +1396,9 @@ void decode_ethernet(EthernetClient client){
         val[0] = '0';
       }
       program_number = val.toInt();
-      Serial.println(" ");
-      Serial.print("Program # uploaded: ");
-      Serial.println(program_number);
+      ;
+      ;
+      ;
 
       if (program_number == 0) return; // Can not edit program 0, defualt program
 
@@ -1380,17 +1408,17 @@ void decode_ethernet(EthernetClient client){
         save_flag = lcd_overwrite_program(val); // if exisits, overwrite yes/no?
       }
       else {
-        Serial.println("File does not exist");
+        ;
         save_flag = true;
       }
 
       if (!save_flag){ // no -> update html to show no save
-        Serial.println("Save file? No selected");
+        ;
       }
     }
     else { // No number was in html input box
       save_flag = false;
-      Serial.println("No program # selected");
+      ;
     }
 
 
@@ -1418,9 +1446,9 @@ void decode_ethernet(EthernetClient client){
             val[0] = '0';
           }
           program_speed = val.toInt();
-          Serial.println("");
-          Serial.print("Program speed uploaded: ");
-          Serial.println(val);
+          ;
+          ;
+          ;
         }
         else program_speed = 1000; // No speed inputed, default to 1000ms step time
       }
@@ -1432,9 +1460,9 @@ void decode_ethernet(EthernetClient client){
           String val = readString.substring(index + 12, index + 12 + 38); // 12 = length of "step_x_data=" string
           for (int x = 0; x < 38; x++){ // Save data to data_step_i variables
             data[i][x] = val[x];
-            Serial.print(data[i][x]);
+            ;
           }
-          Serial.println(" ");
+          ;
           data_steps++; // Increase step count
         }
       }
@@ -1448,42 +1476,42 @@ void decode_ethernet(EthernetClient client){
         for (int i = 0; i < val.length(); i++){ // Copy description received from client
           description[i] = val[i];
         }
-        Serial.println(description);
+        ;
       }
 
       SD_write(); // Save program to SD card. SD_write()
       SD_read(program_number); // Read and load new program
 
       list_files(client_null, false); // Update program list
-      Serial.println(program_list_string);
+      ;
     }
 
-    Serial.println(" ");
-    Serial.println("loading : main.html");
+    ;
+    ;
     update_html(client, 0, 0); // Update html with current program settings
   }
 
   else if (readString.indexOf("list_form=") > 0){
-    Serial.println(" ");
-    Serial.println("loading : list.html");
+    ;
+    ;
     update_html(client, 1, 0); // Load list.html 
   }
   else if (readString.indexOf("load_main=") > 0){
-    Serial.println(" ");
-    Serial.println("loading : main.html");
+    ;
+    ;
     update_html(client, 0, 0); // Load list.html 
   }
   else if (readString.indexOf("program_load=") > 0){ // Update descriptions from list.html page
-    Serial.println(" ");
-    Serial.println("Check if program exists and load program");
+    ;
+    ;
     load_program(client); // Load selected program
   }
   else if (readString.indexOf("delete=") > 0){ // Delete selected program
-    Serial.println(" ");
-    Serial.println("Delete program");
+    ;
+    ;
     delete_program();
     list_files(client_null, false); // Update program list
-    Serial.println(program_list_string);
+    ;
     update_html(client, 0, 0);
   }
   else{
@@ -1494,8 +1522,8 @@ void decode_ethernet(EthernetClient client){
 void delete_program(){
   int index = readString.indexOf("delete=");
   String val = readString.substring(index + 7);
-  Serial.print("val = ");
-  Serial.println(val);
+  ;
+  ;
   char file_name[7] = "00.txt"; // Convert readString to file_name
   if (val.length() == 2){
     file_name[0] = val[0];
@@ -1508,31 +1536,31 @@ void delete_program(){
 
   SD.remove(file_name); // Delete file
 
-  Serial.print("file ");
-  Serial.print(file_name);
-  Serial.println(" deleted");
+  ;
+  ;
+  ;
 }
 
 void load_program(EthernetClient client){
-  Serial.println("load program function");
+  ;
   int index = readString.indexOf("program_load=");
   String val = readString.substring(index + 13);
-  Serial.println(val);
+  ;
   unsigned int length = val.length();
-  Serial.println(length);
+  ;
   char file_name[7] = "00.txt"; // Convert readString to file_name
-  Serial.print("file name: ");
+  ;
   if (length < 2) file_name[1] = val[0];
   else{
     file_name[0] = val[0];
     file_name[1] = val[1];
   }
-  Serial.println(file_name);
+  ;
   my_file = SD.open(file_name); // Try to open program file
   if (my_file) { // Program exists if true
     readString = ""; // Reset readstring
     int count = 0;
-    Serial.println("in while loop...");
+    ;
     while (my_file.available()){
       char val = my_file.read();
       if (val == '\n') count++;
@@ -1540,7 +1568,7 @@ void load_program(EthernetClient client){
     }
     count++; // Last line of txt is missing \n
     my_file.close();
-    Serial.println("load program via html");
+    ;
     update_html(client, 2, count); // If program is saved on SD, load program
   }
 }
@@ -1593,4 +1621,9 @@ bool lcd_overwrite_program(String program){
 
   if (overwrite) return true;
   else return false;
+}
+
+float map_float(float x, float in_min, float in_max, float out_min, float out_max)
+{
+  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }

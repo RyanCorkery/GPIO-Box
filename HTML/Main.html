@@ -72,7 +72,7 @@ h1 {
     margin: 5px;
 }
 .hidden{
-    visibility: hidden;
+    /* visibility: hidden; */
 }
 .program{
     margin: 5px 5px 0 0;
@@ -368,7 +368,15 @@ h1 {
 
     // function map_value(x, in_min, in_max, out_min, out_max){
     function map_value(x){
-        var val_map = String((x - 0) * (255 - 0) / (20 - 0) + 0);
+        let in_min = 4;
+        let in_max = 20;
+        let out_min = 41;
+        let out_max = 242;
+        if (x < 4) return "000";
+        else if (x == 4) return "041";                       // String(out_min)
+        var val_map = (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+        val_map = val_map.toFixed(0);
+        val_map = String(val_map);
         var val = "";
         if (val_map.length == 3) val = val_map;
         else if (val_map.length == 2){
