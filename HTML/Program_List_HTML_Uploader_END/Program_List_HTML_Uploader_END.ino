@@ -32,13 +32,15 @@ my_file.println(F("                    document.getElementById('file_names').inn
 my_file.println(F("                }"));
 my_file.println(F("            }"));
 my_file.println(F(""));
-//my_file.println(F("            function load_main(){"));
-//my_file.println(F("                window.location = 'Main.html';"));
-//my_file.println(F("            }"));
-my_file.println(F(""));
-//my_file.println(F("            function save_descriptions(){"));
-//my_file.println(F("                   add code"));
-//my_file.println(F("            }"));
+
+my_file.println(F("            function delete_program(node){"));
+my_file.println(F("               var program = node.children[2].innerHTML;"));
+my_file.println(F("               document.getElementById('program_submit').value = program;"));
+my_file.println(F("               console.log(document.getElementById('program_submit').value)"));
+my_file.println(F("               if (program == '00') alert('Program 0 can not be modified');"));
+my_file.println(F("               else { if (confirm('Delete program ' + program + '?')) document.getElementById('delete_form').submit();}"));
+my_file.println(F("            }"));
+
 my_file.println(F("        </script>"));
 my_file.println(F("    </body>"));
 my_file.println(F("</html>"));

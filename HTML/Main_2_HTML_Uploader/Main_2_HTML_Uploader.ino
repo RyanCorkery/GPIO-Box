@@ -21,7 +21,7 @@ void setup() {
     // Copy and past html_Arduino below
     // ******************************** //
 my_file.println(F("' onchange='update_program_number(this)'></div>"));
-my_file.println(F("    <div class='program'><label>Program Speed:</label><input id='speed_ui' value='"));
+my_file.print(F("    <div class='program'><label>Program Speed:</label><input class='speed_input' type='number' id='speed_ui' value='"));
     // ******************************** //
     // End copy and paste
     // ******************************** //

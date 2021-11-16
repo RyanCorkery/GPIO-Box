@@ -55,11 +55,17 @@ my_file.println(F("    justify-content: start;"));
 my_file.println(F("    grid-gap: 10px;"));
 my_file.println(F("    grid-template-columns: auto;"));
 my_file.println(F("}"));
+
 my_file.println(F(".grid-container > div{"));
 my_file.println(F("    display: grid;"));
 my_file.println(F("    grid-auto-flow: column;"));
 my_file.println(F("    justify-content: left;"));
 my_file.println(F("}"));
+
+my_file.println(F(".speed_input{"));
+my_file.println(F("    margin-right: 5px;"));
+my_file.println(F("}"));
+
 my_file.println(F(".labels > div{"));
 my_file.println(F("    padding: 5px;"));
 my_file.println(F("    width: 70px;"));
@@ -138,7 +144,7 @@ my_file.println(F("    <input type='submit'>"));
 my_file.println(F("</form>"));
 my_file.println(F(""));
 my_file.println(F("<div class='grid-container'>"));
-my_file.println(F("    <div class='program'><label>Program Number:</label><input id='program_ui' value='"));
+my_file.print(F("    <div class='program'><label>Program Number:</label><input type='number' id='program_ui' value='"));
     // ******************************** //
     // End copy and paste
     // ******************************** //

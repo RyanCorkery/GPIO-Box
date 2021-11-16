@@ -14,28 +14,38 @@
         .info * > label{
             margin-right: 30px;
         }
+        input{
+            margin-right: 5px;
+        }
+        .hidden{
+            width: 0px;
+            height: 0px;
+            visibility: hidden;
+        }
     </style>
     <head>
 
     </head>
-    <!-- <body onload="read_url()"> -->
     <body>
         <h1>SAVED PROGRAMS</h1>
 
+        <form id="delete_form" class="hidden" method="post" action="/">
+            <input id="program_submit" type="number" name="delete" value="">
+            <input name="list">
+        </form>      
+        
         <form method="post" action="/">
             <input type="submit" name="load_main" value="Return to programming page">
-        </form>
-
-        <!-- <iframe name="iframe" style="display: none;"></iframe>
-        <form method="post" action="/" name="save_descriptions" target="iframe">
-            <input type="button" onclick="save_descriptions()" value="Save descriptions">
-        </form> -->
-        
+        </form>  
 
         <div class="list">
             <div class="info">
-                <div><label>00.txt</label><label>Default Program</label></div>
-                <div><label>00.txt</label><label>Default Program</label></div>
+                <form>
+                    <input type="submit" value="Load">
+                    <input type="button" value="Delete" onclick="delete_program(this.parentNode)">
+                    <label>01</label><label>Default Program</label>
+                    <input class="hidden" type="number" value="00" name="program_load">
+                </form>
             </div>
         </div>
 
@@ -47,13 +57,14 @@
                 }
             }
 
-            function load_main(){
-                window.location = "Main.html";
+            function delete_program(node){
+                var program = node.children[2].innerHTML;
+                document.getElementById("program_submit").value = program;
+                if (program == "00") alert("Program 0 can not be modified");
+                else { 
+                    if (confirm("Delete program " + program + " ?")) document.getElementById("delete_form").submit();
+                }
             }
-
-            // function save_descriptions(){
-            //     // add code
-            // }
         </script>
     </body>
 </html>

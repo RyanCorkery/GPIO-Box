@@ -24,8 +24,11 @@ void setup() {
 my_file.println(F("    </div>"));
 my_file.println(F("</div>"));
 my_file.println(F(""));
-my_file.println(F("<input class='step_button' type='button' value='Add Step' onclick='add_step()'>"));
-my_file.println(F("<input class='step_button' type='button' value='Remove Step' onclick='remove_step()'>"));
+my_file.println(F("<div>"));
+my_file.println(F("<input class='step_button' type='button' value='Add Step' onclick='add_step(false)'>"));
+my_file.println(F("<input class='step_button' type='button' value='Duplicate Last Step' onclick='add_step(true)'>"));
+my_file.println(F("</div>"));
+my_file.println(F("<input class='step_button' type='button' value='Remove Last Step' onclick='remove_step()'>"));
 my_file.println(F(""));
 
 my_file.println(F("    <input type='button' value='Delete Program' class='step_button' onclick='delete_program()'>"));

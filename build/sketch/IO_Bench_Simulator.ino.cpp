@@ -12,7 +12,7 @@
 #include <Ethernet.h>
 
 // Debug
-#define DEBUG 0
+#define DEBUG 1                                               // debug true = 1, false = 0
 
 #if DEBUG == 1
 #define debug(x) Serial.print(x)
@@ -133,69 +133,69 @@ EthernetClient client_null;                                                     
 
 #line 132 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void setup();
-#line 205 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 207 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void loop();
-#line 216 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 218 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void lcd_update_running();
-#line 262 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 264 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void lcd_update_layer_1_selection(int index);
-#line 291 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 293 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void lcd_update_mode_selection(int index);
-#line 318 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 320 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void lcd_update_program_number(int program_num);
-#line 325 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 327 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void lcd_update_program_speed(int program_spd, bool refresh);
-#line 337 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 339 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void lcd_update_loop_mode();
-#line 350 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 352 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void menu();
-#line 657 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 684 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 int menu_read_button_pressed();
-#line 680 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 707 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void switch_mode();
-#line 698 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 725 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void manual_mode();
-#line 716 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 743 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void program_mode();
-#line 757 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 824 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 int calibrate_output(int val);
-#line 778 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 845 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void latency_manual();
-#line 788 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 855 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void latency_automatic();
-#line 802 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 869 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void latency_test();
-#line 826 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 893 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void latency_running_state();
-#line 837 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 904 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void latency_no_response();
-#line 844 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 911 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void latency_result(long time);
-#line 852 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 919 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void output_reset();
-#line 862 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 930 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void SD_write();
-#line 935 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 1003 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void SD_read(int program_num);
-#line 1025 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 1094 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void menu_pressed();
-#line 1029 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 1098 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void ethernet();
-#line 1063 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 1133 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void update_html(EthernetClient client, int page, int count);
-#line 1284 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 1354 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void list_files(EthernetClient client, bool print);
-#line 1331 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 1430 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void sorted_files_list();
-#line 1337 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 1436 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void decode_ethernet(EthernetClient client);
-#line 1483 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 1585 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void delete_program();
-#line 1505 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 1622 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void load_program(EthernetClient client);
-#line 1537 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 1654 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 bool lcd_overwrite_program(String program);
-#line 1587 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+#line 1704 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 float map_float(float x, float in_min, float in_max, float out_min, float out_max);
 #line 132 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 void setup() {
@@ -204,28 +204,30 @@ void setup() {
 
   lcd.init();                                                                       // Initialize LCD display
   lcd.backlight();                                                                  // Print start up display
-  /*lcd.setCursor(0, 0);
-  char title1[9] = "GPIO Box";
-  for (int i = 0; i < 8; i++) {
-    lcd.print(title1[i]);
-    delay(100);
-  }
-  delay(300);
-  lcd.setCursor(0, 2);
-  char title2[14] = "Papertech INC";
-  for (int i = 0; i < 13; i++) {
-    lcd.print(title2[i]);
-    delay(100);
-  }
-  delay(300);
-  lcd.setCursor(0, 3);
-  char title3[16] = "CORKERY DESIGNS";
-  for (int i = 0; i < 15; i++) {
-    lcd.print(title3[i]);
-    delay(100);
-  }
-  delay(2000);
-  lcd.clear();  */                                                                // END LCD START UP DISPLAY
+  #if DEBUG == 0
+    lcd.setCursor(0, 0);
+    char title1[9] = "GPIO Box";
+    for (int i = 0; i < 8; i++) {
+      lcd.print(title1[i]);
+      delay(100);
+    }
+    delay(300);
+    lcd.setCursor(0, 2);
+    char title2[14] = "Papertech INC";
+    for (int i = 0; i < 13; i++) {
+      lcd.print(title2[i]);
+      delay(100);
+    }
+    delay(300);
+    lcd.setCursor(0, 3);
+    char title3[16] = "CORKERY DESIGNS";
+    for (int i = 0; i < 15; i++) {
+      lcd.print(title3[i]);
+      delay(100);
+    }
+    delay(2000);
+    lcd.clear();                                                                  // END LCD START UP DISPLAY
+  #endif
 
   digitalWrite(adam6017_power, HIGH);                                             // Power on Adam moudules
   digitalWrite(adam6050_power, HIGH);
@@ -242,7 +244,7 @@ void setup() {
     while (1);
   }
 
-  SD_read(0);
+  SD_read(0);                                                                     // Load default program 
 
   lcd_update_running();                                                           // Update LCD
 
@@ -441,7 +443,8 @@ void menu() {                                       // UI button pressed, execut
     case 0:
       debugln("Start / Stop Program");
       program_run = !program_run;                                       // Toggle start stop program
-      if (!program_run) output_reset();                                   
+      if (!program_run) output_reset();  
+      // else digitalWrite(latency_led, HIGH);                             // Turn on LED. Changed latency_led to running_led. Would need to add hardware                               
       break;
     case 2:
       latency_run = true;                                               // Start manual latency test
@@ -564,9 +567,20 @@ void menu() {                                       // UI button pressed, execut
           lcd_update_mode_selection(index_layer_2_option);          // Update LCD menu
           break;
         case 1:                                                     // PROGRAM NUMBER selection
-          if (program_number_selection < 99) program_number_selection++;        // Increase program number
-          debugln(program_number_selection);
-          lcd_update_program_number(program_number_selection);
+          btn_pressed = millis();
+          while (digitalRead(menu_up)) {
+              if (millis() - btn_pressed >= 100) {                  // Increase program number quickly by holding down btn
+                if (program_number_selection < 99) program_number_selection++;
+                btn_pressed = millis();
+                lcd_update_program_number(program_number_selection);
+                btn_hold_flag = true;
+              }
+          }
+          if (!btn_hold_flag) {                                     // Increase program speed once by click
+            if (program_number_selection < 99) program_number_selection++;
+            lcd_update_program_number(program_number_selection);
+            btn_hold_flag = false;                               // Reset flag
+          }
           break;
         case 2:                                                     // PROGRAM SPEED selection
           btn_pressed = millis();
@@ -592,6 +606,7 @@ void menu() {                                       // UI button pressed, execut
             else {
               if (millis() - btn_pressed >= 1) {                    // Increase program speed quickly by holding down btn. High speed
                 if (program_speed_selection < 9999) program_speed_selection+=10;
+                if (program_speed_selection > 9999) program_speed_selection = 9999;      // Avoid going over maximum 
                 btn_pressed = millis();
                 lcd_update_program_speed(program_speed_selection, false);
                 btn_hold_flag = true;
@@ -602,8 +617,8 @@ void menu() {                                       // UI button pressed, execut
           if (!btn_hold_flag) {                                     // Increase program speed once by click
             if (program_speed_selection < 9999) program_speed_selection++;
             lcd_update_program_speed(program_speed_selection, false);
+            btn_hold_flag = false;                              // Reset flag
           }
-          else btn_hold_flag = false;                              // Reset flag
           break;
           case 3:
             if (!program_loop) program_loop = true;
@@ -637,16 +652,27 @@ void menu() {                                       // UI button pressed, execut
           lcd_update_mode_selection(index_layer_2_option);      // Update LCD menu
           break;
         case 1:                                                 // PROGRAM NUMBER selection
-          if (program_number_selection > 0) program_number_selection--;       // Decrease program number
-          debugln(program_number_selection);
-          lcd_update_program_number(program_number_selection);
+          btn_pressed = millis();
+          while (digitalRead(menu_down)) {
+              if (millis() - btn_pressed >= 100) {                  // Decrease program number quickly by holding down btn
+                if (program_number_selection > 0) program_number_selection--;
+                btn_pressed = millis();
+                lcd_update_program_number(program_number_selection);
+                btn_hold_flag = true;
+              }
+          }
+          if (!btn_hold_flag) {                                     // Decrease program speed once by click
+            if (program_number_selection > 0) program_number_selection--;
+            lcd_update_program_number(program_number_selection);
+            btn_hold_flag = false;                                  // Reset flag
+          }
           break;
         case 2:                                                 // PROGRAM SPEED selection
           btn_pressed = millis();
           while (digitalRead(menu_down)) {
             if (btn_hold_count <= 20) {
               if (millis() - btn_pressed >= 100) {                  // Decrease program speed quickly by holding down btn. Low speed
-                if (program_speed_selection > 0) program_speed_selection--;
+                if (program_speed_selection > 1) program_speed_selection--;
                 btn_pressed = millis();
                 lcd_update_program_speed(program_speed_selection, false);
                 btn_hold_flag = true;
@@ -655,7 +681,7 @@ void menu() {                                       // UI button pressed, execut
             }
             else if (btn_hold_count <= 500) {
               if (millis() - btn_pressed >= 10) {                   // Decrease program speed quickly by holding down btn. Medium speed
-                if (program_speed_selection > 0) program_speed_selection--;
+                if (program_speed_selection > 1) program_speed_selection--;
                 btn_pressed = millis();
                 lcd_update_program_speed(program_speed_selection, false);
                 btn_hold_flag = true;
@@ -664,7 +690,8 @@ void menu() {                                       // UI button pressed, execut
             }
             else {
               if (millis() - btn_pressed >= 1) {                    // Decrease program speed quickly by holding down btn. High speed
-                if (program_speed_selection > 0) program_speed_selection -= 10;
+                if (program_speed_selection > 1) program_speed_selection -= 10;
+                if (program_speed_selection < 1) program_speed_selection = 1;         // Avoid less than minimum
                 btn_pressed = millis();
                 lcd_update_program_speed(program_speed_selection, false);
                 btn_hold_flag = true;
@@ -673,10 +700,10 @@ void menu() {                                       // UI button pressed, execut
             }
           }
           if (!btn_hold_flag) {                                     // Decrease program speed once by click
-            if (program_speed_selection > 0) program_speed_selection--;
+            if (program_speed_selection > 1) program_speed_selection--;
             lcd_update_program_speed(program_speed_selection, false);
+            btn_hold_flag = false;                                   // Reset flag
           }
-          else btn_hold_flag = false;                               // Reset flag
           break;
           case 3:
             if (program_loop) program_loop = false;
@@ -783,8 +810,48 @@ void manual_mode() {
 }
 
 void program_mode() {                                               // Loop through the number of steps in the program and output brake/speed/analog signals per step in the loop
+  byte wheel_0[] = {B00000,  B01110,  B00001,  B00001,  B10001,  B10001,  B01110,  B00000};
+  byte wheel_1[] = {B00000,  B00010,  B10001,  B10001,  B10001,  B10001,  B01110,  B00000};
+  byte wheel_2[] = {B00000,  B01100,  B10000,  B10001,  B10001,  B10001,  B01110,  B00000};
+  byte wheel_3[] = {B00000,  B01110,  B10001,  B10000,  B10000,  B10001,  B01110,  B00000};
+  byte wheel_4[] = {B00000,  B01110,  B10001,  B10001,  B10001,  B10000,  B01100,  B00000};
+  byte wheel_5[] = {B00000,  B01110,  B10001,  B10001,  B10001,  B10001,  B00010,  B00000};
+  byte wheel_6[] = {B00000,  B01110,  B10001,  B10001,  B00001,  B00001,  B01110,  B00000};
+  byte *wheel[] = {wheel_0, wheel_1, wheel_2, wheel_3, wheel_4, wheel_5, wheel_6};
   static unsigned long program_time = 0;                            // Current time 
   static int step = 0;                                              // Current step in program
+  static unsigned long loading_time = millis();
+  static bool flip = true;
+  static bool do_once = true;
+  static int index = 0;
+
+  if (millis() - loading_time >= 800 && program_run){               // LCD running animation
+    // flip = !flip;
+    // if (flip) {
+    //   lcd.setCursor(11, 0);
+    //   lcd.print("<");
+    // }
+    // else{
+    //   lcd.setCursor(11, 0);
+    //   lcd.print(">");
+    // }
+    
+    lcd.createChar(0, wheel[index]);
+    lcd.setCursor(11,0);
+    lcd.write(0);
+
+    index++;
+    if (index > sizeof(wheel)/sizeof(wheel[0]) - 1) index = 0;
+
+    loading_time = millis();
+  }
+  else if (!program_run && do_once){                                // Clear symbol once program stops running
+    lcd.setCursor(11, 0);
+    lcd.print(" ");
+    do_once = false;
+  }
+
+  if (program_run && !do_once) do_once = true;                      // Reset flag
   
   if (program_run) {                                                // Check if START/STOP button is pressed (Run program)
     if (millis() - program_time >= program_speed) {                 // Check if update time has been reached. Time interval can be changed by user via menu, this is an option
@@ -926,6 +993,7 @@ void output_reset() {                                           // Turn off all 
     analogWrite(output_pins[n + 8], 0);                         // Turn off speed signals
   }
   digitalWrite(manual_swtiches_enable, LOW);                    // Disable manual switches
+  digitalWrite(latency_led, LOW);                               // Turn on LED
 }
 
 void SD_write() {                                               // Write data to SD card
@@ -1086,7 +1154,8 @@ void SD_read(int program_num) {                               // Read and proces
   else {
     lcd.clear();
     lcd.print("Program Not Found");
-    delay(5000);
+    delay(3500);
+    SD_read(0);                                                 // Error, so load default program
   }
   lcd_update_running();                                         // Update LCD
 }
@@ -1111,9 +1180,10 @@ void ethernet(){
       if (c == '\n' && currentLineIsBlank) {                    // if you've gotten to the end of the line (received a newline character) and the line is blank, the http request has ended, so you can send a reply
         client.println("HTTP/1.1 200 OK");                      // send a standard http response header
         client.println("Content-Type: text/html");
-        client.println("Connection: keep-alive");
-        // client.println("Connection: close");
+        // client.println("Connection: keep-alive");
+        client.println("Connection: close");
         client.println();
+        // print favicon
       }
       
       else if (c == '\n') {
@@ -1162,7 +1232,7 @@ void update_html(EthernetClient client, int page, int count){
     else debugln("htmlB failed to open");
   }
   else if (page == 1){                                            // list.html        list of saved programs
-    my_file = SD.open("list1.txt");                                // open start half html file
+    my_file = SD.open("list1.txt");                               // open start half html file
     if (my_file){
       debugln("list1.html file opened");
       while(my_file.available()){                                 // Read html file
@@ -1357,10 +1427,36 @@ void list_files(EthernetClient client, bool print) {              // print = tru
     File entry =  my_file.openNextFile();
     if (! entry) break;                                           // no more files
 
+    // if (print){
+    //   char *str = entry.name();
+    //   if (isDigit(str[0])){                                       // Do not read HTML, LIST files, etc. Only program files
+    //     client.print(F("<div><label>"));
+    //     client.print(str[0]);
+    //     client.print(str[1]);
+    //     client.print(F("</label><label>"));
+
+    //     int index = 0;
+    //     memset(description, '\0', sizeof(description));
+    //     while (entry.available()){                                // Extract description from current entry
+    //       char val = entry.read();
+    //       if (val != '\n') {                                      // Read next char
+    //         if (val == '+') val = ' ';
+    //         description[index] = val;                             // Once last line is read, that will be the description
+    //         index++;                                              // Go to next line
+    //       }
+    //       else {
+    //         index = 0;
+    //         memset(description, '\0', sizeof(description));
+    //       }
+    //     }
+    //     client.print(description);
+    //     client.print(F("</label></div>"));
+    //   }
+    // }
     if (print){
       char *str = entry.name();
       if (isDigit(str[0])){                                       // Do not read HTML, LIST files, etc. Only program files
-        client.print(F("<div><label>"));
+        client.print(F("<form><input type='submit' value='Load'><input type='button' value='Delete' onclick='delete_program(this.parentNode)''><label>"));
         client.print(str[0]);
         client.print(str[1]);
         client.print(F("</label><label>"));
@@ -1380,7 +1476,10 @@ void list_files(EthernetClient client, bool print) {              // print = tru
           }
         }
         client.print(description);
-        client.print(F("</label></div>"));
+        client.print(F("</label><input class='hidden' type='text' value='"));
+        client.print(str[0]);
+        client.print(str[1]);
+        client.print(F("' name='program_load'></form>"));
       }
     }
     else {
@@ -1435,7 +1534,8 @@ void decode_ethernet(EthernetClient client){
       char file_name[7] = {val[0], val[1], '.', 't', 'x', 't'};               // File name with selected program number
       my_file = SD.open(file_name);
       if (my_file){                                                           // check if program # already exists on SD card
-        save_flag = lcd_overwrite_program(val);                               // if exisits, overwrite yes/no?
+        // save_flag = lcd_overwrite_program(val);                               // if exisits, overwrite yes/no?. Choice is made on html ui
+        save_flag = true;
       }
       else {
         debugln("File does not exist");
@@ -1542,7 +1642,9 @@ void decode_ethernet(EthernetClient client){
     delete_program();     
     list_files(client_null, false);                                             // Update program list
     debugln(program_list_string);
-    update_html(client, 0, 0);                                           
+    debugln(readString);
+    if (readString.indexOf("list=") > 0) update_html(client, 1, 0);             // Delete called from SAVED PROGRAMS page
+    else update_html(client, 0, 0);                                             // Delete called from main page
   }
   else{
     update_html(client, 0, 0);                                                  // Load main.html, page refesh
@@ -1551,7 +1653,12 @@ void decode_ethernet(EthernetClient client){
 
 void delete_program(){
   int index = readString.indexOf("delete=");
-  String val = readString.substring(index + 7);
+  int index_end = readString.indexOf("list=");
+  debug("index end = ");
+  debugln(index_end);
+  String val;
+  if (index_end > 0) val = readString.substring(index + 7, index_end - 1);  // Delete from SAVED PROGRAMS page
+  else val = readString.substring(index + 7);                               // Delete from main page
   debug("val = ");
   debugln(val);
   char file_name[7] = "00.txt";                                         // Convert readString to file_name
@@ -1565,6 +1672,16 @@ void delete_program(){
   }
 
   SD.remove(file_name);                                                 // Delete file
+
+  char temp[] = {file_name[0], file_name[1]};
+  String str = String(temp);
+  int program = str.toInt();
+
+  if (program = program_number){                                        // Check if the running file was deleted
+    program_run = false;                                                // Running program was deleted so stop running 
+    output_reset();
+    SD_read(0);                                                         // Load default program 0
+  }
 
   debug("file ");
   debug(file_name);

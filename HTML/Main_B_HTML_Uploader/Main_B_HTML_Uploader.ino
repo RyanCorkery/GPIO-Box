@@ -28,16 +28,22 @@ my_file.println(F(""));
 my_file.println(F("<script>"));
 my_file.println(F("    function save_data(){"));
 
-my_file.println(F("var program_number = document.getElementById('program_ui').value;"));
+my_file.println(F("        var program_number = document.getElementById('program_ui').value;"));
 my_file.println(F("        var file_list = document.getElementById('program_list').value;"));
+my_file.println(F("        if (program_number == '') return;"));
 my_file.println(F("        if (program_number.length == 1) program_number = '0' + program_number;"));
 my_file.println(F("        if (document.getElementById('program_list').value.includes(program_number)){"));
 my_file.println(F("            if (program_number == '00') alert('Program 0 can not be modified');"));
-my_file.println(F("            else alert('Program ' + program_number + ' exists. Overwrite? Make selection on IO box. Click ok to proceed');"));
+my_file.println(F("            else {"));
+my_file.println(F("               if (confirm('Program ' + program_number + ' exists. Overwrite program?')) document.getElementById('my_form').submit();"));
+my_file.println(F("               alert('Program ' + program_number + ' Saved');"));
+my_file.println(F("            }"));
 my_file.println(F("        }"));
 my_file.println(F("       else{"));
 my_file.println(F("           var file_list = file_list.concat(program_number, '-');"));
 my_file.println(F("           document.getElementById('program_list').value = file_list;"));
+my_file.println(F("           document.getElementById('my_form').submit();"));
+my_file.println(F("           alert('Program ' + program_number + ' Saved');"));
 my_file.println(F("}"));
 
 my_file.println(F("        var number_of_steps = document.getElementById('step_inputs').children.length - 1;                                                              "));
@@ -73,9 +79,9 @@ my_file.println(F("        }"));
 
 my_file.println(F("        var description = document.getElementById('description');"));
 my_file.println(F("        if (description.value == '') description.value = ' ';"));
-
 my_file.println(F("    }"));
 my_file.println(F(""));
+
 my_file.println(F("    function replaceChar(origString, replaceChar, index) {"));
 my_file.println(F("        let firstPart = origString.substr(0, index);"));
 my_file.println(F("        let lastPart = origString.substr(index + 1);"));
@@ -84,20 +90,23 @@ my_file.println(F("        let newString = firstPart + replaceChar + lastPart;")
 my_file.println(F("        return newString;"));
 my_file.println(F("    }"));
 my_file.println(F(""));
-my_file.println(F("    function add_step(){"));
+my_file.println(F("    function add_step(duplicate){"));
 my_file.println(F("        var count = document.getElementById('step_inputs').children.length;                                                                                      "));
 my_file.println(F(""));
 my_file.println(F("        if (count <= 20){                                                                                                                                                                            "));
-my_file.println(F("            var original = document.getElementById('step_inputs').children[1];                                                                                       "));
+my_file.println(F("            if (duplicate) var original = document.getElementById('step_inputs').children[count-1];    "));                                                                                              
+my_file.println(F("            else var original = document.getElementById('step_inputs').children[1];    "));
 my_file.println(F("            var clone = original.cloneNode(true);"));
 my_file.println(F("            clone.id = count - 1;"));
 my_file.println(F("            original.parentNode.appendChild(clone);                                                                                                                    "));
 my_file.println(F(""));
+my_file.println(F("            if (!duplicate){"));
 my_file.println(F("            for (var i = 0; i < 8; i++){                                                                                                        "));
 my_file.println(F("                clone.children[i+1].children[0].checked = false;                                                                            "));
 my_file.println(F("            }"));
 my_file.println(F("            for (var i = 0; i < 10; i++){                                                                                                            "));
 my_file.println(F("                clone.children[i+1+8].children[0].value = '0';                                                                              "));
+my_file.println(F("            }"));
 my_file.println(F("            }"));
 my_file.println(F(""));
 my_file.println(F("            var original_data = document.getElementById('form_data');                                                                             "));
@@ -118,7 +127,6 @@ my_file.println(F("        var count = document.getElementById('step_inputs').ch
 my_file.println(F(""));
 my_file.println(F("        if (count > 2){                                                                                                                                    "));
 my_file.println(F("            var input = document.getElementById('step_inputs');                                                                     "));
-my_file.println(F("            input.removeChild(input.lastChild);"));
 my_file.println(F("            input.removeChild(input.lastElementChild);"));
 my_file.println(F(""));
 my_file.println(F("            let data = document.getElementById('my_form');                                                                             "));
@@ -140,6 +148,7 @@ my_file.println(F("        if (document.getElementById('program_list').value.inc
 my_file.println(F("            if (confirm('Load program ' + raw_program_number + '? Current data inputs will be lost')){"));
 my_file.println(F("                document.getElementById('program_load').submit();"));
 my_file.println(F("            }"));
+my_file.println(F("            else document.getElementById('program_ui').value = '';"));
 my_file.println(F("        }"));
 my_file.println(F("    }"));
 

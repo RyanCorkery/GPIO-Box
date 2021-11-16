@@ -20,7 +20,7 @@ void setup() {
     // ******************************** //
     // Copy and past html_Arduino below
     // ******************************** //
-my_file.println(F("' onchange='update_program_speed(this)'></div>"));
+my_file.println(F("' onchange='update_program_speed(this)'>[ms], period of each step</div>"));
 my_file.println(F("    <div id='step_inputs'>"));
 my_file.println(F("        <div class='Labels'>"));
 my_file.println(F("            <div id='step_title'>Step #</div>"));

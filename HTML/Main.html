@@ -36,6 +36,9 @@ h1 {
     grid-auto-flow: column;
     justify-content: left;
 }
+.speed_input{
+    margin-right: 5px;
+}
 .labels > div{
     padding: 5px;
     width: 70px;
@@ -72,7 +75,7 @@ h1 {
     margin: 5px;
 }
 .hidden{
-    /* visibility: hidden; */
+    visibility: hidden;
 }
 .program{
     margin: 5px 5px 0 0;
@@ -115,7 +118,7 @@ h1 {
 
 <div class="grid-container">
     <div class="program"><label>Program Number:</label><input type="number" id="program_ui" value="" onchange="update_program_number(this)"></div>
-    <div class="program"><label>Program Speed:</label><input type="number" id="speed_ui" value="" onchange="update_program_speed(this)"></div>
+    <div class="program"><label>Program Speed:</label><input class="speed_input" type="number" id="speed_ui" value="" onchange="update_program_speed(this)">[ms], period of each step</div>
     <div id="step_inputs">
         <div class="Labels">
             <div id="step_title">Step #</div>
@@ -162,15 +165,19 @@ h1 {
     </div>
 </div>
 
-<input class="step_button" type="button" value="Add Step" onclick="add_step()">
-<input class="step_button" type="button" value="Remove Step" onclick="remove_step()">
+<div>
+    <input class="step_button" type="button" value="Add Step" onclick="add_step(false)">
+    <input class="step_button" type="button" value="Duplicate Last Step" onclick="add_step(true)">
+</div>
+<input class="step_button" type="button" value="Remove Last Step" onclick="remove_step()">
 
 <input type="button" value="Delete Program" class="step_button" onclick="delete_program()">
 
 <iframe name="iframe1" style="display:none;"></iframe>
-<form id="my_form" method="post" action="/" name="pins" target="iframe1" onsubmit="save_data()">
+<!-- <form id="my_form" method="post" action="/" name="pins" target="iframe1" onsubmit="save_data()"></form> -->
+<form id="my_form" method="post" action="/" name="pins" target="iframe1">
     <label>Program description:</label><input type="text" value="" id="description" name="description" maxlength="100">Limit 100 characters<br>
-    <input class="step_button" type="submit" value="Save program">
+    <input class="step_button" type="submit" value="Save program" onclick="save_data()">
     <input type="text" id="program" class="hidden" name="program" value="">
     <input type="text" id="speed" class="hidden" name="speed" value="">
     <input id="form_data" type="text" name="step_0_data" value="00000000000000000000000000000000000000" class="hidden">
@@ -187,16 +194,23 @@ h1 {
         // Check if program exists
         var program_number = document.getElementById("program_ui").value;
         var file_list = document.getElementById("program_list").value;
-        // if program # exists 
+        // If no number is entered, return
+        if (program_number == '') return;
+        // if program exists 
         // alert, overwrite? Check IO box
         if (program_number.length == 1) program_number = '0' + program_number;
         if (file_list.includes(program_number)){
             if (program_number == "00") alert("Program 0 can not be modified");
-            else alert("Program " + program_number + " exists. Overwrite? Make selection on IO box. Click ok to proceed");
+            else {
+                if (confirm("Program " + program_number + " exists. Overwrite program?")) document.getElementById("my_form").submit();
+                alert("Program " + program_number + " Saved");
+            }
         }
         else{
             var file_list = file_list.concat(program_number, "-");
             document.getElementById("program_list").value = file_list;
+            document.getElementById("my_form").submit();
+            alert("Program " + program_number + " Saved");
         }
 
         var number_of_steps = document.getElementById("step_inputs").children.length - 1;                           // Count number of steps in program
@@ -243,26 +257,27 @@ h1 {
         return newString;
     }
 
-    function add_step(){
+    function add_step(duplicate){
         var count = document.getElementById("step_inputs").children.length;                                         // Check the number of steps in the HTML page
 
-        if (count <= 20){                                                                                           // 20 = max steps allowed. Could change but will also have to change arduino code
-            // var original = document.getElementById("step_0");                                                       // Clone step inputs from step_0
-            var original = document.getElementById("step_inputs").children[1];
+        if (count <= 20){                                                                          
+            if (duplicate) var original = document.getElementById("step_inputs").children[count-1];                 // Clone last step
+            else var original = document.getElementById("step_inputs").children[1];                                 // clone first step
             var clone = original.cloneNode(true);
             clone.id = count - 1;
             original.parentNode.appendChild(clone);                                                                 // Appned cloned step to the end of step inputs div
 
-            for (var i = 0; i < 8; i++){                                                                            // Reset break input signals
-                clone.children[i+1].children[0].checked = false;                                                    // +1 to skip step # div
-            }
-            for (var i = 0; i < 10; i++){                                                                           // Reset speed and analog signals
-                clone.children[i+1+8].children[0].value = "0";                                                      // +1 to skip step # div
+            if (!duplicate){
+                for (var i = 0; i < 8; i++){                                                                            // Reset break input signals
+                    clone.children[i+1].children[0].checked = false;                                                    // +1 to skip step # div
+                }
+                for (var i = 0; i < 10; i++){                                                                           // Reset speed and analog signals
+                    clone.children[i+1+8].children[0].value = "0";                                                      // +1 to skip step # div
+                }
             }
 
             var original_data = document.getElementById("form_data");                                               // Clone form data from step_0
             var clone_data = original_data.cloneNode(true);
-            // clone.id = "";
             clone_data.setAttribute("name","step_" + (count - 1) + "_data");
 
             clone_data.value = "00000000000000000000000000000000000000";                                            // Reset data to zeros
@@ -278,7 +293,6 @@ h1 {
 
         if (count > 2){                                                                                             // Leave at least one step on HTML page
             let input = document.getElementById("step_inputs");                                                     // Remove inputs
-            // input.removeChild(input.lastChild);
             input.removeChild(input.lastElementChild);
 
             let data = document.getElementById("my_form");                                                          // Remove step data
@@ -303,6 +317,7 @@ h1 {
             if (confirm("Load program " + raw_program_numer + "? Current data inputs will be lost")){
                 document.getElementById("program_load").submit();
             }
+            else document.getElementById("program_ui").value = "";
         }
     }
 
