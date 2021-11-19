@@ -8,6 +8,7 @@
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h> 
 #include <Ethernet.h>
+#include <MemoryFree.h>
 
 // Debug
 #define DEBUG 1                                               // debug true = 1, false = 0
@@ -113,7 +114,8 @@ char* data[] = { data_step_0, data_step_1, data_step_2, data_step_3, data_step_4
 int data_steps;
 // declare data array as char* data[100], 100 may be overkill, desktop app will determine max number of steps in program
 
-char program_list[300] = {"00-01-"};
+char program_list[300] = {"00-01-"};                                                // Array to store file names
+char program_list_sorted[100][12];                                                  // Array to store sorted file names
 String program_list_string = "";
 
 typedef enum menu_button_pressed {left, up, down, right} menu_button_pressed;       // Menu button options
@@ -1140,14 +1142,14 @@ void update_html(EthernetClient client, int page, int count){
         val = my_file.read();
         client.print(val);                                        // Write html content to browser
       }
+      debugln("html a closed");
       my_file.close();
     }
     else debugln("htmlA failed to open");
     // get sorted list of saved files
     // print list to hidden text input
     // print number followed by - ie 01-02-...
-    // client.print(program_list);                   // TEST data
-    list_files(client_null, false);
+    // list_files(client_null, false);
     client.print(program_list_string);
     //
     my_file = SD.open("htmlB.txt");                                // open html file
@@ -1158,6 +1160,7 @@ void update_html(EthernetClient client, int page, int count){
         val = my_file.read();
         client.print(val);                                        // Write html content to browser
       }
+      debugln("html b closed");
       my_file.close();
     }
     else debugln("htmlB failed to open");
@@ -1351,42 +1354,78 @@ void update_html(EthernetClient client, int page, int count){
   }
 }
 
+
+
+// void list_files(EthernetClient client, bool print) {              // print = true -> print html content to client. False -> created sorted list
+//   my_file = SD.open("/");
+//   program_list_string = "";
+//   while (true){
+//     File entry =  my_file.openNextFile();
+//     if (! entry) break;                                           // no more files
+
+//     if (print){
+//       char *str = entry.name();
+//       if (isDigit(str[0])){                                       // Do not read HTML, LIST files, etc. Only program files
+//         client.print(F("<form><input type='submit' value='Load'><input type='button' value='Delete' onclick='delete_program(this.parentNode)''><label>"));
+//         client.print(str[0]);
+//         client.print(str[1]);
+//         client.print(F("</label><label>"));
+
+//         int index = 0;
+//         memset(description, '\0', sizeof(description));
+//         while (entry.available()){                                // Extract description from current entry
+//           char val = entry.read();
+//           if (val != '\n') {                                      // Read next char
+//             if (val == '+') val = ' ';
+//             description[index] = val;                             // Once last line is read, that will be the description
+//             index++;                                              // Go to next line
+//           }
+//           else {
+//             index = 0;
+//             memset(description, '\0', sizeof(description));
+//           }
+//         }
+//         client.print(description);
+//         client.print(F("</label><input class='hidden' type='text' value='"));
+//         client.print(str[0]);
+//         client.print(str[1]);
+//         client.print(F("' name='program_load'></form>"));
+//       }
+//     }
+//     else {
+//       // debugln(entry.name());                                     // Print list of files to serial monitor
+//       if (isDigit(entry.name()[0])) {
+//         char *str = entry.name();
+//         program_list_string += str[0];
+//         program_list_string += str[1];
+//         program_list_string += "-";
+//       }
+//       // sorted_files_list();
+//     }
+//     entry.close();
+//   }
+// }
+
 void list_files(EthernetClient client, bool print) {              // print = true -> print html content to client. False -> created sorted list
-  my_file = SD.open("/");
+  int index_file = 0;
+
   program_list_string = "";
+
+  sorted_files_list();
+
+  debugln("list files function start");
+  // File root = SD.open("/");
   while (true){
-    File entry =  my_file.openNextFile();
-    if (! entry) break;                                           // no more files
+    my_file = SD.open(program_list_sorted[index_file]);
+    // my_file = root.openNextFile();
+    
+    debugln(String(program_list_sorted[index_file]));
+    if (!my_file) break;                                           // no more files
 
-    // if (print){
-    //   char *str = entry.name();
-    //   if (isDigit(str[0])){                                       // Do not read HTML, LIST files, etc. Only program files
-    //     client.print(F("<div><label>"));
-    //     client.print(str[0]);
-    //     client.print(str[1]);
-    //     client.print(F("</label><label>"));
-
-    //     int index = 0;
-    //     memset(description, '\0', sizeof(description));
-    //     while (entry.available()){                                // Extract description from current entry
-    //       char val = entry.read();
-    //       if (val != '\n') {                                      // Read next char
-    //         if (val == '+') val = ' ';
-    //         description[index] = val;                             // Once last line is read, that will be the description
-    //         index++;                                              // Go to next line
-    //       }
-    //       else {
-    //         index = 0;
-    //         memset(description, '\0', sizeof(description));
-    //       }
-    //     }
-    //     client.print(description);
-    //     client.print(F("</label></div>"));
-    //   }
-    // }
     if (print){
-      char *str = entry.name();
-      if (isDigit(str[0])){                                       // Do not read HTML, LIST files, etc. Only program files
+      if (isDigit(my_file.name()[0])){                             // Do not read HTML, LIST files, etc. Only program files
+        char *str = my_file.name();
+        
         client.print(F("<form><input type='submit' value='Load'><input type='button' value='Delete' onclick='delete_program(this.parentNode)''><label>"));
         client.print(str[0]);
         client.print(str[1]);
@@ -1394,8 +1433,8 @@ void list_files(EthernetClient client, bool print) {              // print = tru
 
         int index = 0;
         memset(description, '\0', sizeof(description));
-        while (entry.available()){                                // Extract description from current entry
-          char val = entry.read();
+        while (my_file.available()){                              // Extract description from current entry
+          char val = my_file.read();
           if (val != '\n') {                                      // Read next char
             if (val == '+') val = ' ';
             description[index] = val;                             // Once last line is read, that will be the description
@@ -1414,26 +1453,134 @@ void list_files(EthernetClient client, bool print) {              // print = tru
       }
     }
     else {
-      // debugln(entry.name());                                     // Print list of files to serial monitor
-      if (isDigit(entry.name()[0])) {
-        char *str = entry.name();
+      if (isDigit(my_file.name()[0])) {                         // Add program numbers only to string of program numbers. HTML file uses this string
+        char *str = my_file.name();
         program_list_string += str[0];
         program_list_string += str[1];
         program_list_string += "-";
       }
-      sorted_files_list();
     }
-    entry.close();
+    my_file.close();
+    index_file++;
   }
+  // root.close();
 }
 
 void sorted_files_list(){
-  // save file names to array
-  // sort array
-  // program_list_string += 
+  debugln("start of sort function");
+  int max_files = 113;                                        // 101 +  number of html css etc files (12)
+  int index = 0;                                 
+  int elementCount = 0;                                       // Number of elements in program_list_sorted
+
+  File root = SD.open("/");                                     // Open root directory
+  if (root){
+    debugln("root opened");
+    while (index < max_files){   
+    File entry = root.openNextFile();                      // Loop through files on SD card
+    
+    char *str = entry.name();                                 // Save file name pointer
+
+    if (!strlen(str)) {
+      break;                                                  // No more files                                                  
+    }
+
+    if (!isDigit(str[0])) {                                   // Don't include html css etc files in sorted list
+      continue;                                               
+    }
+    
+    strcpy(program_list_sorted[index], str);                  // Save file name to program_list_sorted
+    
+    debugln("entry closed");
+    entry.close();                                            // Close file
+    index++;
+    }
+  
+    if (index == max_files)
+    {
+      debugln("too many files");                                // Alert user of error
+    }
+    else
+    {
+      elementCount = index;                                     // Count number of elements in myWords
+    
+      qsort(program_list_sorted, elementCount, sizeof(program_list_sorted[0]), CompareStrings);      // Sort elements
+      #if DEBUG
+        debugln("Sorted list");
+        for (int i = 0; i < elementCount; i++) {
+          debugln(program_list_sorted[i]);                                  // Print sorted elements
+        }
+      #endif
+    }
+    debugln("file closed / end of sorting function");
+
+    root.close();
+  }
+  else debugln("failed to open root");
+}
+
+// void sorted_files_list(){
+//   debugln("start of sort function");
+//   int max_files = 113;                                        // 101 +  number of html css etc files (12)
+//   int index = 0;                                 
+//   int elementCount = 0;                                       // Number of elements in program_list_sorted
+
+//   my_file = SD.open("/");                                     // Open root directory
+//   if (!my_file) debugln("failed to open root");
+//   // my_file.rewindDirectory();
+  
+//   while (index < max_files){   
+//     // my_file = SD.open("/");
+//     File entry = my_file.openNextFile();                      // Loop through files on SD card
+//     if (!entry) break;
+    
+//     char *str = entry.name();                                 // Save file name pointer
+
+//     if (!strlen(str)) {
+//       // my_file.rewindDirectory();  
+//       break;                                                  // No more files                                                  
+//     }
+
+//     if (!isDigit(str[0])) {                                   // Don't include html css etc files in sorted list
+//       elementCount++;
+//       continue;                                               
+//     }
+    
+//     strcpy(program_list_sorted[index], str);                  // Save file name to program_list_sorted
+    
+//     debugln("entry closed");
+//     entry.close();                                            // Close file
+//     // my_file.close();
+//     index++;
+//   }
+  
+//   if (index == max_files)
+//   {
+//     debugln("too many files");                                // Alert user of error
+//   }
+//   else
+//   {
+//     // elementCount = index;                                     // Count number of elements in myWords
+  
+//     qsort(program_list_sorted, elementCount, sizeof(program_list_sorted[0]), CompareStrings);      // Sort elements
+//     #if DEBUG
+//       debugln("Sorted list");
+//       for (int i = 0; i < elementCount; i++) {
+//         debugln(program_list_sorted[i]);                                  // Print sorted elements
+//       }
+//     #endif
+//   }
+//   debugln("file closed / end of sorting function");
+//   my_file.close();
+// }
+
+int CompareStrings(const void *p1, const void *p2)            // Sorting algorithm 
+{
+  return strcmp(p1, p2);
 }
 
 void decode_ethernet(EthernetClient client){
+  ram_usage();
+
   static bool first_html = true;                                              // Load main.html the first time the client is connected
   bool save_flag;
 
@@ -1634,6 +1781,7 @@ void load_program(EthernetClient client){
     file_name[1] = val[1];
   }
   debugln(file_name);
+  ram_usage();
   my_file = SD.open(file_name);                                         // Try to open program file
   if (my_file) {                                                        // Program exists if true
     readString = "";                                                    // Reset readstring
@@ -1649,6 +1797,7 @@ void load_program(EthernetClient client){
     debugln("load program via html");
     update_html(client, 2, count);                                      // If program is saved on SD, load program
   }
+  else debugln("failed to open txt file");
 }
 
 bool lcd_overwrite_program(String program){
@@ -1704,4 +1853,9 @@ bool lcd_overwrite_program(String program){
 float map_float(float x, float in_min, float in_max, float out_min, float out_max)
 {
   return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
+
+void ram_usage(){
+  debug("Free memory = ");
+  debugln(freeMemory());
 }

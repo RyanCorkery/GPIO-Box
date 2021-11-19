@@ -11,7 +11,6 @@ void setup() {
     while (1);
   }
 
-
   
   my_file = SD.open("01.txt");
 
