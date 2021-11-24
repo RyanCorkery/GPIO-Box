@@ -9,62 +9,222 @@
 # 9 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 2
 # 10 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 2
 # 11 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 2
-# 12 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 2
+// #include <MemoryFree.h>
 
 // Debug
 # 24 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
 // Arduino pinout
-const int s1_out = 2; // Speed signal 1 out of Arduino
-const int s2_out = 3;
+const int s1_out 
+# 25 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                __attribute__((__progmem__)) 
+# 25 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                        = 2; // Speed signal 1 out of Arduino
+const int s2_out 
+# 26 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                __attribute__((__progmem__)) 
+# 26 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                        = 3;
 // ethernet pin 4
-const int s3_out = 5;
-const int s4_out = 6;
-const int s5_out = 7;
-const int s6_out = 8;
-const int s7_out = 9;
+const int s3_out 
+# 28 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                __attribute__((__progmem__)) 
+# 28 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                        = 5;
+const int s4_out 
+# 29 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                __attribute__((__progmem__)) 
+# 29 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                        = 6;
+const int s5_out 
+# 30 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                __attribute__((__progmem__)) 
+# 30 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                        = 7;
+const int s6_out 
+# 31 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                __attribute__((__progmem__)) 
+# 31 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                        = 8;
+const int s7_out 
+# 32 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                __attribute__((__progmem__)) 
+# 32 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                        = 9;
 // ethernet pin 10
-const int s8_out = 11;
-const int a1_out = 12; // Analog signal 1 out of Arduino
-const int a2_out = 13;
-const int menu_interrupt = 18; // Interrupt is triggered when any menu button is pressed
+const int s8_out 
+# 34 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                __attribute__((__progmem__)) 
+# 34 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                        = 11;
+const int a1_out 
+# 35 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                __attribute__((__progmem__)) 
+# 35 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                        = 12; // Analog signal 1 out of Arduino
+const int a2_out 
+# 36 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                __attribute__((__progmem__)) 
+# 36 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                        = 13;
+const int menu_interrupt 
+# 37 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                        __attribute__((__progmem__)) 
+# 37 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                                = 18; // Interrupt is triggered when any menu button is pressed
 // pin 20 - LCD SDA
 // pin 21 - LCD SCL
-const int menu_down = 22;
-const int b1 = 23; // Brake signal 1 out of Arduino
-const int menu_up = 24;
-const int b2 = 25;
-const int menu_left = 26;
-const int b3 = 27;
-const int menu_right = 28;
-const int b4 = 29;
-const int menu_run = 30;
-const int manual_swtiches_enable = 31; // Controls power to manual switches via MOSFET
-const int adam6017_power = 32; // Power kill switch to ADAM modules
-const int b5 = 33;
-const int adam6050_power = 34;
-const int b6 = 35;
-const int latency_led = 36;
-const int b7 = 37;
-const int adam_do_0 = 38; // Input to read when ADAM DO triggers relay 
-const int b8 = 39;
+const int menu_down 
+# 40 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                   __attribute__((__progmem__)) 
+# 40 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                           = 22;
+const int b1 
+# 41 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+            __attribute__((__progmem__)) 
+# 41 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                    = 23; // Brake signal 1 out of Arduino
+const int menu_up 
+# 42 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                 __attribute__((__progmem__)) 
+# 42 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                         = 24;
+const int b2 
+# 43 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+            __attribute__((__progmem__)) 
+# 43 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                    = 25;
+const int menu_left 
+# 44 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                   __attribute__((__progmem__)) 
+# 44 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                           = 26;
+const int b3 
+# 45 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+            __attribute__((__progmem__)) 
+# 45 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                    = 27;
+const int menu_right 
+# 46 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                    __attribute__((__progmem__)) 
+# 46 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                            = 28;
+const int b4 
+# 47 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+            __attribute__((__progmem__)) 
+# 47 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                    = 29;
+const int menu_run 
+# 48 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                  __attribute__((__progmem__)) 
+# 48 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                          = 30;
+const int manual_swtiches_enable 
+# 49 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                                __attribute__((__progmem__)) 
+# 49 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                                        = 31; // Controls power to manual switches via MOSFET
+const int adam6017_power 
+# 50 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                        __attribute__((__progmem__)) 
+# 50 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                                = 32; // Power kill switch to ADAM modules
+const int b5 
+# 51 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+            __attribute__((__progmem__)) 
+# 51 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                    = 33;
+const int adam6050_power 
+# 52 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                        __attribute__((__progmem__)) 
+# 52 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                                = 34;
+const int b6 
+# 53 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+            __attribute__((__progmem__)) 
+# 53 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                    = 35;
+const int latency_led 
+# 54 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                     __attribute__((__progmem__)) 
+# 54 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                             = 36;
+const int b7 
+# 55 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+            __attribute__((__progmem__)) 
+# 55 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                    = 37;
+const int adam_do_0 
+# 56 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                   __attribute__((__progmem__)) 
+# 56 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                           = 38; // Input to read when ADAM DO triggers relay 
+const int b8 
+# 57 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+            __attribute__((__progmem__)) 
+# 57 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                    = 39;
 // ethernet pin 50
 // ethernet pin 51
 // ethernet pin 52
-const int a1_in = A4;
-const int a2_in = A5;
-const int s1_in = A8; // Speed signal 1 in
-const int s2_in = A9;
-const int s3_in = A10;
-const int s4_in = A11;
-const int s5_in = A12;
-const int s6_in = A13;
-const int s7_in = A14;
-const int s8_in = A15;
+const int a1_in 
+# 61 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+               __attribute__((__progmem__)) 
+# 61 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                       = A4;
+const int a2_in 
+# 62 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+               __attribute__((__progmem__)) 
+# 62 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                       = A5;
+const int s1_in 
+# 63 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+               __attribute__((__progmem__)) 
+# 63 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                       = A8; // Speed signal 1 in
+const int s2_in 
+# 64 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+               __attribute__((__progmem__)) 
+# 64 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                       = A9;
+const int s3_in 
+# 65 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+               __attribute__((__progmem__)) 
+# 65 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                       = A10;
+const int s4_in 
+# 66 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+               __attribute__((__progmem__)) 
+# 66 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                       = A11;
+const int s5_in 
+# 67 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+               __attribute__((__progmem__)) 
+# 67 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                       = A12;
+const int s6_in 
+# 68 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+               __attribute__((__progmem__)) 
+# 68 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                       = A13;
+const int s7_in 
+# 69 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+               __attribute__((__progmem__)) 
+# 69 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                       = A14;
+const int s8_in 
+# 70 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+               __attribute__((__progmem__)) 
+# 70 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                       = A15;
 
-int input_pins[] = { menu_left, menu_up, menu_down, menu_right, menu_run, adam_do_0 }; // Inputs are menu buttons and start/stop program button, ADAM module digital outputs
+const int input_pins[] 
+# 72 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                      __attribute__((__progmem__)) 
+# 72 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                              = { menu_left, menu_up, menu_down, menu_right, menu_run, adam_do_0 }; // Inputs are menu buttons and start/stop program button, ADAM module digital outputs
 
-int output_pins[] = {b1, b2, b3, b4, b5, b6, b7, b8, s1_out, s2_out, s3_out, s4_out, s5_out, s6_out, s7_out, s8_out, a1_out, a2_out}; // Outputs are brake and speed signals and analog
-int pots[] = {s1_in, s2_in, s3_in, s4_in, s5_in, s6_in, s7_in, s8_in, a1_in, a2_in}; // Speed signal measurement potentiometers
+const int output_pins[] = {b1, b2, b3, b4, b5, b6, b7, b8, s1_out, s2_out, s3_out, s4_out, s5_out, s6_out, s7_out, s8_out, a1_out, a2_out}; // Outputs are brake and speed signals and analog
+const int pots[] = {s1_in, s2_in, s3_in, s4_in, s5_in, s6_in, s7_in, s8_in, a1_in, a2_in}; // Speed signal measurement potentiometers
 
 // Variables 
 int mode = 0; // Program mode = 0, manual mode = 1, latency test manual = 2, latency test automatic = 3
@@ -106,8 +266,8 @@ char* data[] = { data_step_0, data_step_1, data_step_2, data_step_3, data_step_4
 int data_steps;
 // declare data array as char* data[100], 100 may be overkill, desktop app will determine max number of steps in program
 
-char program_list[300] = {"00-01-"}; // Array to store file names
-char program_list_sorted[100][12]; // Array to store sorted file names
+// char program_list[300] = {"00-01-"};                                                // Array to store file names
+char program_list_sorted[100][7]; // Array to store sorted file names
 String program_list_string = "";
 
 typedef enum menu_button_pressed {left, up, down, right} menu_button_pressed; // Menu button options
@@ -127,9 +287,6 @@ void setup() {
   Serial.begin(9600);
   delay(500); // Wait for serial to begin. while(!Serial) not working...
 
-  lcd.init(); // Initialize LCD display
-  lcd.backlight(); // Print start up display
-# 165 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
   digitalWrite(adam6017_power, 0x1); // Power on Adam moudules
   digitalWrite(adam6050_power, 0x1);
 
@@ -137,17 +294,66 @@ void setup() {
 
   digitalWrite(latency_led, 0x0); // Ensure latency LED is off at start up
 
+  Ethernet.begin(mac, ip); // start the Ethernet connection and the server:
+  if (Ethernet.hardwareStatus() == EthernetNoHardware) { // Check for Ethernet hardware present
+    ;
+    while (1){}
+  }
+  server.begin(); // start Arduino server
+  ;
+  ;
+
+  lcd.init(); // Initialize LCD display
+  lcd.backlight(); // Print start up display
+
+    lcd.setCursor(0, 0);
+    char title1[9] = "GPIO Box";
+    for (int i = 0; i < 8; i++) {
+      lcd.print(title1[i]);
+      delay(100);
+    }
+    delay(300);
+    lcd.setCursor(0, 2);
+    char title2[14] = "Papertech INC";
+    for (int i = 0; i < 13; i++) {
+      lcd.print(title2[i]);
+      delay(100);
+    }
+    delay(300);
+    lcd.setCursor(0, 3);
+    char title3[16] = "CORKERY DESIGNS";
+    for (int i = 0; i < 15; i++) {
+      lcd.print(title3[i]);
+      delay(100);
+    }
+    lcd.clear(); // END LCD START UP DISPLAY
+
+
   if (!SD.begin(4)) { // Initialize SD card
-    lcd.print("SD Initialization");
+    lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 181 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 181 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             "SD Initialization"
+# 181 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             ); &__c[0];}))
+# 181 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             )));
     lcd.setCursor(0, 1);
-    lcd.print("Failed. Try Reboot");
-    Serial.println("SD failed");
+    lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 183 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 183 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             "Failed. Try Reboot"
+# 183 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             ); &__c[0];}))
+# 183 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             )));
+    ;
     while (1);
   }
 
   SD_read(0); // Load default program 
-
-  lcd_update_running(); // Update LCD
 
   for (int i = 0; i < sizeof(output_pins)/sizeof(output_pins[0]); i++) { // Set all digital outputs
     pinMode(output_pins[i], 0x1);
@@ -159,19 +365,15 @@ void setup() {
 
   output_reset(); // Ensure outputs are disabled
 
+  list_files(client_null, false);
+  ;
+
+  // readString.reserve(1000);
+
   attachInterrupt(((menu_interrupt) == 2 ? 0 : ((menu_interrupt) == 3 ? 1 : ((menu_interrupt) >= 18 && (menu_interrupt) <= 21 ? 23 - (menu_interrupt) : -1))), menu_pressed, 3); // Menu buttons external interrupt
 
-  Ethernet.begin(mac, ip); // start the Ethernet connection and the server:
-  if (Ethernet.hardwareStatus() == EthernetNoHardware) { // Check for Ethernet hardware present
-    Serial.println("Ethernet shield was not found.  Sorry, can't run without hardware");
-    while (1){}
-  }
-  server.begin(); // start Arduino server
-  Serial.print("server is at ");
-  Serial.println(Ethernet.localIP());
-
-  list_files(client_null, false);
-  Serial.println(program_list_string);
+  delay(2000); // Leave start up message for 2 seconds
+  lcd_update_running(); // Update LCD
 } // END SETUP()
 
 void loop() {
@@ -189,43 +391,147 @@ void lcd_update_running() { // LCD menu for normal running operation
   switch (mode) {
   case 0:
     lcd.clear();
-    lcd.print("Mode:        PROGRAM");
+    lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 226 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 226 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             "Mode:        PROGRAM"
+# 226 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             ); &__c[0];}))
+# 226 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             )));
     lcd.setCursor(0, 1);
-    lcd.print("Program #:        ");
+    lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 228 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 228 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             "Program #:        "
+# 228 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             ); &__c[0];}))
+# 228 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             )));
     if (program_number < 10) lcd.print(" ");
     lcd.print(program_number);
     lcd.setCursor(0, 2);
-    lcd.print("Interval:    ");
-    if (program_speed < 1000) lcd.print(" ");
+    lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 232 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 232 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             "Interval:    "
+# 232 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             ); &__c[0];}))
+# 232 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             )));
+    if (program_speed < 1000) lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 233 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                                       (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 233 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                                       " "
+# 233 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                                       ); &__c[0];}))
+# 233 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                                       )));
     lcd.print(program_speed);
-    lcd.print(" ms");
+    lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 235 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 235 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             " ms"
+# 235 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             ); &__c[0];}))
+# 235 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             )));
     lcd.setCursor(0, 3);
-    lcd.print("Loop Mode:    ");
+    lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 237 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 237 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             "Loop Mode:    "
+# 237 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             ); &__c[0];}))
+# 237 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             )));
     if (program_loop){
       lcd.setCursor(17, 3);
-      lcd.print("YES");
+      lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 240 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+               (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 240 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+               "YES"
+# 240 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+               ); &__c[0];}))
+# 240 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+               )));
     }
     else{
       lcd.setCursor(18, 3);
-      lcd.print("No");
+      lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 244 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+               (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 244 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+               "No"
+# 244 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+               ); &__c[0];}))
+# 244 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+               )));
     }
     break;
   case 1:
     lcd.clear();
-    lcd.print("Mode: MANUAL");
+    lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 249 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 249 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             "Mode: MANUAL"
+# 249 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             ); &__c[0];}))
+# 249 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             )));
     break;
   case 2:
     lcd.clear();
-    lcd.print("Mode: LATENCY MANUAL");
+    lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 253 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 253 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             "Mode: LATENCY MANUAL"
+# 253 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             ); &__c[0];}))
+# 253 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             )));
     lcd.setCursor(0,1);
-    lcd.print("ADAM 6050 DO 0");
+    lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 255 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 255 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             "ADAM 6050 DO 0"
+# 255 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             ); &__c[0];}))
+# 255 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             )));
     latency_running_state(); // Update LCD display 
     break;
   case 3:
     lcd.clear();
-    lcd.print("Mode: LATENCY AUTO");
+    lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 260 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 260 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             "Mode: LATENCY AUTO"
+# 260 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             ); &__c[0];}))
+# 260 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             )));
     lcd.setCursor(0,1);
-    lcd.print("ADAM 6050 DO 0");
+    lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 262 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 262 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             "ADAM 6050 DO 0"
+# 262 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             ); &__c[0];}))
+# 262 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             )));
     latency_running_state(); // Update LCD display 
     break;
   }
@@ -233,89 +539,327 @@ void lcd_update_running() { // LCD menu for normal running operation
 
 void lcd_update_layer_1_selection(int index) { // LCD first layer menu
   lcd.clear();
-  lcd.print("Change Mode");
+  lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 270 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 270 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           "Change Mode"
+# 270 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           ); &__c[0];}))
+# 270 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           )));
   if (index == 0) {
     lcd.setCursor(19, 0);
-    lcd.print("*");
+    lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 273 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 273 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             "*"
+# 273 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             ); &__c[0];}))
+# 273 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             )));
   }
   if (mode == 0) {
     lcd.setCursor(0, 1);
-    lcd.print("Change Program");
+    lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 277 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 277 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             "Change Program"
+# 277 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             ); &__c[0];}))
+# 277 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             )));
     if (index == 1) {
       lcd.setCursor(19, 1);
-      lcd.print("*");
+      lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 280 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+               (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 280 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+               "*"
+# 280 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+               ); &__c[0];}))
+# 280 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+               )));
     }
     lcd.setCursor(0, 2);
-    lcd.print("Edit Program Speed");
+    lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 283 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 283 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             "Edit Program Speed"
+# 283 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             ); &__c[0];}))
+# 283 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             )));
     if (index == 2) {
       lcd.setCursor(19, 2);
-      lcd.print("*");
+      lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 286 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+               (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 286 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+               "*"
+# 286 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+               ); &__c[0];}))
+# 286 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+               )));
     }
     lcd.setCursor(0, 3);
-    lcd.print("Loop Mode");
+    lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 289 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 289 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             "Loop Mode"
+# 289 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             ); &__c[0];}))
+# 289 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             )));
     if (index == 3) {
       lcd.setCursor(19, 3);
-      lcd.print("*");
+      lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 292 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+               (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 292 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+               "*"
+# 292 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+               ); &__c[0];}))
+# 292 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+               )));
     }
   }
 }
 
 void lcd_update_mode_selection(int index) { // LCD mode selection menu
   lcd.clear();
-  lcd.print("PROGRAM");
+  lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 299 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 299 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           "PROGRAM"
+# 299 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           ); &__c[0];}))
+# 299 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           )));
   if (index == 0) {
     lcd.setCursor(19, 0);
-    lcd.print("*");
+    lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 302 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 302 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             "*"
+# 302 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             ); &__c[0];}))
+# 302 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             )));
   }
   lcd.setCursor(0, 1);
-  lcd.print("MANUAL");
+  lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 305 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 305 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           "MANUAL"
+# 305 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           ); &__c[0];}))
+# 305 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           )));
   if (index == 1) {
     lcd.setCursor(19, 1);
-    lcd.print("*");
+    lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 308 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 308 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             "*"
+# 308 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             ); &__c[0];}))
+# 308 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             )));
   }
   lcd.setCursor(0, 2);
-  lcd.print("LATENCY MANUAL");
+  lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 311 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 311 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           "LATENCY MANUAL"
+# 311 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           ); &__c[0];}))
+# 311 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           )));
   if (index == 2) {
     lcd.setCursor(19, 2);
-    lcd.print("*");
+    lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 314 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 314 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             "*"
+# 314 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             ); &__c[0];}))
+# 314 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             )));
   }
   lcd.setCursor(0, 3);
-  lcd.print("LATENCY AUTO");
+  lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 317 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 317 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           "LATENCY AUTO"
+# 317 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           ); &__c[0];}))
+# 317 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           )));
   if (index == 3) {
     lcd.setCursor(19, 3);
-    lcd.print("*");
+    lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 320 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 320 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             "*"
+# 320 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             ); &__c[0];}))
+# 320 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             )));
   }
 }
 
 void lcd_update_program_number(int program_num) {
   lcd.clear();
-  lcd.print("Choose Program");
+  lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 326 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 326 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           "Choose Program"
+# 326 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           ); &__c[0];}))
+# 326 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           )));
+  lcd.setCursor(18, 0);
+  String str = program_list_sorted[program_num];
+  str = str.substring(0,2);
+  lcd.print(str);
+
+  str.concat(".txt");
+  my_file = SD.open(str);
+  int lines = 0;
+  String last_line;
+  while (my_file.available()){
+    char val = my_file.read();
+    if (val == '\n') last_line = "";
+    else if (val != '+') last_line += val; // Replace + signs with space
+    else last_line += ' ';
+  }
+
   lcd.setCursor(0, 1);
-  lcd.print(program_num);
+  if (last_line.length() <= 20) lcd.print(last_line);
+  else if (last_line.length() <= 40){
+    lcd.print(last_line.substring(0,20));
+    lcd.setCursor(0,2);
+    lcd.print(last_line.substring(20));
+  }
+  else if (last_line.length() <= 60){
+    lcd.print(last_line.substring(0,20));
+    lcd.setCursor(0,2);
+    lcd.print(last_line.substring(20,40));
+    lcd.setCursor(0,3);
+    lcd.print(last_line.substring(40));
+  }
+  else{
+    lcd.print(last_line.substring(0,20));
+    lcd.setCursor(0,2);
+    lcd.print(last_line.substring(20,40));
+    lcd.setCursor(0,3);
+    lcd.print(last_line.substring(40,57));
+    lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 363 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 363 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             "..."
+# 363 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             ); &__c[0];}))
+# 363 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             )));
+  }
+
+  my_file.close();
 }
 
 void lcd_update_program_speed(int program_spd, bool refresh) {
   if (refresh) {
     lcd.clear();
-    lcd.print("Edit Program Speed");
+    lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 372 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 372 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             "Edit Program Speed"
+# 372 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             ); &__c[0];}))
+# 372 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             )));
   }
   lcd.setCursor(0, 1);
   lcd.print(program_spd);
-  if (program_spd < 1000) lcd.print(" ");
-  else if (program_spd < 100) lcd.print("  ");
-  else if (program_spd < 10) lcd.print("   ");
+  if (program_spd < 1000) lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 376 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                                   (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 376 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                                   " "
+# 376 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                                   ); &__c[0];}))
+# 376 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                                   )));
+  else if (program_spd < 100) lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 377 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                                       (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 377 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                                       "  "
+# 377 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                                       ); &__c[0];}))
+# 377 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                                       )));
+  else if (program_spd < 10) lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 378 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                                      (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 378 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                                      "   "
+# 378 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                                      ); &__c[0];}))
+# 378 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                                      )));
 }
 
 void lcd_update_loop_mode(){
   lcd.clear();
-  lcd.print("Loop Mode:");
+  lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 383 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 383 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           "Loop Mode:"
+# 383 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           ); &__c[0];}))
+# 383 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           )));
   if (program_loop){
   lcd.setCursor(17, 0);
-  lcd.print("YES");
+  lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 386 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 386 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           "YES"
+# 386 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           ); &__c[0];}))
+# 386 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           )));
   }
   else{
   lcd.setCursor(18, 0);
-  lcd.print("NO");
+  lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 390 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 390 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           "NO"
+# 390 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           ); &__c[0];}))
+# 390 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           )));
   }
 }
 
@@ -342,7 +886,7 @@ void menu() { // UI button pressed, execute menu
   if (digitalRead(menu_run)) { // Program Start/Stop button pressed
   switch(mode){
     case 0:
-      Serial.println("Start / Stop Program");
+      ;
       program_run = !program_run; // Toggle start stop program
       if (!program_run) output_reset();
       // else digitalWrite(latency_led, HIGH);                             // Turn on LED. Changed latency_led to running_led. Would need to add hardware                               
@@ -360,7 +904,7 @@ void menu() { // UI button pressed, execute menu
     switch (index_layer) {
     case 0: // Layer 0 = Enter menu
       index_layer++; // Step into next menu layer
-      Serial.println("Change Mode"); // Wake UI
+      ; // Wake UI
       index_layer_1_option = 0; // Reset layer 1 index option
       index_layer_2_option = 0; // Reset layer 2 index option
       program_number_selection = program_number; // Reset menu
@@ -372,24 +916,24 @@ void menu() { // UI button pressed, execute menu
       switch (menu_button_pressed) {
       case left:
         index_layer--; // Step into previous menu layer (go back)
-        Serial.print("Back to running UI, Mode: "); // Reset UI to running information  
-        Serial.println(mode);
+        ; // Reset UI to running information  
+        ;
         lcd_update_running(); // Update LCD running display
         break;
       case up:
         if (index_layer_1_option > 0 && mode ==0) index_layer_1_option--; // Decrement through options. Only increment option when in program mode. No need to change these settings unless we are in program mode
 
-        if (index_layer_1_option == 0) Serial.println("CHANGE MODE");
-        else if (index_layer_1_option == 1) Serial.println("CHANGE PROGRAM");
-        else if (index_layer_1_option == 2) Serial.println("CHANGE PROGRAM SPEED");
+        if (index_layer_1_option == 0) ;
+        else if (index_layer_1_option == 1) ;
+        else if (index_layer_1_option == 2) ;
         lcd_update_layer_1_selection(index_layer_1_option); // Layer 1 LCD menu
         break;
       case down:
         if (index_layer_1_option < 3 && mode == 0) index_layer_1_option++; // Increment through options. Only increment option when in program mode. No need to change these settings unless we are in program mode
 
-        if (index_layer_1_option == 0) Serial.println("CHANGE MODE");
-        else if (index_layer_1_option == 1) Serial.println("CHANGE PROGRAM");
-        else if (index_layer_1_option == 2) Serial.println("CHANGE PROGRAM SPEED");
+        if (index_layer_1_option == 0) ;
+        else if (index_layer_1_option == 1) ;
+        else if (index_layer_1_option == 2) ;
         lcd_update_layer_1_selection(index_layer_1_option); // Layer 1 LCD menu
         break;
       case right:
@@ -397,29 +941,29 @@ void menu() { // UI button pressed, execute menu
         switch (index_layer_1_option) {
           case 0:
             if (mode == 0) {
-              Serial.println("Program Mode"); // Display current mode
+              ; // Display current mode
               index_layer_2_option = 0;
             }
             else if (mode == 1) {
-              Serial.println("Manual Mode"); // Display current mode
+              ; // Display current mode
               index_layer_2_option = 1;
             }
             else if (mode == 2) {
-              Serial.println("Latency Mode Manual"); // Display current mode
+              ; // Display current mode
               index_layer_2_option = 2;
             }
             else if (mode == 3) {
-              Serial.println("Latency Mode Automatic"); // Display current mode
+              ; // Display current mode
               index_layer_2_option = 3;
             }
             lcd_update_mode_selection(index_layer_2_option); // Update LCD menu
             break;
           case 1:
-            Serial.println(program_number); // Display current program number
+            ; // Display current program number
             lcd_update_program_number(program_number_selection);
             break;
           case 2:
-            Serial.println(program_speed); // Display current program speed
+            ; // Display current program speed
             lcd_update_program_speed(program_speed_selection, true);
             break;
           case 3:
@@ -434,10 +978,10 @@ void menu() { // UI button pressed, execute menu
       switch (menu_button_pressed) {
       case left:
         index_layer--; // Step into previous menu layer (go back)
-        if (index_layer_1_option == 0) Serial.println("CHANGE MODE");
+        if (index_layer_1_option == 0) ;
         if (mode == 0) {
-          if (index_layer_1_option == 1) Serial.println("CHANGE PROGRAM");
-          else Serial.println("CHANGE PROGRAM SPEED");
+          if (index_layer_1_option == 1) ;
+          else ;
         }
         lcd_update_layer_1_selection(index_layer_1_option); // Layer 1 LCD menu
         break;
@@ -448,37 +992,39 @@ void menu() { // UI button pressed, execute menu
 
           switch (index_layer_2_option) {
           case 0:
-            Serial.println("Program Mode");
+            ;
             index_layer_2_option = 0; // Mode to select = program
             break;
           case 1:
-            Serial.println("Manual Mode");
+            ;
             index_layer_2_option = 1; // Mode to select = manual
             break;
           case 2:
-            Serial.println("Latency Mode Manual");
+            ;
             index_layer_2_option = 2; // Mode to select = latency mode manual
             break;
           case 3:
-            Serial.println("Latency Mode Automatic");
+            ;
             index_layer_2_option = 3; // Mode to select = latency mode automatic                        
             break;
           }
-          Serial.println(index_layer_2_option);
+          ;
           lcd_update_mode_selection(index_layer_2_option); // Update LCD menu
           break;
         case 1: // PROGRAM NUMBER selection
           btn_pressed = millis();
           while (digitalRead(menu_up)) {
               if (millis() - btn_pressed >= 100) { // Increase program number quickly by holding down btn
-                if (program_number_selection < 99) program_number_selection++;
+                // if (program_number_selection < 99) program_number_selection++;
+                if (program_number_selection < sizeof(program_list_string)/3) program_number_selection++;
                 btn_pressed = millis();
                 lcd_update_program_number(program_number_selection);
                 btn_hold_flag = true;
               }
           }
           if (!btn_hold_flag) { // Increase program speed once by click
-            if (program_number_selection < 99) program_number_selection++;
+            // if (program_number_selection < 99) program_number_selection++;
+            if (program_number_selection < sizeof(program_list_string)/3) program_number_selection++;
             lcd_update_program_number(program_number_selection);
             btn_hold_flag = false; // Reset flag
           }
@@ -534,19 +1080,19 @@ void menu() { // UI button pressed, execute menu
 
           switch (index_layer_2_option) {
           case 0:
-            Serial.println("Program Mode");
+            ;
             mode_selection = 0; // Mode to select = program
             break;
           case 1:
-            Serial.println("Manual Mode");
+            ;
             mode_selection = 1; // Mode to select = manual
             break;
           case 2:
-            Serial.println("Latency Mode Manual");
+            ;
             mode_selection = 2; // Mode to select = latency mode manual
             break;
           case 3:
-            Serial.println("Latency Mode Automatic");
+            ;
             mode_selection = 3; // Mode to select = latency mode automatic
             break;
           }
@@ -617,15 +1163,15 @@ void menu() { // UI button pressed, execute menu
         switch (index_layer_1_option) {
         case 0:
           mode = index_layer_2_option; // Updated mode to new selection
-          Serial.print("Back to running UI, mode: ");
-          Serial.println(mode);
+          ;
+          ;
           lcd_update_running(); // Update LCD running display
           switch_mode();
           break;
         case 1:
           program_number = program_number_selection;
-          Serial.print("Program number: ");
-          Serial.println(program_number);
+          ;
+          ;
           SD_read(program_number); // Load new program
           program_run = false; // Stop running when program changes
           output_reset();
@@ -633,8 +1179,8 @@ void menu() { // UI button pressed, execute menu
           break;
         case 2:
           program_speed = program_speed_selection;
-          Serial.print("Program speed: ");
-          Serial.println(program_speed);
+          ;
+          ;
           lcd_update_running(); // Update LCD running display
           break;
         case 3:
@@ -703,22 +1249,54 @@ void manual_mode() {
       if (val <= 41) val = 0; // 4-20ma -> 1-5V -> 41-243 analog write
       else if (val >= 243) val = 243;
       analogWrite(output_pins[i + 8], val); // Output speed/analog signals
-      Serial.print(val);
-      Serial.print(" - ");
+      ;
+      ;
     }
-    Serial.println();
+    ;
   }
 }
 
 void program_mode() { // Loop through the number of steps in the program and output brake/speed/analog signals per step in the loop
-  byte wheel_0[] = {0, 14, 1, 1, 17, 17, 14, 0};
-  byte wheel_1[] = {0, 2, 17, 17, 17, 17, 14, 0};
-  byte wheel_2[] = {0, 12, 16, 17, 17, 17, 14, 0};
-  byte wheel_3[] = {0, 14, 17, 16, 16, 17, 14, 0};
-  byte wheel_4[] = {0, 14, 17, 17, 17, 16, 12, 0};
-  byte wheel_5[] = {0, 14, 17, 17, 17, 17, 2, 0};
-  byte wheel_6[] = {0, 14, 17, 17, 1, 1, 14, 0};
-  byte *wheel[] = {wheel_0, wheel_1, wheel_2, wheel_3, wheel_4, wheel_5, wheel_6};
+  const byte wheel_0[] 
+# 788 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                      __attribute__((__progmem__)) 
+# 788 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                              = {0, 14, 1, 1, 17, 17, 14, 0};
+  const byte wheel_1[] 
+# 789 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                      __attribute__((__progmem__)) 
+# 789 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                              = {0, 2, 17, 17, 17, 17, 14, 0};
+  const byte wheel_2[] 
+# 790 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                      __attribute__((__progmem__)) 
+# 790 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                              = {0, 12, 16, 17, 17, 17, 14, 0};
+  const byte wheel_3[] 
+# 791 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                      __attribute__((__progmem__)) 
+# 791 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                              = {0, 14, 17, 16, 16, 17, 14, 0};
+  const byte wheel_4[] 
+# 792 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                      __attribute__((__progmem__)) 
+# 792 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                              = {0, 14, 17, 17, 17, 16, 12, 0};
+  const byte wheel_5[] 
+# 793 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                      __attribute__((__progmem__)) 
+# 793 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                              = {0, 14, 17, 17, 17, 17, 2, 0};
+  const byte wheel_6[] 
+# 794 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                      __attribute__((__progmem__)) 
+# 794 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                              = {0, 14, 17, 17, 1, 1, 14, 0};
+  const byte *wheel[] 
+# 795 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                     __attribute__((__progmem__)) 
+# 795 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                             = {wheel_0, wheel_1, wheel_2, wheel_3, wheel_4, wheel_5, wheel_6};
   static unsigned long program_time = 0; // Current time 
   static int step = 0; // Current step in program
   static unsigned long loading_time = millis();
@@ -748,7 +1326,15 @@ void program_mode() { // Loop through the number of steps in the program and out
   }
   else if (!program_run && do_once){ // Clear symbol once program stops running
     lcd.setCursor(11, 0);
-    lcd.print(" ");
+    lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 825 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 825 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             " "
+# 825 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             ); &__c[0];}))
+# 825 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             )));
     do_once = false;
   }
 
@@ -769,10 +1355,10 @@ void program_mode() { // Loop through the number of steps in the program and out
           val_char[p] = data[step][p + 3 * m + 8]; // Read speed signal from program data
         }
         val_int = atoi(val_char);
-        Serial.print(val_int);
-        Serial.print(" - ");
+        ;
+        ;
         val_int = calibrate_output(val_int);
-        Serial.println(val_int);
+        ;
         analogWrite(output_pins[m + 8], val_int);
       }
 
@@ -781,7 +1367,7 @@ void program_mode() { // Loop through the number of steps in the program and out
         step = 0;
         if (!program_loop) {
           program_run = false;
-          delay(program_speed);
+          delay(program_speed); // ****** change to while < speed & !menuflag
           output_reset();
         }
       }
@@ -863,27 +1449,75 @@ void latency_test(){
 void latency_running_state(){
   if (latency_run){
     lcd.setCursor(0,3);
-    lcd.print("RUNNING");
+    lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 940 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 940 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             "RUNNING"
+# 940 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             ); &__c[0];}))
+# 940 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             )));
   }
   else{
     lcd.setCursor(0,3);
-    lcd.print("PAUSED ");
+    lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 944 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 944 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             "PAUSED "
+# 944 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             ); &__c[0];}))
+# 944 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             )));
   }
 }
 
 void latency_no_response(){
   lcd.setCursor(0,2);
-  lcd.print("                    ");
+  lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 950 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 950 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           "                    "
+# 950 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           ); &__c[0];}))
+# 950 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           )));
   lcd.setCursor(0,2);
-  lcd.print("NO RESPONSE");
+  lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 952 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 952 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           "NO RESPONSE"
+# 952 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           ); &__c[0];}))
+# 952 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           )));
 }
 
 void latency_result(long time){
   lcd.setCursor(0,2);
-  lcd.print("Latency:            ");
+  lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 957 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 957 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           "Latency:            "
+# 957 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           ); &__c[0];}))
+# 957 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           )));
   lcd.setCursor(9,2);
   lcd.print(time);
-  lcd.print("ms");
+  lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 960 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 960 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           "ms"
+# 960 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           ); &__c[0];}))
+# 960 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           )));
 }
 
 void output_reset() { // Turn off all MOSFET swtiches from program mode, and set speed signals to zero
@@ -938,7 +1572,7 @@ if (program_number != 0){ // Program 0 can not be removed
         prog_speed.concat("0");
         prog_speed.concat(str[0]);
       }
-      Serial.println(prog_speed);
+      ;
       my_file.print(prog_speed); // Program speed. Step time [ms]
       my_file.print('\n');
 
@@ -954,17 +1588,33 @@ if (program_number != 0){ // Program 0 can not be removed
 
       my_file.close();
 
-      Serial.println("program saved to SD");
+      ;
     }
     else {
-      Serial.println("Failed to save program to SD");
+      ;
     }
   }
   else{
     lcd.clear();
-    lcd.print("PROGRAM 0 CAN");
+    lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 1039 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 1039 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             "PROGRAM 0 CAN"
+# 1039 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             ); &__c[0];}))
+# 1039 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             )));
     lcd.setCursor(0,1);
-    lcd.print("NOT BE MODIFIED");
+    lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 1041 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 1041 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             "NOT BE MODIFIED"
+# 1041 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             ); &__c[0];}))
+# 1041 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             )));
     delay(2000);
     lcd_update_running();
   }
@@ -980,8 +1630,8 @@ void SD_read(int program_num) { // Read and process data. program_number = selct
     file_name[1] = str[1];
   }
 
-  Serial.print("File name = ");
-  Serial.println(file_name);
+  ;
+  ;
 
   my_file = SD.open(file_name); // Open selected program number
   if (my_file) {
@@ -1019,28 +1669,28 @@ void SD_read(int program_num) { // Read and process data. program_number = selct
           description[index] = val;
           index++;
         }
-        Serial.println("description:");
-        Serial.println(description);
+        ;
+        ;
         break;
       }
       else { // New line reached
         new_line = true;
 
-        Serial.print(SD_step);
-        Serial.print("  ");
+        ;
+        ;
 
         if (SD_step == 0) {
           program_number = atoi(program_num_char); // Convert data to int
-          Serial.println(program_number);
+          ;
         }
         else if (SD_step == 1) {
           program_speed = atoi(program_spd_char); // Convert data to int
-          Serial.println(program_speed);
+          ;
         }
         else {
 
-            for (int w = 0; w < 38; w++) Serial.print(data[data_steps][w]);
-            Serial.println(" ");
+
+
 
           data_steps++;
         }
@@ -1049,12 +1699,20 @@ void SD_read(int program_num) { // Read and process data. program_number = selct
       }
     }
     my_file.close();
-    Serial.print("Number of steps in program: ");
-    Serial.println(data_steps);
+    ;
+    ;
   }
   else {
     lcd.clear();
-    lcd.print("Program Not Found");
+    lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 1131 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 1131 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             "Program Not Found"
+# 1131 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+             ); &__c[0];}))
+# 1131 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+             )));
     delay(3500);
     SD_read(0); // Error, so load default program
   }
@@ -1069,14 +1727,22 @@ void ethernet(){
   EthernetClient client = server.available(); // listen for incoming clients
 
   if (client) {
-    Serial.println("new client");
+    ;
 
     boolean currentLineIsBlank = true; // an http request ends with a blank line
 
+    ;
+    ;
+    int index = 0;
+    readString = ""; // Reset readString
     while (client.available()) {
       char c = client.read();
-      Serial.write(c);
-      readString += c; // Store incoming data from http client
+
+
+
+
+      if (index > 595) readString += c; // Store incoming data from http client. Start after HTML data
+      // if (index > 450) readString += c;                         // Store incoming data from http client. Start after HTML data
 
       if (c == '\n' && currentLineIsBlank) { // if you've gotten to the end of the line (received a newline character) and the line is blank, the http request has ended, so you can send a reply
         client.println("HTTP/1.1 200 OK"); // send a standard http response header
@@ -1093,27 +1759,197 @@ void ethernet(){
       else if (c != '\r') {
         currentLineIsBlank = false; // you've gotten a character on the current line
       }
+
+      index++;
     }
+    ;
+    ;
+    ;
+    ;
+    ;
+    ;
+
     decode_ethernet(client); // Decode readString
 
     readString = ""; // Reset readString
   }
+  client.stop(); // Disconnect from client
+}
+
+void decode_ethernet(EthernetClient client){
+  ;
+
+  static bool first_html = true; // Load main.html the first time the client is connected
+  bool save_flag;
+
+  const String step_names[] 
+# 1201 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                           __attribute__((__progmem__)) 
+# 1201 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                                   = { "step_0_data", "step_1_data", "step_2_data", "step_3_data", "step_4_data", "step_5_data", "step_6_data", "step_7_data", "step_8_data", "step_9_data",
+        "step_10_data", "step_11_data", "step_12_data", "step_13_data", "step_14_data", "step_15_data", "step_16_data", "step_17_data", "step_18_data", "step_19_data" };
+
+  if (first_html) {
+    ;
+    update_html(client, 0, 0); // Load main.html
+    first_html = false;
+    return;
+  }
+
+  if (readString.indexOf("program=") > 0){ // Read the program number being uploaded from html page
+    int index = readString.indexOf("program=");
+    String val = readString.substring(index + 8, index + 8 + 2); // 8 = length of "program=" string
+    if (val[0] != '&') { // Check if number was saved. & = no number in input box
+      if (val[1] == '&'){ // Val < 10. ex 1 -> 1&
+        val[1] = val[0]; // convert val 1& -> 01
+        val[0] = '0';
+      }
+      program_number = val.toInt();
+      ;
+      ;
+      ;
+
+      if (program_number == 0) return; // Can not edit program 0, defualt program
+
+      char file_name[7] = {val[0], val[1], '.', 't', 'x', 't'}; // File name with selected program number
+      my_file = SD.open(file_name);
+      if (my_file){ // check if program # already exists on SD card
+        // save_flag = lcd_overwrite_program(val);                               // if exisits, overwrite yes/no?. Choice is made on html ui
+        save_flag = true;
+      }
+      else {
+        ;
+        save_flag = true;
+      }
+
+      if (!save_flag){ // no -> update html to show no save
+        ;
+      }
+    }
+    else { // No number was in html input box
+      save_flag = false;
+      ;
+    }
+
+
+    if (save_flag){ // if continue flag, proceed with for loop below
+      if (readString.indexOf("speed=") > 0){ // Extract speed value
+        int index = readString.indexOf("speed=");
+        String val = readString.substring(index + 6, index + 6 + 4); // 6 = length of "speed=" string
+        if (val[0] != '&') { // Check if number was saved. & = no number in input box
+          if (val[1] == '&'){ // Val < 10. ex 1 -> 1&
+            val[3] = val[0]; // convert val 1&tp -> 0001
+            val[2] = '0';
+            val[1] = '0';
+            val[0] = '0';
+          }
+          else if (val[2] == '&'){ // 10 < Val < 100. ex 10 -> 10&
+            val[3] = val[1];
+            val[2] = val[0]; // convert val 10&s -> 0010
+            val[1] = '0';
+            val[0] = '0';
+          }
+          else if (val[3] == '&'){ // 100 < Val < 1000. ex 100& -> 0100
+            val[3] = val[2];
+            val[2] = val[1];
+            val[1] = val[0]; // convert val 10& -> 0100
+            val[0] = '0';
+          }
+          program_speed = val.toInt();
+          ;
+          ;
+          ;
+        }
+        else program_speed = 1000; // No speed inputed, default to 1000ms step time
+      }
+
+      data_steps = 0; // Reset step count. New program will be loaded
+      for (int i = 0; i < 20; i++){ // Loop through all possible steps from html page
+        if (readString.indexOf(step_names[i]) > 0){ // > 0 if data exists
+          int index = readString.indexOf(step_names[i]);
+          String val = readString.substring(index + 12, index + 12 + 38); // 12 = length of "step_x_data=" string
+          for (int x = 0; x < 38; x++){ // Save data to data_step_i variables
+            data[i][x] = val[x];
+            ;
+          }
+          ;
+          data_steps++; // Increase step count
+        }
+      }
+
+      if (readString.indexOf("description=") > 0){ // Extract program description
+        int index = readString.indexOf("description=");
+        String val = readString.substring(index + 12, readString.indexOf("program=")-1); // 12 = length of "description=" string
+        for (int i = 0; i < 100; i++){ // Reset the description
+          description[i] = '\0';
+        }
+        for (int i = 0; i < val.length(); i++){ // Copy description received from client
+          description[i] = val[i];
+        }
+        ;
+      }
+
+      SD_write(); // Save program to SD card. SD_write()
+      SD_read(program_number); // Read and load new program
+
+      list_files(client_null, false); // Update program list
+      ;
+    }
+
+    ;
+    ;
+    update_html(client, 0, 0); // Update html with current program settings
+  }
+
+  else if (readString.indexOf("list_form=") > 0){
+    ;
+    ;
+    update_html(client, 1, 0); // Load list.html 
+  }
+  else if (readString.indexOf("load_main=") > 0){
+    ;
+    ;
+    list_files(client_null, false); // Update program list
+    update_html(client, 0, 0); // Load list.html 
+    ;
+    ;
+  }
+  else if (readString.indexOf("program_load=") > 0){ // Update descriptions from list.html page
+    ;
+    ;
+    list_files(client_null, false); // Update program list
+    load_program(client); // Load selected program
+  }
+  else if (readString.indexOf("delete=") > 0){ // Delete selected program
+    ;
+    ;
+    ;
+    delete_program();
+    list_files(client_null, false);
+    if (readString.indexOf("list=") > 0) update_html(client, 1, 0); // Delete called from SAVED PROGRAMS page
+    else update_html(client, 0, 0); // Delete called from main page
+  }
+  else{
+    update_html(client, 0, 0); // Load main.html, page refesh
+  }
+  ;
 }
 
 void update_html(EthernetClient client, int page, int count){
+  ;
   if (page == 0){ // main.html
     my_file = SD.open("htmlA.txt"); // open html file
     if (my_file){
-      Serial.println("htmlA file opened");
+      ;
       while(my_file.available()){ // Read html file
         char val;
         val = my_file.read();
         client.print(val); // Write html content to browser
       }
-      Serial.println("html a closed");
+      ;
       my_file.close();
     }
-    else Serial.println("htmlA failed to open");
+    else ;
     // get sorted list of saved files
     // print list to hidden text input
     // print number followed by - ie 01-02-...
@@ -1122,21 +1958,21 @@ void update_html(EthernetClient client, int page, int count){
     //
     my_file = SD.open("htmlB.txt"); // open html file
     if (my_file){
-      Serial.println("htmlB file opened");
+      ;
       while(my_file.available()){ // Read html file
         char val;
         val = my_file.read();
         client.print(val); // Write html content to browser
       }
-      Serial.println("html b closed");
+      ;
       my_file.close();
     }
-    else Serial.println("htmlB failed to open");
+    else ;
   }
   else if (page == 1){ // list.html        list of saved programs
     my_file = SD.open("list1.txt"); // open start half html file
     if (my_file){
-      Serial.println("list1.html file opened");
+      ;
       while(my_file.available()){ // Read html file
         char val;
         val = my_file.read();
@@ -1144,14 +1980,14 @@ void update_html(EthernetClient client, int page, int count){
       }
       my_file.close();
     }
-    else Serial.println("list1.html failed to open");
+    else ;
 
     // print file names and descriptions
     list_files(client, true);
 
     my_file = SD.open("list2.txt"); // open second half html file
     if (my_file){
-      Serial.println("list2.html file opened");
+      ;
       while(my_file.available()){ // Read html file
         char val;
         val = my_file.read();
@@ -1159,12 +1995,12 @@ void update_html(EthernetClient client, int page, int count){
       }
       my_file.close();
     }
-    else Serial.println("list2.html failed to open");
+    else ;
   }
   else if (page == 2){ // Load program
     my_file = SD.open("html1.txt"); // open html file
     if (my_file){
-      Serial.println("html1 file opened");
+      ;
       while(my_file.available()){ // Read html file
         char val;
         val = my_file.read();
@@ -1172,13 +2008,13 @@ void update_html(EthernetClient client, int page, int count){
       }
       my_file.close();
     }
-    else Serial.println("html1 failed to open");
+    else ;
     // Program nuber
     client.print(readString.substring(0,2)); // Program number
     //
     my_file = SD.open("html2.txt"); // open html file
     if (my_file){
-      Serial.println("html2 file opened");
+      ;
       while(my_file.available()){ // Read html file
         char val;
         val = my_file.read();
@@ -1186,13 +2022,13 @@ void update_html(EthernetClient client, int page, int count){
       }
       my_file.close();
     }
-    else Serial.println("html2 failed to open");
+    else ;
     // program speed
     client.print(readString.substring(3,7));
     //
     my_file = SD.open("html3.txt"); // open html file
     if (my_file){
-      Serial.println("html3 file opened");
+      ;
       while(my_file.available()){ // Read html file
         char val;
         val = my_file.read();
@@ -1200,7 +2036,7 @@ void update_html(EthernetClient client, int page, int count){
       }
       my_file.close();
     }
-    else Serial.println("html3 failed to open");
+    else ;
     // step data ui
     for (int i = 0; i < count - 4; i++){ // 4 lines are program number, speed, blank, description
       client.print("<div class='step'>");
@@ -1230,7 +2066,7 @@ void update_html(EthernetClient client, int page, int count){
     //
     my_file = SD.open("html4.txt"); // open html file
     if (my_file){
-      Serial.println("html4 file opened");
+      ;
       while(my_file.available()){ // Read html file
         char val;
         val = my_file.read();
@@ -1238,10 +2074,11 @@ void update_html(EthernetClient client, int page, int count){
       }
       my_file.close();
     }
-    else Serial.println("html4 failed to open");
+    else ;
     // Description
-    bool first = false;
-    int index2 = 0;
+    bool first = false; // first '\n' , end of file -> '\n' '\n' description
+    int index2 = 0; // current char index in readString. Looking for first char in last line
+    unsigned long time_out = millis();
     while(1){ // Find index of first char in last line
       char val2 = readString[index2];
       if (val2 != '\n') {
@@ -1252,8 +2089,12 @@ void update_html(EthernetClient client, int page, int count){
         index2++;
         first = true;
       }
-      else if (val2 == '\n' && first == true) {
+      else if (val2 == '\n' && first == true) { // Last line       
         index2++;
+        break;
+      }
+      if (millis() - time_out >= 9999){
+        ;
         break;
       }
     }
@@ -1263,7 +2104,7 @@ void update_html(EthernetClient client, int page, int count){
     //
     my_file = SD.open("html5.txt"); // open html file
     if (my_file){
-      Serial.println("html5 file opened");
+      ;
       while(my_file.available()){ // Read html file
         char val;
         val = my_file.read();
@@ -1271,7 +2112,7 @@ void update_html(EthernetClient client, int page, int count){
       }
       my_file.close();
     }
-    else Serial.println("html5 failed to open");
+    else ;
     // step_data_x hidden 
     client.print(readString.substring(0,2)); // Program nuber
     client.print("'>");
@@ -1295,7 +2136,7 @@ void update_html(EthernetClient client, int page, int count){
     //
     my_file = SD.open("html6.txt"); // open html file
     if (my_file){
-      Serial.println("html6 file opened");
+      ;
       while(my_file.available()){ // Read html file
         char val;
         val = my_file.read();
@@ -1303,14 +2144,14 @@ void update_html(EthernetClient client, int page, int count){
       }
       my_file.close();
     }
-    else Serial.println("html6 failed to open");
+    else ;
     // Program list
     // client.print(program_list);                   // TEST data
     client.print(program_list_string);
     //
     my_file = SD.open("html7.txt"); // open html file
     if (my_file){
-      Serial.println("html7 file opened");
+      ;
       while(my_file.available()){ // Read html file
         char val;
         val = my_file.read();
@@ -1318,8 +2159,9 @@ void update_html(EthernetClient client, int page, int count){
       }
       my_file.close();
     }
-    else Serial.println("html7 failed to open");
+    else ;
   }
+  ;
 }
 
 
@@ -1381,13 +2223,13 @@ void list_files(EthernetClient client, bool print) { // print = true -> print ht
 
   sorted_files_list();
 
-  Serial.println("list files function start");
+  ;
   // File root = SD.open("/");
   while (true){
     my_file = SD.open(program_list_sorted[index_file]);
     // my_file = root.openNextFile();
 
-    Serial.println(String(program_list_sorted[index_file]));
+    ;
     if (!my_file) break; // no more files
 
     if (print){
@@ -1395,24 +2237,24 @@ void list_files(EthernetClient client, bool print) { // print = true -> print ht
         char *str = my_file.name();
 
         client.print((reinterpret_cast<const __FlashStringHelper *>(
-# 1429 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+# 1651 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
                     (__extension__({static const char __c[] __attribute__((__progmem__)) = (
-# 1429 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
-                    "<form><input type='submit' value='Load'><input type='button' value='Delete' onclick='delete_program(this.parentNode)''><label>"
-# 1429 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+# 1651 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                    "<form method='post' action='/''><input type='submit' value='Load'><input type='button' value='Delete' onclick='delete_program(this.parentNode)''><label>"
+# 1651 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
                     ); &__c[0];}))
-# 1429 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+# 1651 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
                     )));
         client.print(str[0]);
         client.print(str[1]);
         client.print((reinterpret_cast<const __FlashStringHelper *>(
-# 1432 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+# 1654 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
                     (__extension__({static const char __c[] __attribute__((__progmem__)) = (
-# 1432 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+# 1654 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
                     "</label><label>"
-# 1432 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+# 1654 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
                     ); &__c[0];}))
-# 1432 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+# 1654 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
                     )));
 
         int index = 0;
@@ -1431,24 +2273,24 @@ void list_files(EthernetClient client, bool print) { // print = true -> print ht
         }
         client.print(description);
         client.print((reinterpret_cast<const __FlashStringHelper *>(
-# 1449 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+# 1671 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
                     (__extension__({static const char __c[] __attribute__((__progmem__)) = (
-# 1449 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+# 1671 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
                     "</label><input class='hidden' type='text' value='"
-# 1449 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+# 1671 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
                     ); &__c[0];}))
-# 1449 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+# 1671 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
                     )));
         client.print(str[0]);
         client.print(str[1]);
         client.print((reinterpret_cast<const __FlashStringHelper *>(
-# 1452 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+# 1674 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
                     (__extension__({static const char __c[] __attribute__((__progmem__)) = (
-# 1452 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+# 1674 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
                     "' name='program_load'></form>"
-# 1452 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+# 1674 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
                     ); &__c[0];}))
-# 1452 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+# 1674 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
                     )));
       }
     }
@@ -1467,37 +2309,44 @@ void list_files(EthernetClient client, bool print) { // print = true -> print ht
 }
 
 void sorted_files_list(){
-  Serial.println("start of sort function");
+  ;
+  ;
+
   int max_files = 113; // 101 +  number of html css etc files (12)
   int index = 0;
   int elementCount = 0; // Number of elements in program_list_sorted
 
+  for (int n = 0; n < sizeof(program_list_sorted)/sizeof(program_list_sorted[0]); n++) program_list_sorted[n][0] = '\0'; // Reset the array to null
+
   File root = SD.open("/"); // Open root directory
   if (root){
-    Serial.println("root opened");
+    ;
+
     while (index < max_files){
     File entry = root.openNextFile(); // Loop through files on SD card
 
-    char *str = entry.name(); // Save file name pointer
-
-    if (!strlen(str)) {
+    // if (!strlen(str)) {
+    if (!entry) {
       break; // No more files                                                  
     }
 
+    char *str = entry.name(); // Save file name pointer
+
     if (!isDigit(str[0])) { // Don't include html css etc files in sorted list
+      entry.close();
       continue;
     }
 
     strcpy(program_list_sorted[index], str); // Save file name to program_list_sorted
 
-    Serial.println("entry closed");
+    ;
     entry.close(); // Close file
     index++;
     }
 
     if (index == max_files)
     {
-      Serial.println("too many files"); // Alert user of error
+      ; // Alert user of error
     }
     else
     {
@@ -1505,17 +2354,19 @@ void sorted_files_list(){
 
       qsort(program_list_sorted, elementCount, sizeof(program_list_sorted[0]), CompareStrings); // Sort elements
 
-        Serial.println("Sorted list");
-        for (int i = 0; i < elementCount; i++) {
-          Serial.println(program_list_sorted[i]); // Print sorted elements
-        }
+
+
+
+
 
     }
-    Serial.println("file closed / end of sorting function");
 
+    ;
     root.close();
   }
-  else Serial.println("failed to open root");
+  else ;
+
+  ;
 }
 
 // void sorted_files_list(){
@@ -1578,167 +2429,16 @@ int CompareStrings(const void *p1, const void *p2) // Sorting algorithm
   return strcmp(p1, p2);
 }
 
-void decode_ethernet(EthernetClient client){
-  ram_usage();
-
-  static bool first_html = true; // Load main.html the first time the client is connected
-  bool save_flag;
-
-  String step_names[] = { "step_0_data", "step_1_data", "step_2_data", "step_3_data", "step_4_data", "step_5_data", "step_6_data", "step_7_data", "step_8_data", "step_9_data",
-        "step_10_data", "step_11_data", "step_12_data", "step_13_data", "step_14_data", "step_15_data", "step_16_data", "step_17_data", "step_18_data", "step_19_data" };
-
-  if (first_html) {
-    Serial.println("first html load");
-    update_html(client, 0, 0); // Load main.html
-    first_html = false;
-    return;
-  }
-
-  if (readString.indexOf("program=") > 0){ // Read the program number being uploaded from html page
-    int index = readString.indexOf("program=");
-    String val = readString.substring(index + 8, index + 8 + 2); // 8 = length of "program=" string
-    if (val[0] != '&') { // Check if number was saved. & = no number in input box
-      if (val[1] == '&'){ // Val < 10. ex 1 -> 1&
-        val[1] = val[0]; // convert val 1& -> 01
-        val[0] = '0';
-      }
-      program_number = val.toInt();
-      Serial.println(" ");
-      Serial.print("Program # uploaded: ");
-      Serial.println(program_number);
-
-      if (program_number == 0) return; // Can not edit program 0, defualt program
-
-      char file_name[7] = {val[0], val[1], '.', 't', 'x', 't'}; // File name with selected program number
-      my_file = SD.open(file_name);
-      if (my_file){ // check if program # already exists on SD card
-        // save_flag = lcd_overwrite_program(val);                               // if exisits, overwrite yes/no?. Choice is made on html ui
-        save_flag = true;
-      }
-      else {
-        Serial.println("File does not exist");
-        save_flag = true;
-      }
-
-      if (!save_flag){ // no -> update html to show no save
-        Serial.println("Save file? No selected");
-      }
-    }
-    else { // No number was in html input box
-      save_flag = false;
-      Serial.println("No program # selected");
-    }
-
-
-    if (save_flag){ // if continue flag, proceed with for loop below
-      if (readString.indexOf("speed=") > 0){ // Extract speed value
-        int index = readString.indexOf("speed=");
-        String val = readString.substring(index + 6, index + 6 + 4); // 6 = length of "speed=" string
-        if (val[0] != '&') { // Check if number was saved. & = no number in input box
-          if (val[1] == '&'){ // Val < 10. ex 1 -> 1&
-            val[3] = val[0]; // convert val 1&tp -> 0001
-            val[2] = '0';
-            val[1] = '0';
-            val[0] = '0';
-          }
-          else if (val[2] == '&'){ // 10 < Val < 100. ex 10 -> 10&
-            val[3] = val[1];
-            val[2] = val[0]; // convert val 10&s -> 0010
-            val[1] = '0';
-            val[0] = '0';
-          }
-          else if (val[3] == '&'){ // 100 < Val < 1000. ex 100& -> 0100
-            val[3] = val[2];
-            val[2] = val[1];
-            val[1] = val[0]; // convert val 10& -> 0100
-            val[0] = '0';
-          }
-          program_speed = val.toInt();
-          Serial.println("");
-          Serial.print("Program speed uploaded: ");
-          Serial.println(val);
-        }
-        else program_speed = 1000; // No speed inputed, default to 1000ms step time
-      }
-
-      data_steps = 0; // Reset step count. New program will be loaded
-      for (int i = 0; i < 20; i++){ // Loop through all possible steps from html page
-        if (readString.indexOf(step_names[i]) > 0){ // > 0 if data exists
-          int index = readString.indexOf(step_names[i]);
-          String val = readString.substring(index + 12, index + 12 + 38); // 12 = length of "step_x_data=" string
-          for (int x = 0; x < 38; x++){ // Save data to data_step_i variables
-            data[i][x] = val[x];
-            Serial.print(data[i][x]);
-          }
-          Serial.println(" ");
-          data_steps++; // Increase step count
-        }
-      }
-
-      if (readString.indexOf("description=") > 0){ // Extract program description
-        int index = readString.indexOf("description=");
-        String val = readString.substring(index + 12, readString.indexOf("program=")-1); // 12 = length of "description=" string
-        for (int i = 0; i < 100; i++){ // Reset the description
-          description[i] = '\0';
-        }
-        for (int i = 0; i < val.length(); i++){ // Copy description received from client
-          description[i] = val[i];
-        }
-        Serial.println(description);
-      }
-
-      SD_write(); // Save program to SD card. SD_write()
-      SD_read(program_number); // Read and load new program
-
-      list_files(client_null, false); // Update program list
-      Serial.println(program_list_string);
-    }
-
-    Serial.println(" ");
-    Serial.println("loading : main.html");
-    update_html(client, 0, 0); // Update html with current program settings
-  }
-
-  else if (readString.indexOf("list_form=") > 0){
-    Serial.println(" ");
-    Serial.println("loading : list.html");
-    update_html(client, 1, 0); // Load list.html 
-  }
-  else if (readString.indexOf("load_main=") > 0){
-    Serial.println(" ");
-    Serial.println("loading : main.html");
-    update_html(client, 0, 0); // Load list.html 
-  }
-  else if (readString.indexOf("program_load=") > 0){ // Update descriptions from list.html page
-    Serial.println(" ");
-    Serial.println("Check if program exists and load program");
-    load_program(client); // Load selected program
-  }
-  else if (readString.indexOf("delete=") > 0){ // Delete selected program
-    Serial.println(" ");
-    Serial.println("Delete program");
-    delete_program();
-    list_files(client_null, false); // Update program list
-    Serial.println(program_list_string);
-    Serial.println(readString);
-    if (readString.indexOf("list=") > 0) update_html(client, 1, 0); // Delete called from SAVED PROGRAMS page
-    else update_html(client, 0, 0); // Delete called from main page
-  }
-  else{
-    update_html(client, 0, 0); // Load main.html, page refesh
-  }
-}
-
 void delete_program(){
   int index = readString.indexOf("delete=");
   int index_end = readString.indexOf("list=");
-  Serial.print("index end = ");
-  Serial.println(index_end);
+  ;
+  ;
   String val;
   if (index_end > 0) val = readString.substring(index + 7, index_end - 1); // Delete from SAVED PROGRAMS page
   else val = readString.substring(index + 7); // Delete from main page
-  Serial.print("val = ");
-  Serial.println(val);
+  ;
+  ;
   char file_name[7] = "00.txt"; // Convert readString to file_name
   if (val.length() == 2){
     file_name[0] = val[0];
@@ -1761,43 +2461,44 @@ void delete_program(){
     SD_read(0); // Load default program 0
   }
 
-  Serial.print("file ");
-  Serial.print(file_name);
-  Serial.println(" deleted");
+  ;
+  ;
+  ;
 }
 
 void load_program(EthernetClient client){
-  Serial.println("load program function");
+  ;
   int index = readString.indexOf("program_load=");
   String val = readString.substring(index + 13);
-  Serial.println(val);
-  unsigned int length = val.length();
-  Serial.println(length);
+  ;
+  int length = val.length();
+  ;
   char file_name[7] = "00.txt"; // Convert readString to file_name
-  Serial.print("file name: ");
+  ;
   if (length < 2) file_name[1] = val[0];
   else{
     file_name[0] = val[0];
     file_name[1] = val[1];
   }
-  Serial.println(file_name);
-  ram_usage();
+  ;
   my_file = SD.open(file_name); // Try to open program file
   if (my_file) { // Program exists if true
     readString = ""; // Reset readstring
     int count = 0;
-    Serial.println("in while loop...");
+    ;
+    Serial.print("pre load file ");
     while (my_file.available()){
       char val = my_file.read();
       if (val == '\n') count++;
       readString += val; // Save program data to readstring
     }
-    count++; // Last line of txt is missing \n
+    Serial.print("post load file ");
+    count++; // Last line of txt does not have \n
     my_file.close();
-    Serial.println("load program via html");
+    ;
     update_html(client, 2, count); // If program is saved on SD, load program
   }
-  else Serial.println("failed to open txt file");
+  else ;
 }
 
 bool lcd_overwrite_program(String program){
@@ -1806,17 +2507,65 @@ bool lcd_overwrite_program(String program){
   bool overwrite = false; // true = overwrite
 
   lcd.clear();
-  lcd.print("Program ");
+  lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 1890 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 1890 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           "Program "
+# 1890 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           ); &__c[0];}))
+# 1890 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           )));
   lcd.print(program);
-  lcd.print(" exists");
+  lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 1892 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 1892 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           " exists"
+# 1892 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           ); &__c[0];}))
+# 1892 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           )));
   lcd.setCursor(0,1);
-  lcd.print("Overwrite file?");
+  lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 1894 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 1894 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           "Overwrite file?"
+# 1894 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           ); &__c[0];}))
+# 1894 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           )));
   lcd.setCursor(0,2);
-  lcd.print("YES");
+  lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 1896 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 1896 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           "YES"
+# 1896 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           ); &__c[0];}))
+# 1896 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           )));
   lcd.setCursor(0,3);
-  lcd.print("NO");
+  lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 1898 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 1898 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           "NO"
+# 1898 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           ); &__c[0];}))
+# 1898 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           )));
   lcd.setCursor(19,3);
-  lcd.print("*");
+  lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 1900 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 1900 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           "*"
+# 1900 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+           ); &__c[0];}))
+# 1900 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+           )));
 
   while (!selection){
     if (menu_flag){ // A button was pressed
@@ -1824,16 +2573,48 @@ bool lcd_overwrite_program(String program){
       switch (menu_button_pressed){
       case up: // YES selection
         lcd.setCursor(19,2);
-        lcd.print("*");
+        lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 1908 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                 (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 1908 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                 "*"
+# 1908 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                 ); &__c[0];}))
+# 1908 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                 )));
         lcd.setCursor(19,3);
-        lcd.print(" ");
+        lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 1910 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                 (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 1910 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                 " "
+# 1910 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                 ); &__c[0];}))
+# 1910 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                 )));
         overwrite = true;
         break;
       case down: // NO selection
         lcd.setCursor(19,2);
-        lcd.print(" ");
+        lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 1915 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                 (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 1915 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                 " "
+# 1915 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                 ); &__c[0];}))
+# 1915 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                 )));
         lcd.setCursor(19,3);
-        lcd.print("*");
+        lcd.print((reinterpret_cast<const __FlashStringHelper *>(
+# 1917 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                 (__extension__({static const char __c[] __attribute__((__progmem__)) = (
+# 1917 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                 "*"
+# 1917 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino" 3
+                 ); &__c[0];}))
+# 1917 "c:\\Users\\ryan corkery\\OneDrive - Papertech Inc\\Documents\\_Projects\\GPIO Box\\IO_Bench_Simulator\\IO_Bench_Simulator.ino"
+                 )));
         overwrite = false;
         break;
       case right: // Make selection
@@ -1855,7 +2636,7 @@ float map_float(float x, float in_min, float in_max, float out_min, float out_ma
   return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
 
-void ram_usage(){
-  Serial.print("Free memory = ");
-  Serial.println(freeMemory());
-}
+// void ram_usage(){
+//   debug(F("Free memory = "));
+//   debugln(freeMemory());
+// }

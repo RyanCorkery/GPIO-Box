@@ -8,10 +8,10 @@
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h> 
 #include <Ethernet.h>
-#include <MemoryFree.h>
+// #include <MemoryFree.h>
 
 // Debug
-#define DEBUG 1                                               // debug true = 1, false = 0
+#define DEBUG 0                                               // debug true = 1, false = 0
 
 #if DEBUG == 1
 #define debug(x) Serial.print(x)
@@ -22,57 +22,57 @@
 #endif
 
 // Arduino pinout
-const int s1_out = 2;                                         // Speed signal 1 out of Arduino
-const int s2_out = 3;
+const int s1_out PROGMEM = 2;                                         // Speed signal 1 out of Arduino
+const int s2_out PROGMEM = 3;
 // ethernet pin 4
-const int s3_out = 5;
-const int s4_out = 6;
-const int s5_out = 7;
-const int s6_out = 8;
-const int s7_out = 9;
+const int s3_out PROGMEM = 5;
+const int s4_out PROGMEM = 6;
+const int s5_out PROGMEM = 7;
+const int s6_out PROGMEM = 8;
+const int s7_out PROGMEM = 9;
 // ethernet pin 10
-const int s8_out = 11;
-const int a1_out = 12;                                        // Analog signal 1 out of Arduino
-const int a2_out = 13;
-const int menu_interrupt = 18;                                // Interrupt is triggered when any menu button is pressed
+const int s8_out PROGMEM = 11;
+const int a1_out PROGMEM = 12;                                        // Analog signal 1 out of Arduino
+const int a2_out PROGMEM = 13;
+const int menu_interrupt PROGMEM = 18;                                // Interrupt is triggered when any menu button is pressed
 // pin 20 - LCD SDA
 // pin 21 - LCD SCL
-const int menu_down = 22;
-const int b1 = 23;                                            // Brake signal 1 out of Arduino
-const int menu_up = 24;
-const int b2 = 25;
-const int menu_left = 26;
-const int b3 = 27;
-const int menu_right = 28;
-const int b4 = 29;
-const int menu_run = 30;
-const int manual_swtiches_enable = 31;                        // Controls power to manual switches via MOSFET
-const int adam6017_power = 32;                                // Power kill switch to ADAM modules
-const int b5 = 33;
-const int adam6050_power = 34;
-const int b6 = 35;
-const int latency_led = 36;
-const int b7 = 37;
-const int adam_do_0 = 38;                                    // Input to read when ADAM DO triggers relay 
-const int b8 = 39;
+const int menu_down PROGMEM = 22;
+const int b1 PROGMEM = 23;                                            // Brake signal 1 out of Arduino
+const int menu_up PROGMEM = 24;
+const int b2 PROGMEM = 25;
+const int menu_left PROGMEM = 26;
+const int b3 PROGMEM = 27;
+const int menu_right PROGMEM = 28;
+const int b4 PROGMEM = 29;
+const int menu_run PROGMEM = 30;
+const int manual_swtiches_enable PROGMEM = 31;                        // Controls power to manual switches via MOSFET
+const int adam6017_power PROGMEM = 32;                                // Power kill switch to ADAM modules
+const int b5 PROGMEM = 33;
+const int adam6050_power PROGMEM = 34;
+const int b6 PROGMEM = 35;
+const int latency_led PROGMEM = 36;
+const int b7 PROGMEM = 37;
+const int adam_do_0 PROGMEM = 38;                                    // Input to read when ADAM DO triggers relay 
+const int b8 PROGMEM = 39;
 // ethernet pin 50
 // ethernet pin 51
 // ethernet pin 52
-const int a1_in = A4;
-const int a2_in = A5;
-const int s1_in = A8;                                         // Speed signal 1 in
-const int s2_in = A9;
-const int s3_in = A10;
-const int s4_in = A11;
-const int s5_in = A12;
-const int s6_in = A13;
-const int s7_in = A14;
-const int s8_in = A15;
+const int a1_in PROGMEM = A4;
+const int a2_in PROGMEM = A5;
+const int s1_in PROGMEM = A8;                                         // Speed signal 1 in
+const int s2_in PROGMEM = A9;
+const int s3_in PROGMEM = A10;
+const int s4_in PROGMEM = A11;
+const int s5_in PROGMEM = A12;
+const int s6_in PROGMEM = A13;
+const int s7_in PROGMEM = A14;
+const int s8_in PROGMEM = A15;
 
-int input_pins[] = { menu_left, menu_up, menu_down, menu_right, menu_run, adam_do_0 };                                                       // Inputs are menu buttons and start/stop program button, ADAM module digital outputs
+const int input_pins[] PROGMEM = { menu_left, menu_up, menu_down, menu_right, menu_run, adam_do_0 };                                                       // Inputs are menu buttons and start/stop program button, ADAM module digital outputs
 
-int output_pins[] = {b1, b2, b3, b4, b5, b6, b7, b8, s1_out, s2_out, s3_out, s4_out, s5_out, s6_out, s7_out, s8_out, a1_out, a2_out};       // Outputs are brake and speed signals and analog
-int pots[] = {s1_in, s2_in, s3_in, s4_in, s5_in, s6_in, s7_in, s8_in, a1_in, a2_in};                                                        // Speed signal measurement potentiometers
+const int output_pins[] = {b1, b2, b3, b4, b5, b6, b7, b8, s1_out, s2_out, s3_out, s4_out, s5_out, s6_out, s7_out, s8_out, a1_out, a2_out};       // Outputs are brake and speed signals and analog
+const int pots[] = {s1_in, s2_in, s3_in, s4_in, s5_in, s6_in, s7_in, s8_in, a1_in, a2_in};                                                        // Speed signal measurement potentiometers
 
 // Variables 
 int mode = 0;                                                                         // Program mode = 0, manual mode = 1, latency test manual = 2, latency test automatic = 3
@@ -114,8 +114,8 @@ char* data[] = { data_step_0, data_step_1, data_step_2, data_step_3, data_step_4
 int data_steps;
 // declare data array as char* data[100], 100 may be overkill, desktop app will determine max number of steps in program
 
-char program_list[300] = {"00-01-"};                                                // Array to store file names
-char program_list_sorted[100][12];                                                  // Array to store sorted file names
+// char program_list[300] = {"00-01-"};                                                // Array to store file names
+char program_list_sorted[100][7];                                                  // Array to store sorted file names
 String program_list_string = "";
 
 typedef enum menu_button_pressed {left, up, down, right} menu_button_pressed;       // Menu button options
@@ -134,6 +134,22 @@ EthernetClient client_null;                                                     
 void setup() {
   Serial.begin(9600);
   delay(500);                                                                       // Wait for serial to begin. while(!Serial) not working...
+
+  digitalWrite(adam6017_power, HIGH);                                             // Power on Adam moudules
+  digitalWrite(adam6050_power, HIGH);
+
+  digitalWrite(manual_swtiches_enable, LOW);                                      // Disable manual brake switches 
+
+  digitalWrite(latency_led, LOW);                                                 // Ensure latency LED is off at start up
+
+  Ethernet.begin(mac, ip);                                                        // start the Ethernet connection and the server:
+  if (Ethernet.hardwareStatus() == EthernetNoHardware) {                          // Check for Ethernet hardware present
+    debugln("Ethernet shield was not found.  Sorry, can't run without hardware");
+    while (1){}
+  }
+  server.begin();                                                                 // start Arduino server
+  debug("server is at ");
+  debugln(Ethernet.localIP());
 
   lcd.init();                                                                       // Initialize LCD display
   lcd.backlight();                                                                  // Print start up display
@@ -158,52 +174,38 @@ void setup() {
       lcd.print(title3[i]);
       delay(100);
     }
-    delay(2000);
     lcd.clear();                                                                  // END LCD START UP DISPLAY
   #endif
 
-  digitalWrite(adam6017_power, HIGH);                                             // Power on Adam moudules
-  digitalWrite(adam6050_power, HIGH);
-
-  digitalWrite(manual_swtiches_enable, LOW);                                      // Disable manual brake switches 
-
-  digitalWrite(latency_led, LOW);                                                 // Ensure latency LED is off at start up
-
   if (!SD.begin(4)) {                                                             // Initialize SD card
-    lcd.print("SD Initialization");
+    lcd.print(F("SD Initialization"));
     lcd.setCursor(0, 1);
-    lcd.print("Failed. Try Reboot");
+    lcd.print(F("Failed. Try Reboot"));
     debugln("SD failed");
     while (1);
   }
 
   SD_read(0);                                                                     // Load default program 
 
-  lcd_update_running();                                                           // Update LCD
-
-  for (int i = 0; i < sizeof(output_pins)/sizeof(output_pins[0]); i++) {          // Set all digital outputs
+  for (int i = 0; i < sizeof(output_pins)/sizeof(output_pins[0]); i++) {      // Set all digital outputs
     pinMode(output_pins[i], OUTPUT);
   }
-  for (int n = 0; n < sizeof(input_pins)/sizeof(input_pins[0]); n++) {            // Set all digital inputs
+  for (int n = 0; n < sizeof(input_pins)/sizeof(input_pins[0]); n++) {        // Set all digital inputs
     pinMode(input_pins[n], INPUT);
   }
   pinMode(manual_swtiches_enable, OUTPUT);
 
   output_reset();                                                                 // Ensure outputs are disabled
 
-  attachInterrupt(digitalPinToInterrupt(menu_interrupt), menu_pressed, RISING);   // Menu buttons external interrupt
-
-  Ethernet.begin(mac, ip);                                                        // start the Ethernet connection and the server:
-  if (Ethernet.hardwareStatus() == EthernetNoHardware) {                          // Check for Ethernet hardware present
-    debugln("Ethernet shield was not found.  Sorry, can't run without hardware");
-    while (1){}
-  }
-  server.begin();                                                                 // start Arduino server
-  debug("server is at ");
-  debugln(Ethernet.localIP());
-
   list_files(client_null, false);
   debugln(program_list_string);
+
+  // readString.reserve(1000);
+
+  attachInterrupt(digitalPinToInterrupt(menu_interrupt), menu_pressed, RISING);   // Menu buttons external interrupt
+
+  delay(2000);                                                                    // Leave start up message for 2 seconds
+  lcd_update_running();                                                           // Update LCD
 }                                                                                 // END SETUP()
 
 void loop() {
@@ -221,43 +223,43 @@ void lcd_update_running() {                                                     
   switch (mode) {
   case 0:
     lcd.clear();
-    lcd.print("Mode:        PROGRAM");
+    lcd.print(F("Mode:        PROGRAM"));
     lcd.setCursor(0, 1);
-    lcd.print("Program #:        ");
+    lcd.print(F("Program #:        "));
     if (program_number < 10) lcd.print(" ");
     lcd.print(program_number);
     lcd.setCursor(0, 2);
-    lcd.print("Interval:    ");
-    if (program_speed < 1000) lcd.print(" ");
+    lcd.print(F("Interval:    "));
+    if (program_speed < 1000) lcd.print(F(" "));
     lcd.print(program_speed);
-    lcd.print(" ms");
+    lcd.print(F(" ms"));
     lcd.setCursor(0, 3);
-    lcd.print("Loop Mode:    ");
+    lcd.print(F("Loop Mode:    "));
     if (program_loop){
       lcd.setCursor(17, 3);
-      lcd.print("YES");
+      lcd.print(F("YES"));
     }
     else{
       lcd.setCursor(18, 3);
-      lcd.print("No");
+      lcd.print(F("No"));
     }
     break;
   case 1:
     lcd.clear();
-    lcd.print("Mode: MANUAL");
+    lcd.print(F("Mode: MANUAL"));
     break;
   case 2:
     lcd.clear();
-    lcd.print("Mode: LATENCY MANUAL");
+    lcd.print(F("Mode: LATENCY MANUAL"));
     lcd.setCursor(0,1);
-    lcd.print("ADAM 6050 DO 0");
+    lcd.print(F("ADAM 6050 DO 0"));
     latency_running_state();                                          // Update LCD display 
     break;
   case 3:
     lcd.clear();
-    lcd.print("Mode: LATENCY AUTO");
+    lcd.print(F("Mode: LATENCY AUTO"));
     lcd.setCursor(0,1);
-    lcd.print("ADAM 6050 DO 0");
+    lcd.print(F("ADAM 6050 DO 0"));
     latency_running_state();                                          // Update LCD display 
     break;
   }
@@ -265,89 +267,127 @@ void lcd_update_running() {                                                     
 
 void lcd_update_layer_1_selection(int index) {                        // LCD first layer menu
   lcd.clear();
-  lcd.print("Change Mode");
+  lcd.print(F("Change Mode"));
   if (index == 0) {
     lcd.setCursor(19, 0);
-    lcd.print("*");
+    lcd.print(F("*"));
   }
   if (mode == 0) {
     lcd.setCursor(0, 1);
-    lcd.print("Change Program");
+    lcd.print(F("Change Program"));
     if (index == 1) {
       lcd.setCursor(19, 1);
-      lcd.print("*");
+      lcd.print(F("*"));
     }
     lcd.setCursor(0, 2);
-    lcd.print("Edit Program Speed");
+    lcd.print(F("Edit Program Speed"));
     if (index == 2) {
       lcd.setCursor(19, 2);
-      lcd.print("*");
+      lcd.print(F("*"));
     }
     lcd.setCursor(0, 3);
-    lcd.print("Loop Mode");
+    lcd.print(F("Loop Mode"));
     if (index == 3) {
       lcd.setCursor(19, 3);
-      lcd.print("*");
+      lcd.print(F("*"));
     }
   }
 }
 
 void lcd_update_mode_selection(int index) {                         // LCD mode selection menu
   lcd.clear();
-  lcd.print("PROGRAM");
+  lcd.print(F("PROGRAM"));
   if (index == 0) {
     lcd.setCursor(19, 0);
-    lcd.print("*");
+    lcd.print(F("*"));
   }
   lcd.setCursor(0, 1);
-  lcd.print("MANUAL");
+  lcd.print(F("MANUAL"));
   if (index == 1) {
     lcd.setCursor(19, 1);
-    lcd.print("*");
+    lcd.print(F("*"));
   }
   lcd.setCursor(0, 2);
-  lcd.print("LATENCY MANUAL");
+  lcd.print(F("LATENCY MANUAL"));
   if (index == 2) {
     lcd.setCursor(19, 2);
-    lcd.print("*");
+    lcd.print(F("*"));
   }
   lcd.setCursor(0, 3);
-  lcd.print("LATENCY AUTO");
+  lcd.print(F("LATENCY AUTO"));
   if (index == 3) {
     lcd.setCursor(19, 3);
-    lcd.print("*");
+    lcd.print(F("*"));
   }
 }
 
 void lcd_update_program_number(int program_num) {
   lcd.clear();
-  lcd.print("Choose Program");
+  lcd.print(F("Choose Program"));
+  lcd.setCursor(18, 0);
+  String str = program_list_sorted[program_num];
+  str = str.substring(0,2);
+  lcd.print(str);
+
+  str.concat(".txt");
+  my_file = SD.open(str);
+  int lines = 0;
+  String last_line;
+  while (my_file.available()){
+    char val = my_file.read();
+    if (val == '\n') last_line = "";
+    else if (val != '+') last_line += val;                                        // Replace + signs with space
+    else last_line += ' ';
+  }
+
   lcd.setCursor(0, 1);
-  lcd.print(program_num);
+  if (last_line.length() <= 20) lcd.print(last_line);
+  else if (last_line.length() <= 40){
+    lcd.print(last_line.substring(0,20));
+    lcd.setCursor(0,2);
+    lcd.print(last_line.substring(20));
+  }
+  else if (last_line.length() <= 60){
+    lcd.print(last_line.substring(0,20));
+    lcd.setCursor(0,2);
+    lcd.print(last_line.substring(20,40));
+    lcd.setCursor(0,3);
+    lcd.print(last_line.substring(40));
+  }
+  else{
+    lcd.print(last_line.substring(0,20));
+    lcd.setCursor(0,2);
+    lcd.print(last_line.substring(20,40));
+    lcd.setCursor(0,3);
+    lcd.print(last_line.substring(40,57));
+    lcd.print(F("..."));
+  }
+  
+  my_file.close();
 }
 
 void lcd_update_program_speed(int program_spd, bool refresh) {
   if (refresh) {
     lcd.clear();
-    lcd.print("Edit Program Speed");
+    lcd.print(F("Edit Program Speed"));
   }
   lcd.setCursor(0, 1);
   lcd.print(program_spd);
-  if (program_spd < 1000) lcd.print(" ");
-  else if (program_spd < 100) lcd.print("  ");
-  else if (program_spd < 10) lcd.print("   ");
+  if (program_spd < 1000) lcd.print(F(" "));
+  else if (program_spd < 100) lcd.print(F("  "));
+  else if (program_spd < 10) lcd.print(F("   "));
 }
 
 void lcd_update_loop_mode(){
   lcd.clear();
-  lcd.print("Loop Mode:");
+  lcd.print(F("Loop Mode:"));
   if (program_loop){
   lcd.setCursor(17, 0);
-  lcd.print("YES");
+  lcd.print(F("YES"));
   }
   else{
   lcd.setCursor(18, 0);
-  lcd.print("NO");
+  lcd.print(F("NO"));
   }
 }
 
@@ -503,14 +543,16 @@ void menu() {                                       // UI button pressed, execut
           btn_pressed = millis();
           while (digitalRead(menu_up)) {
               if (millis() - btn_pressed >= 100) {                  // Increase program number quickly by holding down btn
-                if (program_number_selection < 99) program_number_selection++;
+                // if (program_number_selection < 99) program_number_selection++;
+                if (program_number_selection < sizeof(program_list_string)/3) program_number_selection++;
                 btn_pressed = millis();
                 lcd_update_program_number(program_number_selection);
                 btn_hold_flag = true;
               }
           }
           if (!btn_hold_flag) {                                     // Increase program speed once by click
-            if (program_number_selection < 99) program_number_selection++;
+            // if (program_number_selection < 99) program_number_selection++;
+            if (program_number_selection < sizeof(program_list_string)/3) program_number_selection++;
             lcd_update_program_number(program_number_selection);
             btn_hold_flag = false;                               // Reset flag
           }
@@ -743,14 +785,14 @@ void manual_mode() {
 }
 
 void program_mode() {                                               // Loop through the number of steps in the program and output brake/speed/analog signals per step in the loop
-  byte wheel_0[] = {B00000,  B01110,  B00001,  B00001,  B10001,  B10001,  B01110,  B00000};
-  byte wheel_1[] = {B00000,  B00010,  B10001,  B10001,  B10001,  B10001,  B01110,  B00000};
-  byte wheel_2[] = {B00000,  B01100,  B10000,  B10001,  B10001,  B10001,  B01110,  B00000};
-  byte wheel_3[] = {B00000,  B01110,  B10001,  B10000,  B10000,  B10001,  B01110,  B00000};
-  byte wheel_4[] = {B00000,  B01110,  B10001,  B10001,  B10001,  B10000,  B01100,  B00000};
-  byte wheel_5[] = {B00000,  B01110,  B10001,  B10001,  B10001,  B10001,  B00010,  B00000};
-  byte wheel_6[] = {B00000,  B01110,  B10001,  B10001,  B00001,  B00001,  B01110,  B00000};
-  byte *wheel[] = {wheel_0, wheel_1, wheel_2, wheel_3, wheel_4, wheel_5, wheel_6};
+  const byte wheel_0[] PROGMEM = {B00000,  B01110,  B00001,  B00001,  B10001,  B10001,  B01110,  B00000};
+  const byte wheel_1[] PROGMEM = {B00000,  B00010,  B10001,  B10001,  B10001,  B10001,  B01110,  B00000};
+  const byte wheel_2[] PROGMEM = {B00000,  B01100,  B10000,  B10001,  B10001,  B10001,  B01110,  B00000};
+  const byte wheel_3[] PROGMEM = {B00000,  B01110,  B10001,  B10000,  B10000,  B10001,  B01110,  B00000};
+  const byte wheel_4[] PROGMEM = {B00000,  B01110,  B10001,  B10001,  B10001,  B10000,  B01100,  B00000};
+  const byte wheel_5[] PROGMEM = {B00000,  B01110,  B10001,  B10001,  B10001,  B10001,  B00010,  B00000};
+  const byte wheel_6[] PROGMEM = {B00000,  B01110,  B10001,  B10001,  B00001,  B00001,  B01110,  B00000};
+  const byte *wheel[] PROGMEM = {wheel_0, wheel_1, wheel_2, wheel_3, wheel_4, wheel_5, wheel_6};
   static unsigned long program_time = 0;                            // Current time 
   static int step = 0;                                              // Current step in program
   static unsigned long loading_time = millis();
@@ -780,7 +822,7 @@ void program_mode() {                                               // Loop thro
   }
   else if (!program_run && do_once){                                // Clear symbol once program stops running
     lcd.setCursor(11, 0);
-    lcd.print(" ");
+    lcd.print(F(" "));
     do_once = false;
   }
 
@@ -813,7 +855,7 @@ void program_mode() {                                               // Loop thro
         step = 0;           
         if (!program_loop) {
           program_run = false;
-          delay(program_speed);
+          delay(program_speed);         // ****** change to while < speed & !menuflag
           output_reset();
         }
       }
@@ -895,27 +937,27 @@ void latency_test(){
 void latency_running_state(){
   if (latency_run){
     lcd.setCursor(0,3);
-    lcd.print("RUNNING");
+    lcd.print(F("RUNNING"));
   }
   else{
     lcd.setCursor(0,3);
-    lcd.print("PAUSED ");
+    lcd.print(F("PAUSED "));
   }
 }
 
 void latency_no_response(){
   lcd.setCursor(0,2);
-  lcd.print("                    ");
+  lcd.print(F("                    "));
   lcd.setCursor(0,2);
-  lcd.print("NO RESPONSE");
+  lcd.print(F("NO RESPONSE"));
 }
 
 void latency_result(long time){
   lcd.setCursor(0,2);
-  lcd.print("Latency:            ");
+  lcd.print(F("Latency:            "));
   lcd.setCursor(9,2);
   lcd.print(time);
-  lcd.print("ms");
+  lcd.print(F("ms"));
 }
 
 void output_reset() {                                           // Turn off all MOSFET swtiches from program mode, and set speed signals to zero
@@ -994,9 +1036,9 @@ if (program_number != 0){                                       // Program 0 can
   }
   else{
     lcd.clear();
-    lcd.print("PROGRAM 0 CAN");
+    lcd.print(F("PROGRAM 0 CAN"));
     lcd.setCursor(0,1);
-    lcd.print("NOT BE MODIFIED");
+    lcd.print(F("NOT BE MODIFIED"));
     delay(2000);
     lcd_update_running();
   }
@@ -1086,7 +1128,7 @@ void SD_read(int program_num) {                               // Read and proces
   }
   else {
     lcd.clear();
-    lcd.print("Program Not Found");
+    lcd.print(F("Program Not Found"));
     delay(3500);
     SD_read(0);                                                 // Error, so load default program
   }
@@ -1105,11 +1147,19 @@ void ethernet(){
 
     boolean currentLineIsBlank = true;                          // an http request ends with a blank line
     
+    debugln("");
+    debug("start of readString");
+    int index = 0;
+    readString = "";                                            // Reset readString
     while (client.available()) {
       char c = client.read();
-      Serial.write(c);
-      readString += c;                                          // Store incoming data from http client
-      
+      #if DEBUG == 1 
+        Serial.write(c);
+      #endif
+
+      if (index > 595) readString += c;                         // Store incoming data from http client. Start after HTML data
+      // if (index > 450) readString += c;                         // Store incoming data from http client. Start after HTML data
+
       if (c == '\n' && currentLineIsBlank) {                    // if you've gotten to the end of the line (received a newline character) and the line is blank, the http request has ended, so you can send a reply
         client.println("HTTP/1.1 200 OK");                      // send a standard http response header
         client.println("Content-Type: text/html");
@@ -1125,14 +1175,180 @@ void ethernet(){
       else if (c != '\r') {
         currentLineIsBlank = false;                             // you've gotten a character on the current line
       }
+
+      index++;
     }
+    debug("end of readstring ");
+    debug("readString = ");
+    debugln(readString);
+    debug("length of readString = ");
+    debugln(readString.length());
+    debugln(index);
+
     decode_ethernet(client);                                    // Decode readString
 
     readString = "";                                            // Reset readString
   }
+  client.stop();                                                // Disconnect from client
+}
+
+void decode_ethernet(EthernetClient client){
+  debug("start of decode ethernet ");
+
+  static bool first_html = true;                                              // Load main.html the first time the client is connected
+  bool save_flag;
+
+  const String step_names[] PROGMEM = { "step_0_data", "step_1_data", "step_2_data", "step_3_data", "step_4_data", "step_5_data", "step_6_data", "step_7_data", "step_8_data", "step_9_data",
+        "step_10_data", "step_11_data", "step_12_data", "step_13_data", "step_14_data", "step_15_data", "step_16_data", "step_17_data", "step_18_data", "step_19_data" };
+
+  if (first_html) {
+    debugln("first html load");
+    update_html(client, 0, 0);                                                // Load main.html
+    first_html = false;                                                       
+    return;
+  }
+
+  if (readString.indexOf("program=") > 0){                                    // Read the program number being uploaded from html page
+    int index = readString.indexOf("program=");
+    String val = readString.substring(index + 8, index + 8 + 2);              // 8 = length of "program=" string
+    if (val[0] != '&') {                                                      // Check if number was saved. & = no number in input box
+      if (val[1] == '&'){                                                     // Val < 10. ex 1 -> 1&
+        val[1] = val[0];                                                      // convert val 1& -> 01
+        val[0] = '0';
+      }
+      program_number = val.toInt();
+      debugln(" ");
+      debug("Program # uploaded: ");  
+      debugln(program_number);  
+
+      if (program_number == 0) return;                                        // Can not edit program 0, defualt program
+
+      char file_name[7] = {val[0], val[1], '.', 't', 'x', 't'};               // File name with selected program number
+      my_file = SD.open(file_name);
+      if (my_file){                                                           // check if program # already exists on SD card
+        // save_flag = lcd_overwrite_program(val);                               // if exisits, overwrite yes/no?. Choice is made on html ui
+        save_flag = true;
+      }
+      else {
+        debugln("File does not exist");
+        save_flag = true;
+      }
+      
+      if (!save_flag){                                                        // no -> update html to show no save
+        debugln("Save file? No selected");
+      }
+    }
+    else {                                                                    // No number was in html input box
+      save_flag = false;                                                 
+      debugln("No program # selected");    
+    }                
+             
+
+    if (save_flag){                                                               // if continue flag, proceed with for loop below
+      if (readString.indexOf("speed=") > 0){                                      // Extract speed value
+        int index = readString.indexOf("speed=");
+        String val = readString.substring(index + 6, index + 6 + 4);              // 6 = length of "speed=" string
+        if (val[0] != '&') {                                                      // Check if number was saved. & = no number in input box
+          if (val[1] == '&'){                                                     // Val < 10. ex 1 -> 1&
+            val[3] = val[0];                                                      // convert val 1&tp -> 0001
+            val[2] = '0';
+            val[1] = '0';
+            val[0] = '0';
+          }
+          else if (val[2] == '&'){                                                // 10 < Val < 100. ex 10 -> 10&
+            val[3] = val[1];
+            val[2] = val[0];                                                      // convert val 10&s -> 0010
+            val[1] = '0';
+            val[0] = '0';
+          }
+          else if (val[3] == '&'){                                                // 100 < Val < 1000. ex 100& -> 0100
+            val[3] = val[2];
+            val[2] = val[1];
+            val[1] = val[0];                                                      // convert val 10& -> 0100
+            val[0] = '0';
+          }
+          program_speed = val.toInt();
+          debugln("");
+          debug("Program speed uploaded: ");  
+          debugln(val);  
+        }
+        else program_speed = 1000;                                              // No speed inputed, default to 1000ms step time
+      }
+
+      data_steps = 0;                                                           // Reset step count. New program will be loaded
+      for (int i = 0; i < 20; i++){                                             // Loop through all possible steps from html page
+        if (readString.indexOf(step_names[i]) > 0){                             // > 0 if data exists
+          int index = readString.indexOf(step_names[i]);
+          String val = readString.substring(index + 12, index + 12 + 38);       // 12 = length of "step_x_data=" string
+          for (int x = 0; x < 38; x++){                                         // Save data to data_step_i variables
+            data[i][x] = val[x];
+            debug(data[i][x]);
+          }
+          debugln(" ");
+          data_steps++;                                                         // Increase step count
+        }
+      }
+
+      if (readString.indexOf("description=") > 0){                              // Extract program description
+        int index = readString.indexOf("description=");
+        String val = readString.substring(index + 12, readString.indexOf("program=")-1); // 12 = length of "description=" string
+        for (int i = 0; i < 100; i++){                                          // Reset the description
+          description[i] = '\0';
+        }
+        for (int i = 0; i < val.length(); i++){                                 // Copy description received from client
+          description[i] = val[i];
+        }
+        debugln(description);
+      }
+
+      SD_write();                                                               // Save program to SD card. SD_write()
+      SD_read(program_number);                                                  // Read and load new program
+
+      list_files(client_null, false);                                           // Update program list
+      debugln(program_list_string);
+    }
+
+    debugln(" ");
+    debugln("loading : main.html");
+    update_html(client, 0, 0);                                                  // Update html with current program settings
+  }
+
+  else if (readString.indexOf("list_form=") > 0){ 
+    debugln(" ");
+    debugln("loading : list.html");
+    update_html(client, 1, 0);                                                  // Load list.html 
+  }
+  else if (readString.indexOf("load_main=") > 0){ 
+    debugln(" ");
+    debugln("loading : main.html");
+    list_files(client_null, false);                                             // Update program list
+    update_html(client, 0, 0);                                                  // Load list.html 
+    debug("program list string = ");
+    debugln(program_list_string);
+  }
+  else if (readString.indexOf("program_load=") > 0){                            // Update descriptions from list.html page
+    debugln(" ");
+    debugln("Check if program exists and load program");
+    list_files(client_null, false);                                             // Update program list
+    load_program(client);                                                       // Load selected program
+  }
+  else if (readString.indexOf("delete=") > 0){                                  // Delete selected program
+    debugln(" ");
+    debugln("Delete program");  
+    debugln(readString);
+    delete_program();
+    list_files(client_null, false);
+    if (readString.indexOf("list=") > 0) update_html(client, 1, 0);             // Delete called from SAVED PROGRAMS page
+    else update_html(client, 0, 0);                                             // Delete called from main page
+  }
+  else{
+    update_html(client, 0, 0);                                                  // Load main.html, page refesh
+  }
+  debug("end of decode ethernet ");
 }
 
 void update_html(EthernetClient client, int page, int count){
+  debug("pre updat html : ");
   if (page == 0){                                                 // main.html
     my_file = SD.open("htmlA.txt");                                // open html file
     if (my_file){
@@ -1272,8 +1488,9 @@ void update_html(EthernetClient client, int page, int count){
     }
     else debugln("html4 failed to open");
     // Description
-    bool first = false;
-    int index2 = 0;
+    bool first = false;                                           // first '\n' , end of file -> '\n' '\n' description
+    int index2 = 0;                                               // current char index in readString. Looking for first char in last line
+    unsigned long time_out = millis();
     while(1){                                                     // Find index of first char in last line
       char val2 = readString[index2];
       if (val2 != '\n') {
@@ -1284,8 +1501,12 @@ void update_html(EthernetClient client, int page, int count){
         index2++;
         first = true;
       }
-      else if (val2 == '\n' && first == true) {                   
+      else if (val2 == '\n' && first == true) {                   // Last line       
         index2++;
+        break;
+      }
+      if (millis() - time_out >= 9999){
+        debugln("html load description timed out");
         break;
       }
     }
@@ -1352,6 +1573,7 @@ void update_html(EthernetClient client, int page, int count){
     }
     else debugln("html7 failed to open");
   }
+  debug("post updat html : ");
 }
 
 
@@ -1426,7 +1648,7 @@ void list_files(EthernetClient client, bool print) {              // print = tru
       if (isDigit(my_file.name()[0])){                             // Do not read HTML, LIST files, etc. Only program files
         char *str = my_file.name();
         
-        client.print(F("<form><input type='submit' value='Load'><input type='button' value='Delete' onclick='delete_program(this.parentNode)''><label>"));
+        client.print(F("<form method='post' action='/''><input type='submit' value='Load'><input type='button' value='Delete' onclick='delete_program(this.parentNode)''><label>"));
         client.print(str[0]);
         client.print(str[1]);
         client.print(F("</label><label>"));
@@ -1468,26 +1690,33 @@ void list_files(EthernetClient client, bool print) {              // print = tru
 
 void sorted_files_list(){
   debugln("start of sort function");
+  debug("start of sort function ");
+
   int max_files = 113;                                        // 101 +  number of html css etc files (12)
   int index = 0;                                 
   int elementCount = 0;                                       // Number of elements in program_list_sorted
 
-  File root = SD.open("/");                                     // Open root directory
+  for (int n = 0; n < sizeof(program_list_sorted)/sizeof(program_list_sorted[0]); n++) program_list_sorted[n][0] = '\0';      // Reset the array to null
+
+  File root = SD.open("/");                                   // Open root directory
   if (root){
     debugln("root opened");
-    while (index < max_files){   
-    File entry = root.openNextFile();                      // Loop through files on SD card
-    
-    char *str = entry.name();                                 // Save file name pointer
 
-    if (!strlen(str)) {
+    while (index < max_files){   
+    File entry = root.openNextFile();                         // Loop through files on SD card
+
+    // if (!strlen(str)) {
+    if (!entry) {
       break;                                                  // No more files                                                  
     }
 
+    char *str = entry.name();                                 // Save file name pointer
+
     if (!isDigit(str[0])) {                                   // Don't include html css etc files in sorted list
+      entry.close();
       continue;                                               
     }
-    
+
     strcpy(program_list_sorted[index], str);                  // Save file name to program_list_sorted
     
     debugln("entry closed");
@@ -1497,25 +1726,27 @@ void sorted_files_list(){
   
     if (index == max_files)
     {
-      debugln("too many files");                                // Alert user of error
+      debugln("too many files");                              // Alert user of error
     }
     else
     {
-      elementCount = index;                                     // Count number of elements in myWords
+      elementCount = index;                                   // Count number of elements in myWords
     
       qsort(program_list_sorted, elementCount, sizeof(program_list_sorted[0]), CompareStrings);      // Sort elements
       #if DEBUG
         debugln("Sorted list");
         for (int i = 0; i < elementCount; i++) {
-          debugln(program_list_sorted[i]);                                  // Print sorted elements
+          debugln(program_list_sorted[i]);                    // Print sorted elements
         }
       #endif
     }
-    debugln("file closed / end of sorting function");
 
+    debugln("file closed / end of sorting function");
     root.close();
   }
   else debugln("failed to open root");
+
+  debug("end of sort function ");
 }
 
 // void sorted_files_list(){
@@ -1578,157 +1809,6 @@ int CompareStrings(const void *p1, const void *p2)            // Sorting algorit
   return strcmp(p1, p2);
 }
 
-void decode_ethernet(EthernetClient client){
-  ram_usage();
-
-  static bool first_html = true;                                              // Load main.html the first time the client is connected
-  bool save_flag;
-
-  String step_names[] = { "step_0_data", "step_1_data", "step_2_data", "step_3_data", "step_4_data", "step_5_data", "step_6_data", "step_7_data", "step_8_data", "step_9_data",
-        "step_10_data", "step_11_data", "step_12_data", "step_13_data", "step_14_data", "step_15_data", "step_16_data", "step_17_data", "step_18_data", "step_19_data" };
-
-  if (first_html) {
-    debugln("first html load");
-    update_html(client, 0, 0);                                                // Load main.html
-    first_html = false;                                                       
-    return;
-  }
-
-  if (readString.indexOf("program=") > 0){                                    // Read the program number being uploaded from html page
-    int index = readString.indexOf("program=");
-    String val = readString.substring(index + 8, index + 8 + 2);              // 8 = length of "program=" string
-    if (val[0] != '&') {                                                      // Check if number was saved. & = no number in input box
-      if (val[1] == '&'){                                                     // Val < 10. ex 1 -> 1&
-        val[1] = val[0];                                                      // convert val 1& -> 01
-        val[0] = '0';
-      }
-      program_number = val.toInt();
-      debugln(" ");
-      debug("Program # uploaded: ");  
-      debugln(program_number);  
-
-      if (program_number == 0) return;                                        // Can not edit program 0, defualt program
-
-      char file_name[7] = {val[0], val[1], '.', 't', 'x', 't'};               // File name with selected program number
-      my_file = SD.open(file_name);
-      if (my_file){                                                           // check if program # already exists on SD card
-        // save_flag = lcd_overwrite_program(val);                               // if exisits, overwrite yes/no?. Choice is made on html ui
-        save_flag = true;
-      }
-      else {
-        debugln("File does not exist");
-        save_flag = true;
-      }
-      
-      if (!save_flag){                                                        // no -> update html to show no save
-        debugln("Save file? No selected");
-      }
-    }
-    else {                                                                    // No number was in html input box
-      save_flag = false;                                                 
-      debugln("No program # selected");    
-    }                
-             
-
-    if (save_flag){                                                               // if continue flag, proceed with for loop below
-      if (readString.indexOf("speed=") > 0){                                      // Extract speed value
-        int index = readString.indexOf("speed=");
-        String val = readString.substring(index + 6, index + 6 + 4);              // 6 = length of "speed=" string
-        if (val[0] != '&') {                                                      // Check if number was saved. & = no number in input box
-          if (val[1] == '&'){                                                     // Val < 10. ex 1 -> 1&
-            val[3] = val[0];                                                      // convert val 1&tp -> 0001
-            val[2] = '0';
-            val[1] = '0';
-            val[0] = '0';
-          }
-          else if (val[2] == '&'){                                                // 10 < Val < 100. ex 10 -> 10&
-            val[3] = val[1];
-            val[2] = val[0];                                                      // convert val 10&s -> 0010
-            val[1] = '0';
-            val[0] = '0';
-          }
-          else if (val[3] == '&'){                                                // 100 < Val < 1000. ex 100& -> 0100
-            val[3] = val[2];
-            val[2] = val[1];
-            val[1] = val[0];                                                      // convert val 10& -> 0100
-            val[0] = '0';
-          }
-          program_speed = val.toInt();
-          debugln("");
-          debug("Program speed uploaded: ");  
-          debugln(val);  
-        }
-        else program_speed = 1000;                                              // No speed inputed, default to 1000ms step time
-      }
-
-      data_steps = 0;                                                           // Reset step count. New program will be loaded
-      for (int i = 0; i < 20; i++){                                             // Loop through all possible steps from html page
-        if (readString.indexOf(step_names[i]) > 0){                             // > 0 if data exists
-          int index = readString.indexOf(step_names[i]);
-          String val = readString.substring(index + 12, index + 12 + 38);       // 12 = length of "step_x_data=" string
-          for (int x = 0; x < 38; x++){                                         // Save data to data_step_i variables
-            data[i][x] = val[x];
-            debug(data[i][x]);
-          }
-          debugln(" ");
-          data_steps++;                                                         // Increase step count
-        }
-      }
-
-      if (readString.indexOf("description=") > 0){                              // Extract program description
-        int index = readString.indexOf("description=");
-        String val = readString.substring(index + 12, readString.indexOf("program=")-1); // 12 = length of "description=" string
-        for (int i = 0; i < 100; i++){                                          // Reset the description
-          description[i] = '\0';
-        }
-        for (int i = 0; i < val.length(); i++){                                 // Copy description received from client
-          description[i] = val[i];
-        }
-        debugln(description);
-      }
-
-      SD_write();                                                               // Save program to SD card. SD_write()
-      SD_read(program_number);                                                  // Read and load new program
-
-      list_files(client_null, false);                                           // Update program list
-      debugln(program_list_string);
-    }
-
-    debugln(" ");
-    debugln("loading : main.html");
-    update_html(client, 0, 0);                                                  // Update html with current program settings
-  }
-
-  else if (readString.indexOf("list_form=") > 0){ 
-    debugln(" ");
-    debugln("loading : list.html");
-    update_html(client, 1, 0);                                                  // Load list.html 
-  }
-  else if (readString.indexOf("load_main=") > 0){ 
-    debugln(" ");
-    debugln("loading : main.html");
-    update_html(client, 0, 0);                                                  // Load list.html 
-  }
-  else if (readString.indexOf("program_load=") > 0){                            // Update descriptions from list.html page
-    debugln(" ");
-    debugln("Check if program exists and load program");
-    load_program(client);                                                       // Load selected program
-  }
-  else if (readString.indexOf("delete=") > 0){                                  // Delete selected program
-    debugln(" ");
-    debugln("Delete program");  
-    delete_program();     
-    list_files(client_null, false);                                             // Update program list
-    debugln(program_list_string);
-    debugln(readString);
-    if (readString.indexOf("list=") > 0) update_html(client, 1, 0);             // Delete called from SAVED PROGRAMS page
-    else update_html(client, 0, 0);                                             // Delete called from main page
-  }
-  else{
-    update_html(client, 0, 0);                                                  // Load main.html, page refesh
-  }
-}
-
 void delete_program(){
   int index = readString.indexOf("delete=");
   int index_end = readString.indexOf("list=");
@@ -1771,7 +1851,7 @@ void load_program(EthernetClient client){
   int index = readString.indexOf("program_load=");
   String val = readString.substring(index + 13);
   debugln(val);
-  unsigned int length = val.length();
+  int length = val.length();
   debugln(length);
   char file_name[7] = "00.txt";                                         // Convert readString to file_name
   debug("file name: ");
@@ -1781,18 +1861,19 @@ void load_program(EthernetClient client){
     file_name[1] = val[1];
   }
   debugln(file_name);
-  ram_usage();
   my_file = SD.open(file_name);                                         // Try to open program file
   if (my_file) {                                                        // Program exists if true
     readString = "";                                                    // Reset readstring
     int count = 0;
     debugln("in while loop...");
+    Serial.print("pre load file ");
     while (my_file.available()){
       char val = my_file.read();
       if (val == '\n') count++;
       readString += val;                                                // Save program data to readstring
     }
-    count++;                                                            // Last line of txt is missing \n
+    Serial.print("post load file ");
+    count++;                                                            // Last line of txt does not have \n
     my_file.close();
     debugln("load program via html");
     update_html(client, 2, count);                                      // If program is saved on SD, load program
@@ -1806,17 +1887,17 @@ bool lcd_overwrite_program(String program){
   bool overwrite = false;                                               // true = overwrite
 
   lcd.clear();
-  lcd.print("Program ");
+  lcd.print(F("Program "));
   lcd.print(program);
-  lcd.print(" exists");
+  lcd.print(F(" exists"));
   lcd.setCursor(0,1);
-  lcd.print("Overwrite file?");
+  lcd.print(F("Overwrite file?"));
   lcd.setCursor(0,2);
-  lcd.print("YES");
+  lcd.print(F("YES"));
   lcd.setCursor(0,3);
-  lcd.print("NO");
+  lcd.print(F("NO"));
   lcd.setCursor(19,3);
-  lcd.print("*");
+  lcd.print(F("*"));
   
   while (!selection){
     if (menu_flag){                                                     // A button was pressed
@@ -1824,16 +1905,16 @@ bool lcd_overwrite_program(String program){
       switch (menu_button_pressed){
       case up:                                                          // YES selection
         lcd.setCursor(19,2);
-        lcd.print("*");
+        lcd.print(F("*"));
         lcd.setCursor(19,3);
-        lcd.print(" ");
+        lcd.print(F(" "));
         overwrite = true;
         break;
       case down:                                                        // NO selection
         lcd.setCursor(19,2);
-        lcd.print(" ");
+        lcd.print(F(" "));
         lcd.setCursor(19,3);
-        lcd.print("*");
+        lcd.print(F("*"));
         overwrite = false;
         break;
       case right:                                                       // Make selection
@@ -1855,7 +1936,7 @@ float map_float(float x, float in_min, float in_max, float out_min, float out_ma
   return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
 
-void ram_usage(){
-  debug("Free memory = ");
-  debugln(freeMemory());
-}
+// void ram_usage(){
+//   debug(F("Free memory = "));
+//   debugln(freeMemory());
+// }
